@@ -815,8 +815,35 @@ function markPracticeDone(pid){
   if (pracN(pid) > 0) return;
   savePracticed(pid, {count: 1, best: null, last: todayKST(), manual: true, manualBy: 'parent', manualAt: new Date().toISOString(), runs: []}).then(ok => toast(ok ? '✔ 완료로 표시했어요 (부모 확인)' : '✔ 완료로 표시했어요. 서버 연결되면 자동 저장돼요', 3000));
 }
+/* parent-entered Game results (played on StanbyMe 11/22 but never uploaded). Estimated timing = Aaron's average pace. */
+const PARENT_GAMES = [{passageId: 'S2-G1-07', date: '2026-11-22', startedAt: '2026-11-22T03:45:00.000Z', note: 'Ed: perfect score, not uploaded from StanbyMe'}];
+let seededGames = false;
+async function seedParentGames(){
+  if (seededGames || !db || !ready.a) return; seededGames = true;
+  const all = passages.concat(drafts);
+  const timed = attempts.filter(a => a.readSec > 0 && a.words > 0);
+  const wpm = timed.length ? timed.reduce((s,a)=>s+a.words,0) / timed.reduce((s,a)=>s+a.readSec,0) * 60 : 150;
+  const th = []; attempts.forEach(a => (a.answers || []).forEach(x => { if (x.thinkSec > 0) th.push(x.thinkSec); }));
+  const think = th.length ? Math.round(th.reduce((s,x)=>s+x,0) / th.length) : 30;
+  for (const g of PARENT_GAMES){
+    if (attempts.some(a => a.passageId === g.passageId)) continue;
+    const p = all.find(x => x.id === g.passageId); if (!p) continue;
+    const L = p.level || 1, words = (p.paragraphs || []).flat().join(' ').split(/\s+/).filter(Boolean).length;
+    const answers = (p.questions || []).map(q => ({qid: q.qid, type: q.type, prompt: q.prompt, difficulty: q.difficulty || null, chosen: q.answer, chosenText: q.choices[q.answer], answerText: q.choices[q.answer], correct: true,
+      proof: needsProof(q) ? q.evidence[0] : null, proofOk: needsProof(q) ? true : null, points: maxPoints(q, L), maxPoints: maxPoints(q, L), thinkSec: think, skipped: 0, reason: null}));
+    const readSec = Math.round(words / wpm * 60), season = seasonOf(p);
+    const prevPts = attempts.filter(a => (a.season || 1) === season && a.mode !== 'practice').reduce((s,a)=>s+(a.points||0),0);
+    const rec = {cid: 'parent-' + g.passageId, passageId: p.id, title: p.title, topic: p.topic || null, level: L, season, mode: 'game', date: g.date, startedAt: g.startedAt,
+      words, readSec, readMode: 'whole', paraSec: null, quarterKw: null, pauses: 0, pauseSec: 0, hints: [], timeoutsUsed: 0,
+      answers, correct: answers.length, total: answers.length, proofCorrect: answers.filter(a => a.proof != null).length, proofTotal: answers.filter(a => a.proof != null).length,
+      points: answers.reduce((s,a)=>s+a.points,0), maxPoints: answers.reduce((s,a)=>s+a.maxPoints,0), totalSec: readSec + think * answers.length,
+      tileBefore: 'open', tileAfter: 'made', seasonPtsAfter: prevPts + answers.reduce((s,a)=>s+a.points,0), shotNo: attempts.length + 1,
+      device: 'parent-entry', manual: true, manualBy: 'parent', estimatedTiming: true, note: g.note, enteredAt: new Date().toISOString()};
+    try { await writeAttempt(rec); } catch(e){ const o = obGet(); if (!o.some(x => x.cid === rec.cid)){ o.push(rec); obSet(o); } }
+  }
+}
 /* one-time parent marks requested 2026-11-21 (S1 practice not saved on StanbyMe) */
-const PARENT_SEED = ['L2-01','L2-02','L2-03','L2-04','L1-02','p004','L3-01','L3-02','L1-01','p002','p003','L3-04'];
+const PARENT_SEED = ['L2-01','L2-02','L2-03','L2-04','L1-02','p004','L3-01','L3-02','L1-01','p002','p003','L3-04','S2-P2-01'];
 let seeded = false;
 function seedParentMarks(){ if (seeded) return; seeded = true; PARENT_SEED.forEach((pid, i) => { if (!practiced[pid] || !(practiced[pid].count > 0)) setTimeout(() => savePracticed(pid, {count: 1, best: null, last: '2026-11-21', manual: true, manualBy: 'parent', manualAt: '2026-11-22T12:50:00+09:00', runs: []}), 400 * i); }); }
 function pracN(pid){ return (practiced[pid] && practiced[pid].count) || 0; }
@@ -901,7 +928,7 @@ window.addEventListener('offline', () => { try { updSync(); } catch(e){} });
     if (!s.metadata.fromCache){
       const ids = new Set(dbAttempts.map(a => a.cid || a.id));
       const ob = obGet(); if (ob.some(x => ids.has(x.cid))) obSet(ob.filter(x => !ids.has(x.cid)));
-      if (!ready.a){ ready.a = true; setTimeout(flushOutbox, 1500); setTimeout(autoRepair, 4000); }
+      if (!ready.a){ ready.a = true; setTimeout(flushOutbox, 1500); setTimeout(autoRepair, 4000); setTimeout(seedParentGames, 6000); }
     }
     recomputeAttempts();
     refresh();
