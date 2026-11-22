@@ -1,0 +1,2539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aaron's Reading Shots</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=Noto+Sans+KR:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#1E2A4A;--navy2:#2C3B63;--cream:#FFF8EC;--paper:#FFFFFF;
+  --orange:#F28C28;--orange-l:#FFE2C2;--green:#2FA36B;--green-l:#D9F2E5;
+  --red:#E0533D;--red-l:#FBE0DB;--yellow:#FFD84D;--yellow-l:#FFF3B8;
+  --sky:#4FA3E0;--purple:#8A5CD1;--ink:#1C1C1E;--body:#3A3A3C;--gray:#9AA0AE;--line:#E6DCC8;
+  --fs:clamp(15px,1.22vw,30px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{font-family:'Nunito','Noto Sans KR',sans-serif;background:var(--cream);color:var(--ink);font-size:var(--fs);overflow:hidden;-webkit-tap-highlight-color:transparent;user-select:none}
+button{font-family:inherit;font-size:inherit;cursor:pointer;border:none;color:inherit}
+button:disabled{cursor:default}
+.view{position:absolute;inset:0;display:none;flex-direction:column}
+.view.on{display:flex}
+.rainbow{height:.42em;flex:none;background:linear-gradient(90deg,var(--red),var(--orange),var(--yellow),var(--green),var(--sky),var(--purple))}
+
+/* ---------- HOME ---------- */
+.home-top{background:var(--navy);color:#fff;padding:1.1em 2em 1em;display:flex;align-items:center;gap:1em;flex:none}
+.home-top h1{font-size:2.1em;font-weight:900;letter-spacing:.01em}
+.home-top h1 span{color:var(--yellow)}
+.home-top .sub{font-size:1em;opacity:.8;font-weight:700}
+.home-top .sp{flex:1}
+.iconbtn{background:rgba(255,255,255,.12);color:#fff;border-radius:.6em;padding:.45em .8em;font-size:.9em;font-weight:800}
+.home-main{flex:1;display:grid;grid-template-columns:44% 1fr;gap:1.6em;padding:1.6em 2em 2em;min-height:0}
+.card{background:var(--paper);border-radius:1.2em;box-shadow:0 .2em .8em rgba(30,42,74,.08);border:2px solid var(--line)}
+.court{padding:1.3em 1.5em;display:flex;flex-direction:column;min-height:0}
+.court h2{font-size:1.25em;font-weight:900;color:var(--navy);display:flex;align-items:baseline;gap:.5em}
+.court h2 small{font-size:.75em;color:var(--gray);font-weight:800}
+.chart{flex:1;display:grid;grid-template-columns:repeat(10,1fr);grid-template-rows:repeat(10,1fr);gap:.45em;margin:1em 0;min-height:0;aspect-ratio:1/1;max-height:100%;align-self:center;width:100%;max-width:min(100%,62vh)}
+.dot{border-radius:50%;border:2.5px dashed #D8CFBE;display:flex;align-items:center;justify-content:center;font-size:.55em;font-weight:900;color:#fff}
+.dot.made{background:var(--orange);border:none}
+.dot.mid{background:var(--yellow);border:none;color:var(--navy)}
+.dot.miss{background:#C9CDD6;border:none}
+.dot.next{border:3px solid var(--orange);animation:pulse 1.4s infinite}
+@keyframes pulse{50%{transform:scale(1.15)}}
+.legend{display:flex;gap:1.2em;font-size:.75em;font-weight:800;color:var(--body);justify-content:center}
+.legend i{display:inline-block;width:.9em;height:.9em;border-radius:50%;vertical-align:-.1em;margin-right:.3em}
+.rightcol{display:flex;flex-direction:column;gap:1.2em;min-height:0}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1em}
+.stat{padding:.8em 1em;text-align:center}
+.stat b{display:block;font-size:2em;font-weight:900;color:var(--navy);line-height:1.1}
+.stat span{font-size:.8em;font-weight:800;color:var(--gray)}
+.next-btn{background:var(--orange);color:#fff;border-radius:1.2em;padding:1em 1.4em;text-align:left;box-shadow:0 .35em 0 #C96E14;display:flex;align-items:center;gap:1em;transition:transform .1s}
+.next-btn:active{transform:translateY(.2em);box-shadow:0 .15em 0 #C96E14}
+.next-btn .big{font-size:1.9em;font-weight:900;line-height:1.1}
+.next-btn .small{font-size:.95em;font-weight:800;opacity:.92;margin-top:.2em}
+.next-btn .ball{font-size:3em}
+.plist{flex:1;overflow-y:auto;padding:1em 1.2em;min-height:0}
+.plist h3{font-size:1em;font-weight:900;color:var(--navy);margin-bottom:.6em}
+.chips{display:flex;flex-wrap:wrap;gap:.5em;margin-bottom:.8em}
+.chip{background:#F2ECE0;border-radius:2em;padding:.35em .9em;font-size:.8em;font-weight:800;color:var(--body)}
+.chip.on{background:var(--navy);color:#fff}
+.prow{display:flex;align-items:center;gap:.8em;padding:.65em .8em;border-radius:.8em;border:2px solid transparent;width:100%;background:none;text-align:left}
+.prow:hover,.prow:active{background:#FFF4E4;border-color:var(--orange-l)}
+.prow .em{font-size:1.5em}
+.prow .t{flex:1;font-weight:800;font-size:1em}
+.prow .t small{display:block;font-weight:700;color:var(--gray);font-size:.75em}
+.prow .cnt{font-size:.8em;font-weight:900;color:var(--orange)}
+.parent-btn{position:absolute;right:1.2em;bottom:4.5em;background:rgba(30,42,74,.12);color:var(--body);border:2px solid rgba(30,42,74,.18);border-radius:.8em;padding:.7em 1.3em;font-size:1em;font-weight:900;font-family:'Noto Sans KR',sans-serif;z-index:20}
+.parent-btn .fill{height:5px !important}
+.parent-btn .fill{position:absolute;left:0;bottom:0;height:3px;background:var(--orange);width:0;border-radius:3px}
+.msg{flex:1;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:800;color:var(--body);padding:2em;line-height:1.6}
+
+/* ---------- PLAY ---------- */
+.topbar{background:var(--navy);color:#fff;display:flex;align-items:center;gap:1em;padding:.7em 1.5em;flex:none}
+.topbar .ptitle{font-weight:900;font-size:1.15em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:34%}
+.topbar .tchip{background:rgba(255,255,255,.14);border-radius:2em;padding:.25em .8em;font-size:.8em;font-weight:800;white-space:nowrap}
+.steps{flex:1;display:flex;gap:.45em;justify-content:center;align-items:center}
+.step{width:1.6em;height:1.6em;border-radius:50%;background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:.75em;font-weight:900}
+.step.read{width:auto;padding:0 .7em;border-radius:1em}
+.step.cur{background:var(--yellow);color:var(--navy)}
+.step.ok{background:var(--green)}
+.step.bad{background:var(--red)}
+.timer{font-variant-numeric:tabular-nums;font-weight:900;font-size:1.6em;background:rgba(0,0,0,.25);border-radius:.4em;padding:.1em .5em;min-width:4.2em;text-align:center}
+.playmain{flex:1;display:grid;grid-template-columns:61% 1fr;gap:1.3em;padding:1.2em 1.5em 1.4em;min-height:0}
+.passage{padding:1.3em 1.8em;overflow-y:auto;min-height:0;user-select:text}
+.passage h2{font-size:1.45em;font-weight:900;color:var(--navy);margin-bottom:.5em}
+.para{display:flex;gap:.8em;margin-bottom:.85em}
+.pnum{flex:none;width:1.5em;height:1.5em;border-radius:50%;background:var(--navy);color:#fff;font-size:.75em;font-weight:900;display:flex;align-items:center;justify-content:center;margin-top:.45em}
+.ptext{font-size:1.14em;line-height:1.62;font-weight:600;color:var(--ink)}
+.s{border-radius:.25em;transition:background .15s;padding:.05em .05em}
+body.proofing .s{cursor:pointer;background:rgba(242,140,40,.07);box-shadow:inset 0 -2px 0 rgba(242,140,40,.45)}
+body.proofing .s:hover{background:var(--orange-l)}
+.s.sel{background:var(--yellow)!important;box-shadow:inset 0 -3px 0 var(--orange)!important}
+.s.proof{background:var(--green-l)!important;box-shadow:inset 0 -3px 0 var(--green)!important}
+.side{display:flex;flex-direction:column;gap:1em;min-height:0}
+.qcard{flex:1;padding:1.3em 1.4em;display:flex;flex-direction:column;gap:.8em;overflow-y:auto;min-height:0}
+.badge{align-self:flex-start;border-radius:2em;padding:.3em .9em;font-size:.8em;font-weight:900;color:#fff}
+.qprompt{font-size:1.28em;font-weight:900;line-height:1.4;color:var(--navy)}
+.think{display:flex;align-items:center;gap:.7em;font-weight:900;color:var(--purple);font-size:1em}
+.ring{width:2.6em;height:2.6em;flex:none}
+.choices{display:flex;flex-direction:column;gap:.6em}
+.choice{display:flex;align-items:center;gap:.8em;background:#F7F2E8;border:3px solid transparent;border-radius:.9em;padding:.65em .9em;text-align:left;font-size:1.02em;font-weight:800;line-height:1.3;transition:background .15s,border-color .15s,opacity .2s}
+.choice .L{flex:none;width:1.7em;height:1.7em;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.85em}
+.choice:disabled{opacity:.45}
+.choice.sel{border-color:var(--orange);background:var(--orange-l)}
+.choice.right{border-color:var(--green);background:var(--green-l);opacity:1}
+.choice.wrong{border-color:var(--red);background:var(--red-l);opacity:1}
+.hint{background:#F3EDFF;color:var(--purple);border-radius:.8em;padding:.6em .9em;font-weight:900;font-size:.95em}
+.hint.warn{background:var(--yellow-l);color:#8A6200}
+.startwrap{grid-column:1/-1;display:flex;flex-direction:column;align-items:center;gap:1.2em;padding:2em 0}
+.startsum{font-weight:900;font-size:1.15em;opacity:.8}
+.topiccard.done{opacity:.8;border:2px solid #2FA36B}
+.topiccard.done .tinfo{color:#17643F;font-weight:900}
+.twsec{font-weight:900;color:#16233A;margin:.8em 0 .2em;font-size:1.05em}
+.twrow.to{background:#FFF3D6;border-radius:.6em;padding:.4em .6em;border-left:5px solid #C4922F}
+.whybtn{background:#FFF3D6;color:#5A4410;border:2px dashed #C4922F;border-radius:.8em;padding:.6em .8em;font-weight:900;font-size:1em;text-align:left}
+.review{width:100%;background:#FDECEA;border-radius:1em;padding:1em 1.1em;text-align:left;box-sizing:border-box}
+.review h3{margin:0;color:#8E2B20}
+.rvrow{background:#fff;border-radius:.8em;padding:.7em .8em;margin-top:.7em;display:flex;flex-direction:column;gap:.35em}
+.rvq{font-weight:900;color:#16233A}
+.rvbad{color:#C0392B;font-weight:800}
+.rvgood{color:#17643F;font-weight:900}
+.rvproof{color:#3A3A3C;font-weight:700;background:#E8F6EE;border-radius:.5em;padding:.4em .6em}
+.wwarn{grid-column:1/-1;background:#FFF3D6;color:#5A4410;border-radius:.8em;padding:.6em .9em;font-weight:800;text-align:center}
+.rtop{width:100%;display:flex;justify-content:space-between;gap:.6em}
+.rtopbtn{color:#1C1C1E !important;background:rgba(0,0,0,.07) !important;font-weight:900}
+.rvopen{margin-top:.7em;width:100%}
+.rvtabs{display:flex;gap:.5em;flex-wrap:wrap}
+.rvtab{background:#F4F4F5;border-radius:.6em;padding:.35em .9em;font-weight:900;color:#3A3A3C}
+.rvtab.on{background:#C0392B;color:#fff}
+#rvSide .qcard{display:flex;flex-direction:column;gap:.7em;padding:1.2em;flex:1;overflow-y:auto}
+.pausebtn{font-weight:900}
+.pauseov{display:none;position:absolute;inset:0;z-index:50;background:#16233A;color:#FAF9F6;flex-direction:column;align-items:center;justify-content:center;gap:1.2em;text-align:center;padding:2em}
+.pauseov.on{display:flex}
+.pauseov .pbig{font-size:3em;font-weight:900;color:#DFAE4A}
+.pauseov .psub{font-size:1.3em;font-weight:800;opacity:.9}
+.pauseov .bigbtn{width:min(24em,90%)}
+.passage.quarter .para{transition:opacity .35s, filter .35s}
+.passage.quarter .para.fog{opacity:.55}
+.passage.quarter .para.readdone{opacity:.7}
+.passage.quarter .para.cur{background:#FFFBEF;border-radius:.8em;box-shadow:0 0 0 3px #F2D58A;padding:.4em .5em}
+.w.kw{background:#FFE58A;box-shadow:0 0 0 2px #E0B23A;font-weight:900}
+.qpills{display:flex;gap:.4em}
+.qpill{flex:1;text-align:center;padding:.3em 0;border-radius:.5em;background:#F4F4F5;color:#A0A0A5;font-weight:900}
+.qpill.cur{background:#FFE58A;color:#5A4410}
+.qpill.done{background:#2FA36B;color:#fff}
+.kwbox{background:#F4F4F5;border-radius:.7em;padding:.6em .8em;font-weight:800;color:#6E6E73}
+.kwbox.on{background:#FFF3D6;color:#5A4410;border:2px solid #E0B23A}
+.rmode{display:flex;gap:.6em;margin-bottom:.6em}
+.rmbtn{flex:1;background:#fff;border:2px solid #E4E4E7;border-radius:.9em;padding:.6em .8em;font-weight:900;color:#3A3A3C;display:flex;flex-direction:column;align-items:center;gap:.15em}
+.rmbtn small{font-weight:700;color:#6E6E73;font-size:.75em}
+.rmbtn.on{border-color:#2B5CE6;background:#EEF3FF;color:#1D3FA0}
+.kpis{display:grid;grid-template-columns:repeat(auto-fill,minmax(11em,1fr));gap:.6em;margin:.6em 0 1em}
+.kpi{background:#F4F4F5;border-radius:.7em;padding:.6em .8em}
+.kpi .kl{font-size:.8em;color:#6E6E73;font-weight:800}
+.kpi .kv{font-size:1.4em;font-weight:900;color:#1C1C1E}
+.kpi .ks{font-size:.75em;color:#6E6E73}
+.insight{font-weight:800;color:#3A3A3C;margin:.25em 0}
+.bigbtn.waiting{background:#C8C8CC;box-shadow:0 .3em 0 #A0A0A5;color:#3A3A3C}
+.modebtn.lib{background:#0E7C6B;box-shadow:0 .4em 0 #095A4E}
+.libh{margin:1em 0 .5em;color:#16233A}
+.libgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(11em,1fr));gap:.8em}
+.book{background:#fff;border:2px solid #E4E4E7;border-radius:.4em 1em 1em .4em;padding:.8em .9em .8em 1.3em;text-align:left;position:relative;display:flex;flex-direction:column;gap:.3em;min-height:7em;box-shadow:0 .25em 0 #E4E4E7}
+.book .bspine{position:absolute;left:0;top:0;bottom:0;width:.6em;border-radius:.4em 0 0 .4em;font-size:0}
+.book.lv1{border-left:.6em solid #4A9FE0}.book.lv2{border-left:.6em solid #F28C28}.book.lv3{border-left:.6em solid #E0533D}
+.book .btitle{font-weight:900;font-size:1.1em;color:#1C1C1E}
+.book .bmeta{font-size:.78em;color:#6E6E73;font-weight:700}
+.readermain{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr);gap:1em;padding:1em}
+.readermain.nowords{grid-template-columns:minmax(0,1fr)}
+.readermain.nowords .bookwords{display:none}
+.bookpage{overflow-y:auto;padding:1.6em 2em;-webkit-overflow-scrolling:touch}
+.bookwords{overflow-y:auto;padding:1em 1.1em;-webkit-overflow-scrolling:touch}
+.bktitle{font-size:1.6em;margin:0 0 .2em;color:#16233A}
+.bkmeta{color:#6E6E73;font-weight:800;margin-bottom:1em;font-size:.9em}
+.bkpara{font-size:1.25em;line-height:1.85;margin:0 0 1em;text-indent:1.2em;color:#1C1C1E}
+.gw{border-bottom:3px solid #F2D58A;font-weight:800}
+.readermain.nowords .gw{border-bottom:none;font-weight:inherit}
+.bkend{text-align:center;color:#856318;font-weight:900;margin:1.5em 0 .5em}
+.bkw{border-bottom:1px solid #E4E4E7;padding:.5em 0}
+body.pt .readermain{grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);padding:.6em;gap:.6em}
+body.pt .bookpage{padding:1.1em 1.2em}
+body.pt .bookwords{font-size:.85em}
+.qnav{display:flex;gap:.6em}
+.qnav > .bigbtn{flex:1}
+.qnav > .backq{flex:0 0 32%}
+.skipbtn{background:#E4E4E7;color:#3A3A3C;box-shadow:0 .3em 0 #C8C8CC;flex:0 0 38% !important}
+.skipbtn.hot{background:#FFE58A;color:#5A4410;box-shadow:0 .3em 0 #E0B23A;animation:pulse 1.4s infinite}
+.step.skip{background:#FFF3D6;color:#856318;border-color:#E0B23A}
+.nutshell{width:100%;box-sizing:border-box;background:#EEF3FF;border:2px solid #C9D6FB;border-radius:1em;padding:1em 1.1em;text-align:left}
+.nutshell h3{margin:0 0 .4em;color:#1D3FA0}
+.nutshell .nsbody{font-size:1.15em;line-height:1.7;color:#1C1C1E;font-weight:600}
+.nutshell .nstell{margin-top:.6em;font-weight:900;color:#856318}
+.nutshell.bk{margin:.2em 0 1em}
+.nshead{display:flex;justify-content:space-between;align-items:center}
+.nstoggle{background:#fff;border-radius:.6em;padding:.25em .7em;font-weight:900;color:#1D3FA0;font-size:.85em}
+.modebtn .mtext{flex:1;min-width:0}
+.modebtn .mstat{font-size:1.15em;font-weight:900;margin-top:.3em}
+.mbar{height:.55em;background:rgba(255,255,255,.3);border-radius:1em;overflow:hidden;margin:.35em 0 .2em}
+.mbar i{display:block;height:100%;background:#fff;border-radius:1em}
+.modebtn.rr{background:#16233A;box-shadow:0 .4em 0 #0B1324}
+.rrtabs{display:flex;gap:.5em;flex-wrap:wrap;margin-bottom:.9em;align-items:center}
+.rrtab{background:#fff;border:2px solid #E4E4E7;border-radius:.8em;padding:.4em 1em;font-weight:900;color:#3A3A3C}
+.rrtab.on{background:#16233A;color:#fff;border-color:#16233A}
+.rrtab.miss.on{background:#C0392B;border-color:#C0392B}
+.rrhead{display:flex;align-items:center;gap:.7em;margin-bottom:.8em;flex-wrap:wrap}
+.rrhead h2{flex:1;margin:0;color:#16233A}
+.rrcard{background:#fff;border-radius:1em;padding:1em;margin-bottom:1em;box-shadow:0 .2em 0 #E4E4E7}
+.rrmeta{margin-bottom:.6em;color:#3A3A3C}
+.rrq{border-radius:.8em;padding:.7em .8em;margin-top:.6em;display:flex;flex-direction:column;gap:.35em}
+.rrq.ok{background:#F1FAF5}
+.rrq.bad{background:#FDECEA}
+.rrtags{display:flex;gap:.5em;flex-wrap:wrap;font-size:.85em;font-weight:800;color:#6E6E73}
+.rrtags span{background:#fff;border-radius:.5em;padding:.1em .5em}
+.rrtags .tagw{color:#B5651D}
+.savestamp{width:100%;text-align:center;font-weight:900;font-size:1.5em;border-radius:.8em;padding:.4em;margin:.3em 0;box-sizing:border-box}
+.savestamp.ok{background:#E8F6EE;color:#17643F;border:3px solid #2FA36B;transform:rotate(-1.5deg)}
+.savestamp.wait{background:#FFF3D6;color:#856318;border:3px dashed #E0B23A;font-size:1.15em}
+.leaveov{position:fixed;inset:0;background:rgba(22,35,58,.7);z-index:200;display:flex;align-items:center;justify-content:center}
+.leavebox{background:#FAF9F6;border-radius:1.2em;padding:1.6em;width:min(30em,88%);display:flex;flex-direction:column;gap:.8em;text-align:center}
+.leavebox .lbig{font-size:1.8em;font-weight:900;color:#16233A}
+.leavebox .lsub{font-weight:800;color:#3A3A3C}
+.upstat{width:100%;background:#FFF3D6;border-radius:.8em;padding:.6em .8em;box-sizing:border-box;font-weight:900;color:#856318}
+.mbar.up{background:#F2D58A}.mbar.up i{background:#C4922F;transition:width .25s linear}
+.bigbtn.ghost{background:#fff;color:#856318;border:2px solid #E0B23A;box-shadow:none}
+.rafters{width:min(34em,92%);display:flex;flex-direction:column;gap:.4em}
+.rrow2{display:flex;align-items:center;gap:.5em;flex-wrap:wrap}
+.rlg{font-size:.8em;font-weight:900;color:#856318;letter-spacing:.06em;text-transform:uppercase;margin-right:.3em}
+.banner{width:4.6em;padding:.35em 0 .9em;clip-path:polygon(0 0,100% 0,100% 82%,50% 100%,0 82%);display:flex;flex-direction:column;align-items:center;font-weight:900;line-height:1.1}
+.banner.won{background:#16233A;color:#DFAE4A}
+.banner.live{background:#E4E4E7;color:#3A3A3C}
+.banner .bn1{font-size:1.3em}.banner .bn2{font-size:1em}.banner .bn3{font-size:.62em;opacity:.9}
+.stab.locked{opacity:.55}
+.cerov{position:fixed;inset:0;background:rgba(22,35,58,.85);z-index:300;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.cerbox{position:relative;z-index:2;background:#FAF9F6;border-radius:1.4em;padding:1.8em 1.6em;width:min(30em,88%);text-align:center;display:flex;flex-direction:column;gap:.7em;box-shadow:0 0 0 6px #DFAE4A}
+.cbig{font-size:4.5em;line-height:1;animation:pop .6s ease-out}
+.ctitle{font-size:1.9em;font-weight:900;color:#16233A}
+.csub{font-weight:800;color:#856318}
+.cstats{display:flex;gap:.6em;justify-content:center}
+.cstats div{background:#F4F4F5;border-radius:.8em;padding:.5em .8em;display:flex;flex-direction:column}
+.cstats b{font-size:1.5em;color:#1C1C1E}.cstats span{font-size:.75em;color:#6E6E73;font-weight:800}
+.cnext{font-weight:900;color:#2B5CE6}
+.cf{position:absolute;top:-5%;width:.6em;height:1em;border-radius:.15em;z-index:1;animation:fall linear infinite}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+@keyframes pop{0%{transform:scale(.3)}70%{transform:scale(1.15)}100%{transform:scale(1)}}
+.modebtn{width:min(34em,92%);display:flex;align-items:center;gap:1.2em;padding:1.4em 1.8em;border-radius:1.4em;color:#fff;text-align:left;transition:transform .1s}
+.modebtn.game{background:var(--orange);box-shadow:0 .4em 0 #C96E14}
+.modebtn.prac{background:#2B5CE6;box-shadow:0 .4em 0 #1D3FA0}
+.modebtn:active{transform:translateY(.25em)}
+.modebtn .mem{font-size:3.6em}
+.modebtn .mbig{font-size:2.4em;font-weight:900;line-height:1.05}
+.modebtn .msmall{font-size:1em;font-weight:800;opacity:.92;margin-top:.25em}
+.backhome{align-self:flex-start;color:#1C1C1E !important;background:rgba(0,0,0,.07) !important}
+.bigbtn{background:var(--orange);color:#fff;border-radius:1em;padding:.75em 1em;font-size:1.25em;font-weight:900;box-shadow:0 .3em 0 #C96E14;width:100%}
+.bigbtn:active:not(:disabled){transform:translateY(.15em);box-shadow:0 .15em 0 #C96E14}
+.bigbtn:disabled{background:#D5CFC4;box-shadow:0 .3em 0 #B8B1A5}
+.bigbtn.green{background:var(--green);box-shadow:0 .3em 0 #1F7A4E}
+.bigbtn.navy{background:var(--navy);box-shadow:0 .3em 0 #0E1630}
+.readbox{padding:1.4em;display:flex;flex-direction:column;gap:1em;flex:1}
+.readbox h3{font-size:1.4em;font-weight:900;color:var(--navy)}
+.readbox ul{list-style:none;display:flex;flex-direction:column;gap:.55em}
+.readbox li{font-weight:800;font-size:1em;color:var(--body);background:#F7F2E8;border-radius:.7em;padding:.55em .8em}
+.bar{height:1.1em;background:#EDE5D6;border-radius:1em;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--sky),var(--green));border-radius:1em;transition:width .3s}
+.fb{border-radius:1em;padding:.8em 1em;font-weight:900}
+.fb.good{background:var(--green-l);color:#17643F}
+.fb.bad{background:var(--red-l);color:#9B2A18}
+.fb .head{font-size:1.5em;line-height:1.2}
+.fb .line{font-size:.95em;margin-top:.3em}
+.explain{font-size:.95em;font-weight:700;color:var(--body);line-height:1.5}
+.reasons{display:grid;grid-template-columns:1fr 1fr;gap:.5em}
+.reason{background:#F7F2E8;border:3px solid transparent;border-radius:.8em;padding:.6em;font-weight:900;font-size:.92em}
+.reason.sel{border-color:var(--purple);background:#F3EDFF}
+
+/* ---------- RESULT ---------- */
+.result{flex:1;display:flex;align-items:flex-start;justify-content:center;padding:2em;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;min-height:0}
+.result > .rcard{margin:auto}
+.rcard{width:min(1200px,92%);padding:2em 2.4em;display:flex;flex-direction:column;gap:1.3em;align-items:center;text-align:center}
+.rcard .shotno{font-size:1.1em;font-weight:900;color:var(--orange);letter-spacing:.06em}
+.rcard .rhead{font-size:2.6em;font-weight:900;color:var(--navy);line-height:1.15}
+.rgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:1em;width:100%}
+.rgrid .stat{background:#F7F2E8;border-radius:1em}
+.rmsg{font-size:1.15em;font-weight:800;color:var(--body);line-height:1.5}
+.rbtns{display:flex;gap:1em;width:min(700px,100%)}
+
+/* ---------- PARENT (Korean) ---------- */
+#parent{font-family:'Noto Sans KR','Nunito',sans-serif;user-select:text}
+.ptop{background:var(--navy);color:#fff;display:flex;align-items:center;gap:1em;padding:.8em 1.6em;flex:none}
+.ptop h1{font-size:1.3em;font-weight:800}
+.ptabs{display:flex;gap:.4em;margin-left:1em}
+.ptab{background:rgba(255,255,255,.12);color:#fff;border-radius:.5em;padding:.35em .9em;font-size:.85em;font-weight:700}
+.ptab.on{background:var(--yellow);color:var(--navy)}
+.pbody{flex:1;overflow:auto;padding:1.4em 1.6em;font-size:.82em}
+.pbody h2{font-size:1.15em;font-weight:800;color:var(--navy);margin:1em 0 .6em}
+.pbody h2:first-child{margin-top:0}
+table{border-collapse:collapse;width:100%;background:#fff;font-size:.95em}
+th{background:#3A3A3C;color:#FAF9F6;font-weight:700;padding:.5em .6em;text-align:left;white-space:nowrap}
+td{border-bottom:1px solid #E4E4E7;padding:.5em .6em;vertical-align:top;color:#3A3A3C}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+.tag{display:inline-block;border-radius:.3em;padding:.05em .4em;margin:.1em .15em .1em 0;font-size:.85em;font-weight:700;background:#F4F4F5;white-space:nowrap}
+.tag.d1{background:#E8F5EE}.tag.d2{background:#FFF3D6}.tag.d3{background:#FBE0DB}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:.8em}
+.kpi{background:#fff;border:1px solid #E4E4E7;border-radius:.6em;padding:.8em 1em}
+.kpi b{display:block;font-size:1.7em;color:var(--navy)}
+.kpi span{color:#6E6E73;font-weight:500}
+.hbar{display:flex;align-items:center;gap:.6em;margin:.35em 0}
+.hbar .lab{width:9em;font-weight:700}
+.hbar .trk{flex:1;height:1em;background:#F4F4F5;border-radius:.3em;overflow:hidden}
+.hbar .trk i{display:block;height:100%;background:#C4922F}
+.hbar .val{width:8em;text-align:right;font-variant-numeric:tabular-nums}
+.form{display:grid;grid-template-columns:auto 10em 1fr;gap:.7em 1em;align-items:center;background:#fff;border:1px solid #E4E4E7;border-radius:.6em;padding:1em 1.2em;max-width:900px}
+.form input{font:inherit;font-size:1em;padding:.35em .5em;border:1px solid #C8C8CC;border-radius:.4em;width:100%}
+.form .note{color:#6E6E73}
+.pbtn{background:var(--navy);color:#fff;border-radius:.5em;padding:.5em 1.2em;font-weight:700;font-size:.95em}
+.muted{color:#6E6E73}
+/* ---------- WORD HINTS ---------- */
+.passage{user-select:none;-webkit-user-select:none;-webkit-touch-callout:none}
+.w{border-radius:.2em;transition:background .1s}
+.w.pressing{animation:press .6s linear forwards}
+@keyframes press{from{background:rgba(79,163,224,.1)}to{background:rgba(79,163,224,.55)}}
+.w.looked{text-decoration:underline dotted var(--sky);text-decoration-thickness:.12em;text-underline-offset:.2em}
+.timeouts{background:rgba(255,255,255,.14);border-radius:2em;padding:.25em .8em;font-size:.8em;font-weight:900;white-space:nowrap}
+.timeouts.empty{opacity:.5}
+.hintpop{position:fixed;z-index:8;width:min(30em,90vw);background:#fff;border:3px solid var(--sky);border-radius:1em;box-shadow:0 .6em 2em rgba(30,42,74,.25);padding:1em 1.2em;display:none;font-family:'Nunito','Noto Sans KR',sans-serif}
+.hintpop .hw{font-size:1.6em;font-weight:900;color:var(--navy)}
+.hintpop .hen{font-size:1.05em;font-weight:800;color:var(--body);margin-top:.3em;line-height:1.4}
+.hintpop .hko{font-size:1.05em;font-weight:700;color:var(--purple);margin-top:.3em}
+.hintpop .hnote{font-size:.95em;font-weight:800;margin-top:.5em;color:var(--body);line-height:1.4}
+.hintpop .hfoot{display:flex;justify-content:space-between;align-items:center;margin-top:.8em;font-size:.85em;font-weight:900;color:var(--gray)}
+.hintpop button{background:var(--sky);color:#fff;border-radius:.6em;padding:.4em 1.1em;font-weight:900}
+.hinttip{font-size:.85em;font-weight:800;color:var(--sky);margin-top:.2em}
+/* ---------- MY WORDS ---------- */
+.words-main{flex:1;overflow-y:auto;padding:1.6em 2em}
+.wgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:1em}
+.wcard{padding:1em 1.1em}
+.wcard b{display:block;font-size:1.4em;font-weight:900;color:var(--navy)}
+.wcard .en{font-size:.9em;font-weight:700;color:var(--body);margin-top:.3em;line-height:1.35}
+.wcard .ko{font-size:.95em;font-weight:700;color:var(--purple);margin-top:.25em}
+.wcard .cnt{font-size:.75em;font-weight:900;color:var(--orange);margin-top:.4em}
+/* ---------- PORTRAIT / MOBILE ---------- */
+body{touch-action:manipulation}
+body.pt.col{background:#EDE6D8}
+body.pt.col .view{left:50%;right:auto;width:var(--colw);transform:translateX(-50%);background:var(--cream);box-shadow:0 0 2em rgba(30,42,74,.12)}
+body.pt.col .parent-btn{right:calc(50vw - var(--colw)/2 + 1.2em)}
+body{--colw:100vw}
+body.pt.col{--colw:min(100vw, 56.25vh)}
+.toast{z-index:9}
+/* portrait layout */
+  body.pt{--fs:clamp(14px,calc(var(--colw) * 0.0215),30px)}
+  body.pt .home-top{padding:.9em 1.1em .8em;flex-wrap:wrap;gap:.6em}
+  body.pt .home-top h1{font-size:1.6em}
+  body.pt .home-top .sub{font-size:.85em}
+  body.pt .home-main{display:flex;flex-direction:column;gap:1em;padding:1em 1.1em 6em;overflow-y:auto}
+  body.pt .rightcol{display:contents}
+  body.pt .stats{order:1}
+  body.pt .next-btn{order:2;flex:none}
+  body.pt .court{order:3;flex:none}
+  body.pt .plist{order:4;flex:none;overflow:visible}
+  body.pt .chart{width:100%;max-width:none;max-height:none;gap:.35em;margin:.7em 0}
+  body.pt .stat b{font-size:1.6em}
+  body.pt .next-btn .big{font-size:1.5em}
+  body.pt .next-btn .ball{font-size:2.4em}
+  body.pt .parent-btn{position:fixed}
+  body.pt .topbar{flex-wrap:wrap;gap:.5em .7em;padding:.6em .9em}
+  body.pt .topbar .ptitle{max-width:none;flex:1;font-size:1em}
+  body.pt .topbar .tchip{display:none}
+  body.pt .steps{order:5;flex-basis:100%;justify-content:flex-start}
+  body.pt .timer{font-size:1.3em;min-width:3.8em}
+  body.pt .playmain{display:flex;flex-direction:column;gap:.8em;padding:.8em .9em 1em}
+  body.pt .passage{flex:1 1 auto;padding:1em 1.2em}
+  body.pt .passage h2{font-size:1.25em}
+  body.pt .ptext{font-size:1.1em}
+  body.pt .side{flex:0 0 auto;max-height:54%}
+  body.pt .readbox{padding:1em;gap:.7em}
+  body.pt .readbox h3{font-size:1.1em}
+  body.pt .readbox ul{display:none}
+  body.pt .readbox > div[style*="flex:1"]{display:none}
+  body.pt .qcard{padding:1em;gap:.6em}
+  body.pt .qprompt{font-size:1.15em}
+  body.pt .choice{padding:.55em .8em;font-size:1em}
+  body.pt .bigbtn{font-size:1.15em;padding:.65em 1em}
+  body.pt .qcard > div[style*="flex:1"]{display:none}
+  body.pt .qcard > .bigbtn{position:sticky;bottom:0;z-index:2}
+  body.pt .qcard{padding-bottom:.6em}
+  body.pt .rcard{padding:1.4em 1.2em}
+  body.pt .rcard .rhead{font-size:1.8em}
+  body.pt .rgrid{grid-template-columns:repeat(2,1fr)}
+  body.pt .rbtns{flex-direction:column}
+  body.pt .wgrid{grid-template-columns:repeat(2,1fr)}
+  body.pt .words-main{padding:1em 1.1em}
+  body.pt .ptop{flex-wrap:wrap;padding:.7em 1em}
+  body.pt .ptabs{order:3;flex-basis:100%;margin-left:0;overflow-x:auto;flex-wrap:nowrap}
+  body.pt .ptab{white-space:nowrap}
+  body.pt .pbody{padding:1em;font-size:.9em}
+  body.pt .kpis{grid-template-columns:repeat(2,1fr)}
+  body.pt .pbody table{display:block;overflow-x:auto;white-space:nowrap}
+  body.pt .pbody td{white-space:normal;min-width:5em}
+  body.pt .hbar .lab{width:6.5em}
+  body.pt .hbar .val{width:7.5em;font-size:.9em}
+  body.pt .form{grid-template-columns:1fr 8em}
+  body.pt .form .note{grid-column:1/-1;font-size:.85em;margin-top:-.4em}
+
+@media (max-width: 520px){
+  :root{--fs:13.5px}
+  .side{max-height:60%}
+  .passage{padding:.8em .9em}
+  .para{gap:.5em}
+  .choices{gap:.45em}
+  .choice{padding:.45em .7em}
+  .reasons{gap:.4em}
+  .reason{padding:.45em}
+}
+
+/* ---------- SCOREBOARD HOME / PICK ---------- */
+#homeMain{display:grid;grid-template-columns:1fr 1fr;gap:1.6em;align-content:start;overflow-y:auto}
+.hcol{display:flex;flex-direction:column;gap:1.2em;min-width:0}
+.board{background:var(--navy);color:#fff;border:none;padding:1.4em 1.6em}
+.bhead{display:flex;justify-content:space-between;font-weight:900;font-size:1.1em;letter-spacing:.06em;color:var(--yellow)}
+.wins{color:#fff}
+.bscore{display:flex;align-items:baseline;gap:.2em;margin:.3em 0 .6em}
+.bscore b{font-size:4.2em;font-weight:900;line-height:1;font-variant-numeric:tabular-nums}
+.bscore span{font-size:1.3em;font-weight:900;opacity:.85}
+.rcard .bscore b{color:var(--orange);font-size:3em}
+.rcard .bscore span{color:var(--navy)}
+.bbar{height:1.2em;background:rgba(255,255,255,.15);border-radius:1em;overflow:hidden}
+.rcard .bbar{background:#EDE5D6}
+.bbar i{display:block;height:100%;background:linear-gradient(90deg,var(--orange),var(--yellow));border-radius:1em}
+.bnote{margin-top:.6em;font-weight:800;opacity:.85}
+.boxcard{padding:1.1em 1.3em}
+.boxcard h3{font-size:1.15em;font-weight:900;color:var(--navy);margin-bottom:.6em}
+table.box{width:100%;border-collapse:collapse;font-size:1.05em}
+table.box th{background:var(--navy);color:#fff;font-weight:900;padding:.45em .7em;white-space:nowrap}
+table.box td{padding:.5em .7em;font-weight:800;border-bottom:1px solid var(--line);color:var(--ink)}
+table.box td.pct{color:var(--orange);font-weight:900;font-size:1.1em}
+table.box tr.tot td{background:#FFF4E4;font-weight:900}
+table.box tr.and1 td{color:var(--purple)}
+.rrow{display:flex;align-items:center;gap:.8em;padding:.5em 0;border-bottom:1px solid var(--line)}
+.rl{color:#fff;border-radius:.5em;padding:.2em .6em;font-weight:900;font-size:.85em;white-space:nowrap}
+.rt{flex:1;font-weight:800;min-width:0}
+.rt small{display:block;color:var(--gray);font-size:.78em}
+.rp{font-weight:900;color:var(--orange);font-size:1.2em}
+.pickh{font-size:1.3em;font-weight:900;color:var(--navy);margin:.4em 0 .8em}
+.shots{display:grid;grid-template-columns:repeat(3,1fr);gap:1em;margin-bottom:1.2em}
+.shotcard{background:#fff;border:4px solid var(--line);border-radius:1.2em;padding:1.2em 1em;text-align:center;box-shadow:0 .3em 0 #E0D5BF}
+.shotcard.on{border-color:var(--c);background:#FFFBF3;box-shadow:0 .3em 0 var(--c)}
+.shotcard:disabled{opacity:.45}
+.sem{font-size:3em}
+.sname{font-size:1.4em;font-weight:900;color:var(--navy)}
+.spts{font-size:1.2em;font-weight:900;color:var(--c)}
+.slex{display:inline-block;margin-top:.35em;font-size:.72em;font-weight:900;color:var(--body);background:#F3EDE1;border-radius:1em;padding:.15em .7em}
+.sinfo{font-size:.85em;font-weight:800;color:var(--gray);margin-top:.3em}
+.topics{display:grid;grid-template-columns:repeat(3,1fr);gap:1em}
+.topiccard{padding:1.1em;text-align:center;background:#fff}
+.tem{font-size:2.6em}
+.tname{font-size:1.2em;font-weight:900;color:var(--navy)}
+.tinfo{font-size:.85em;font-weight:800;color:var(--gray);margin-top:.2em}
+/* portrait layout */
+  body.pt #homeMain{display:flex;flex-direction:column}
+  body.pt .bscore b{font-size:3.4em}
+  body.pt .shots{gap:.6em}
+  body.pt .shotcard{padding:.9em .5em}
+  body.pt .sem{font-size:2.2em}
+  body.pt .sname{font-size:1.1em}
+  body.pt .topics{grid-template-columns:repeat(2,1fr)}
+
+.hpos{font-size:.55em;font-weight:800;color:var(--gray);font-style:normal;margin-left:.3em}
+.practice{display:block;width:100%;margin:-.4em 0 1.2em;border-radius:1em;padding:.7em 1em;font-weight:900;font-size:1em;background:#F3EDE1;color:var(--body);border:3px dashed #D8CFBE}
+.practice.on{background:#E8F1FB;color:#1E5F99;border-color:var(--sky)}
+.todaywords{width:100%;text-align:left;background:#F7F2E8;border-radius:1em;padding:1em 1.2em}
+.todaywords h3{font-size:1.2em;font-weight:900;color:var(--navy)}
+.twsub{font-size:.85em;font-weight:800;color:var(--gray);margin-bottom:.4em}
+.twrow{padding:.55em 0;border-bottom:1px solid var(--line)}
+.tww{font-size:1.15em;font-weight:900;color:var(--navy)}
+table.box tr.rush td{color:#B5651D}
+.shotclock{display:flex;align-items:center;gap:.6em;background:#F7F2E8;border-radius:.8em;padding:.45em .8em;font-weight:900;color:var(--navy);font-size:.95em}
+.scbar{flex:1;height:.8em;background:#E6DCC8;border-radius:1em;overflow:hidden}
+.scbar i{display:block;height:100%;width:100%;background:var(--green);border-radius:1em;transition:width .25s linear,background .5s}
+#scnum{font-variant-numeric:tabular-nums;min-width:3em;text-align:right}
+.topiccard.on{border-color:var(--orange);background:#FFFBF3}
+.stabs{display:flex;gap:.3em}
+.stab{background:rgba(255,255,255,.14);color:#fff;border-radius:.4em;padding:.1em .5em;font-size:.8em;font-weight:900}
+.stab.on{background:var(--yellow);color:var(--navy)}
+.bline{font-weight:900;margin-bottom:.5em}
+.smap{margin-top:1em;display:flex;flex-direction:column;gap:.7em}
+.lrow{display:flex;flex-direction:column;gap:.35em}
+.llab{font-weight:900;font-size:.95em}
+.llab small{color:rgba(255,255,255,.6);margin-left:.5em;font-size:.8em}
+.trow{display:grid;grid-template-columns:repeat(4,1fr);gap:.45em}
+.tile{background:rgba(255,255,255,.08);border:2px solid rgba(255,255,255,.15);border-radius:.8em;padding:.5em .4em;color:#fff;text-align:center;min-height:5.6em}
+.tile .tsym{font-size:1.6em;line-height:1.1}
+.tile{display:flex;flex-direction:column;justify-content:space-between}
+.tile .tcat{color:var(--yellow,#FFD84D);font-weight:900}
+.tile .ttl{font-size:.8em;font-weight:900;line-height:1.25;margin-top:.1em;opacity:.97;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.tile .tst{font-size:.62em;font-weight:900;margin-top:.25em;opacity:.8}
+.tile.made{background:rgba(242,140,40,.28);border-color:var(--orange)}
+.tile.rebound{background:rgba(47,163,107,.3);border-color:var(--green)}
+.tile.chance{background:rgba(255,216,77,.18);border-color:var(--yellow)}
+.tile.locked{opacity:.4}
+.legend2{margin-top:.8em;font-size:.72em;font-weight:800;opacity:.75}
+.toast{position:absolute;left:50%;bottom:2em;transform:translateX(-50%);background:var(--navy);color:#fff;padding:.7em 1.4em;border-radius:.8em;font-weight:800;display:none;z-index:9}
+body.pt.col{--fs:clamp(14px,calc(var(--colw) * 0.025),30px)}
+</style>
+</head>
+<body>
+
+<!-- HOME -->
+<section id="home" class="view on">
+  <div class="home-top">
+    <div>
+      <h1>Aaron's <span>Reading Shots</span> 🏀</h1>
+      <div class="sub">Look → Think → Shoot → Check. Make every tile on the season map!</div>
+    </div>
+    <div class="sp"></div>
+    <button class="iconbtn" id="layoutBtn">📱 Layout: Auto</button>
+    <button class="iconbtn" id="wordsBtn">📒 My Words</button>
+    <button class="iconbtn" data-fs>⛶ Full screen</button>
+  </div>
+  <div class="rainbow"></div>
+  <div id="homeMain" class="home-main">
+    <div class="msg" style="grid-column:1/-1">Loading…</div>
+  </div>
+  <button class="parent-btn" id="parentBtn">부모 ⚙ (2초 누르기)<span class="fill"></span></button>
+</section>
+
+<!-- PLAY -->
+<section id="play" class="view">
+  <div class="topbar">
+    <button class="iconbtn" id="quitBtn">✕</button>
+    <div class="ptitle" id="pTitle"></div>
+    <div class="tchip" id="pTopic"></div>
+    <div class="steps" id="steps"></div>
+    <div class="timeouts" id="timeouts"></div>
+    <div class="timer" id="timer">00:00</div>
+    <button class="iconbtn pausebtn" id="pauseBtn">⏸ Pause</button>
+    <button class="iconbtn" data-fs>⛶</button>
+  </div>
+  <div class="rainbow"></div>
+  <div class="pauseov" id="pauseOv">
+    <div class="pbig">⏸ Paused</div>
+    <div class="psub">The clock is stopped. Take your time.</div>
+    <button class="bigbtn green" id="resumeBtn">▶ Back in the game</button>
+  </div>
+  <div class="playmain">
+    <div class="card passage" id="passage"></div>
+    <div class="side" id="side"></div>
+  </div>
+</section>
+
+<!-- PICK -->
+<section id="pick" class="view">
+  <div class="home-top">
+    <div><h1>🏋️ <span>Practice</span></h1><div class="sub">Pick a shot and a topic. Scores are not recorded. Finished topics get a ✔.</div></div>
+    <div class="sp"></div>
+    <button class="iconbtn" id="pickClose">← Back</button>
+  </div>
+  <div class="rainbow"></div>
+  <div class="words-main" id="pickMain"></div>
+</section>
+
+<!-- MY WORDS -->
+<section id="words" class="view">
+  <div class="home-top">
+    <div><h1>📒 My <span>Word Collection</span></h1><div class="sub">Words I asked about. Learn them and they become yours!</div></div>
+    <div class="sp"></div>
+    <button class="iconbtn" id="wordsClose">← Back to the court</button>
+  </div>
+  <div class="rainbow"></div>
+  <div class="words-main" id="wordsMain"></div>
+</section>
+
+<!-- RESULT -->
+<section id="library" class="view">
+  <div class="home-top">
+    <div><h1>📚 <span>Library</span></h1><div class="sub">Passages you have read. Pick one and read it like a book.</div></div>
+    <div class="sp"></div>
+    <button class="iconbtn" id="libClose">← Home</button>
+  </div>
+  <div class="rainbow"></div>
+  <div class="words-main" id="libMain"></div>
+</section>
+<section id="rroom" class="view">
+  <div class="home-top">
+    <div><h1>🎬 <span>Review Room</span></h1><div class="sub">Watch your past shots again. What went in? What missed?</div></div>
+    <div class="sp"></div>
+    <button class="iconbtn" id="rrBack">← Home</button>
+  </div>
+  <div class="rainbow"></div>
+  <div class="words-main" id="rrMain"></div>
+</section>
+<section id="reader" class="view">
+  <div class="topbar">
+    <button class="iconbtn" id="rdBack">← Library</button>
+    <div class="ptitle" id="rdTitle"></div>
+    <div class="sp" style="flex:1"></div>
+    <button class="iconbtn" id="rdWords">📒 Hide words</button>
+    <button class="iconbtn" data-fs>⛶</button>
+  </div>
+  <div class="rainbow"></div>
+  <div class="readermain" id="rdMain">
+    <div class="card bookpage" id="rdText"></div>
+    <div class="card bookwords" id="rdGloss"></div>
+  </div>
+</section>
+<section id="review" class="view">
+  <div class="topbar">
+    <button class="iconbtn" id="rvBack">← Results</button>
+    <div class="ptitle" id="rvTitle"></div>
+    <button class="iconbtn" id="rvHome">🏠 Home</button>
+  </div>
+  <div class="rainbow"></div>
+  <div class="playmain">
+    <div class="card passage" id="rvPassage"></div>
+    <div class="side" id="rvSide"></div>
+  </div>
+</section>
+<section id="result" class="view">
+  <div class="rainbow"></div>
+  <div class="result"><div class="card rcard" id="rcard"></div></div>
+</section>
+
+<!-- PARENT -->
+<section id="parent" class="view">
+  <div class="ptop">
+    <h1>부모 화면</h1>
+    <div class="ptabs" id="ptabs"></div>
+    <div style="flex:1"></div>
+    <button class="iconbtn" id="parentClose">← 게임으로</button>
+  </div>
+  <div class="pbody" id="pbody"></div>
+</section>
+
+<div class="toast" id="toast"></div>
+<div class="hintpop" id="hintpop"></div>
+
+<script src="fb-shim.js"></script>
+<link rel="manifest" href="manifest.webmanifest">
+<script>
+/* ============ constants ============ */
+const TOPICS = {
+  sports:['🏀','Sports','스포츠'], science:['🔬','Science','과학'], nature:['🐙','Animals & Nature','동물·자연'],
+  story:['📖','Story','이야기'], history:['🏛️','History','역사'], people:['🧑','People','인물'], country:['🌍','Countries','국가'], other:['📄','Other','기타']
+};
+const QTYPES = {
+  fact:['🔎','Find the Fact','사실 확인','#4FA3E0'],
+  vocab:['📚','Word Power','어휘','#8A5CD1'],
+  inference:['🧠','Think Deeper','추론','#E0533D'],
+  main:['🎯','Big Idea','주제','#2FA36B'],
+  not:['🚫','True or NOT?','NOT·TRUE','#D9822B'],
+  sequence:['🔢','What Comes First?','순서','#3F8F8A']
+};
+const DIFF = {1:'하',2:'중',3:'상'};
+const STATUS = {sample:'예시(컨펌 전)', confirmed:'확정', draft:'초안', archived:'보관'};
+const REASONS = [
+  ['misread','👀 I read it too fast'],
+  ['word','❓ I didn\'t know a word'],
+  ['proof','🔍 I didn\'t check the passage'],
+  ['guess','🎲 I guessed']
+];
+const REASON_KO = {misread:'잘못 읽음', word:'모르는 단어', proof:'근거 확인 안 함', guess:'찍음'};
+const DEF = {thinkSec:10, readSecPerWord:0.3, gameTarget:100, hintMax:3};
+const HINT_KO = {aiShown:'뜻 확인(단어 카드 외)', notInList:'카드 외(횟수 소진)', shown:'뜻 확인', saved:'단어장에 없음(아빠와 확인)', noTimeout:'타임아웃 소진', blocked:'퀴즈 단어(차단)'};
+const LETTERS = ['A','B','C','D','E'];
+
+/* ============ state ============ */
+let db = null;
+let passages = [], drafts = [], attempts = [], settings = {...DEF};
+let dbPassages = [], filePassages = [], allAttempts = [], approvals = {}, isOwner = false, practiceMode = false, homeMode = 'start', practiced = {};
+let readMode = (() => { try { return localStorage.getItem('rs-readmode') || 'quarter'; } catch(e){ return 'quarter'; } })();
+function mergePassages(){
+  const map = {};
+  filePassages.forEach(p => map[p.id] = p);
+  dbPassages.forEach(p => map[p.id] = p);   // a db copy (e.g. an approved one) wins over the file
+  const all = Object.values(map).filter(p => Array.isArray(p.paragraphs) && Array.isArray(p.questions))
+    .sort((a,b) => a.id < b.id ? -1 : 1);
+  all.forEach(p => { if (p.status === 'draft' && approvals[p.id]) p._approved = approvals[p.id]; });
+  drafts = all.filter(p => p.status === 'draft' && !p._approved);
+  passages = all.filter(p => (p.status !== 'draft' || p._approved) && p.status !== 'archived');
+}
+let DICT = {};
+fetch('dict.json', {cache:'no-store'}).then(r => r.ok ? r.json() : []).then(arr => { (arr || []).forEach(e => (e.forms || [e.word]).concat([e.word]).forEach(f => DICT[String(f).toLowerCase()] = e)); }).catch(() => {});
+fetch('seasons.json', {cache:'no-store'}).then(r => r.ok ? r.json() : null).catch(() => null).then(man => {
+  const files = (man && Array.isArray(man.files) && man.files.length) ? man.files : ['bank.json'];
+  return Promise.all(files.map(fn => fetch(fn, {cache:'no-store'}).then(r => r.ok ? r.json() : []).catch(() => [])));
+}).then(parts => {
+  filePassages = [].concat(...parts.map(a => Array.isArray(a) ? a : [])); mergePassages(); refresh();
+}).catch(() => {});
+let ready = {p:false, a:false, m:false};
+let topicFilter = 'all';
+let P = null;           // current play state
+let pendingSave = null; // attempt waiting to be saved
+let dbAttempts = [], canWrite = null, flushing = false;
+const OUTBOX = 'rs-outbox';
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+const ERRLOG = 'rs-errlog';
+function logErr(op, e){ try { const a = JSON.parse(localStorage.getItem(ERRLOG) || '[]'); a.push({at: new Date().toISOString(), op, code: e && e.code || 'none', msg: String(e && e.message || e || '').slice(0,160), online: navigator.onLine}); localStorage.setItem(ERRLOG, JSON.stringify(a.slice(-30))); } catch(x){} }
+function devName(){ const u = navigator.userAgent; return /Web0S|webOS|LG|SmartTV|NetCast/i.test(u) ? 'StanbyMe' : /iPhone|iPad/i.test(u) ? 'iOS' : /Android/i.test(u) ? 'Android' : /Mac/i.test(u) ? 'Mac' : /Windows/i.test(u) ? 'Windows' : 'other'; }
+function obGet(){ try { return JSON.parse(localStorage.getItem(OUTBOX) || '[]'); } catch(e){ return []; } }
+function obSet(a){ try { localStorage.setItem(OUTBOX, JSON.stringify(a)); } catch(e){} }
+function recomputeAttempts(){
+  const ids = new Set(dbAttempts.map(a => a.cid || a.id));
+  const ob = obGet().filter(x => !ids.has(x.cid)).map(x => Object.assign({_queued:true}, x));
+  allAttempts = dbAttempts.concat(ob).sort((a,b) => String(a.startedAt).localeCompare(String(b.startedAt)));
+  attempts = allAttempts.filter(a => a.mode !== 'practice');
+}
+async function writeAttempt(body){
+  let last = null;
+  for (let i = 0; i < 3; i++){
+    try { await db.doc('attempts/' + body.cid).set(body); return; }
+    catch(e){ last = e; logErr('save', e); const c = e && e.code; if (c === 'invalid_argument' || c === 'quota_exceeded' || c === 'revoked') throw e; await sleep(1500 * (i + 1) + Math.random() * 800); }
+  }
+  throw last;
+}
+let repairing = false;
+async function autoRepair(){
+  if (!db || repairing) return; repairing = true;
+  try {
+    const have = new Set(dbAttempts.map(a => a.cid || a.id).concat(obGet().map(x => x.cid)));
+    const miss = {};
+    dbAttempts.forEach(a => (a.ledger || []).forEach(e => { if (e && e.cid && !have.has(e.cid) && !miss[e.cid]) miss[e.cid] = Object.assign({}, e, {restoredFrom: a.cid || a.id}); }));
+    for (const cid of Object.keys(miss)){
+      const e = miss[cid];
+      const body = Object.assign({}, e, {mode: 'game', answers: [], hints: [], restored: true, restoredAt: new Date().toISOString()});
+      try { await db.doc('attempts/' + cid).set(body); } catch(err){ logErr('repair', err); }
+    }
+    if (Object.keys(miss).length) toast('🔧 ' + Object.keys(miss).length + ' missing shot(s) restored from the record book');
+  } finally { repairing = false; }
+}
+async function flushOutbox(){
+  if (!db || flushing) return;
+  const ob = obGet(); if (!ob.length) return;
+  flushing = true;
+  for (const r of ob){
+    try { await writeAttempt(r); obSet(obGet().filter(x => x.cid !== r.cid)); }
+    catch(e){
+      if (e && e.code === 'invalid_argument'){
+        try { const clean = JSON.parse(JSON.stringify(r, (k, v) => (v === undefined || (typeof v === 'number' && !isFinite(v))) ? null : v)); delete clean._queued; await writeAttempt(clean); obSet(obGet().filter(x => x.cid !== r.cid)); continue; } catch(e2){ logErr('flush-clean', e2); }
+      }
+      continue;
+    }
+  }
+  flushing = false; recomputeAttempts(); refresh();
+}
+let parentTab = 'weekly';
+let tick = null;
+
+/* ============ helpers ============ */
+const $ = id => document.getElementById(id);
+function el(tag, attrs, ...kids){
+  const e = document.createElement(tag);
+  if (attrs) for (const k in attrs){
+    const v = attrs[k];
+    if (v == null || v === false) continue;
+    if (k === 'class') e.className = v;
+    else if (k === 'style') e.style.cssText = v;
+    else if (k.startsWith('on')) e.addEventListener(k.slice(2), v);
+    else if (k === 'disabled') e.disabled = !!v;
+    else e.setAttribute(k, v === true ? '' : v);
+  }
+  for (const k of kids.flat()){
+    if (k == null || k === false) continue;
+    e.appendChild(typeof k === 'string' || typeof k === 'number' ? document.createTextNode(String(k)) : k);
+  }
+  return e;
+}
+function show(id){ document.querySelectorAll('.view').forEach(v => v.classList.toggle('on', v.id === id)); }
+function mmss(s){ s = Math.max(0, Math.round(s)); return String(Math.floor(s/60)).padStart(2,'0') + ':' + String(s%60).padStart(2,'0'); }
+function pct(a,b){ return b ? Math.round(a/b*1000)/10 : null; }
+function fmtPct(v){ return v == null ? 'n.a.' : v.toFixed(1) + '%'; }
+function toast(t, ms){ const x = $('toast'); x.textContent = t; x.style.display = 'block'; clearTimeout(toast._t); toast._t = setTimeout(()=> x.style.display='none', ms || 2200); }
+function topicOf(p){ return TOPICS[p.topic] || TOPICS.other; }
+function sentencesOf(p){ const out=[]; (p.paragraphs||[]).forEach((para,pi)=> para.forEach(s=> out.push({pi, text:s}))); return out; }
+function wordCount(p){ return sentencesOf(p).reduce((n,s)=> n + s.text.trim().split(/\s+/).length, 0); }
+function clockSec(type){ return (type === 'not' || type === 'inference' || type === 'sequence') ? 90 : 60; }
+function fastCut(type){ return (type === 'not' || type === 'inference' || type === 'sequence') ? 20 : 15; }
+function isFast(x){ return x && x.thinkSec != null && x.thinkSec < fastCut(x.type); }
+function isGame(p){ return p && p.pool === 'game'; }
+function gameAll(){ return passages.concat(drafts).filter(isGame); }
+function practiceSeason(){ const ps = [...new Set(passages.concat(drafts).filter(p => !isGame(p)).map(seasonOf))].sort((a,b)=>a-b); const c = currentSeason(); const ok = ps.filter(s => s <= c); return ok.length ? ok[ok.length-1] : (ps[0] || 1); }
+let pracView = null;
+function pracSeasons(){ return [...new Set(passages.concat(drafts).filter(p => !isGame(p)).map(seasonOf))].sort((a,b)=>a-b); }
+function pracGo(p){ if (seasonLocked(seasonOf(p))){ lockMsg(); return; } startPlay(p); }
+function pool(){ const ps = (pracView && pracSeasons().includes(pracView)) ? pracView : practiceSeason(); return passages.concat(drafts).filter(p => !isGame(p) && seasonOf(p) === ps); }
+function needsProof(q){ return q.type !== 'main' && Array.isArray(q.evidence) && q.evidence.length > 0; }
+function maxPoints(q, L){ return (L || 1) + (needsProof(q) ? 1 : 0); }
+function shuffle(a){ a = a.slice(); for (let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+function todayKST(){ const d = new Date(Date.now() + 9*3600*1000); return d.toISOString().slice(0,10); }
+function norm(w){ return String(w||'').toLowerCase().replace(/[^a-z']/g,'').replace(/'s$/,''); }
+function findGloss(p, word){
+  const w = norm(word);
+  for (const g of (p.glossary || [])) if ((g.forms || [g.word]).concat([g.word]).map(norm).includes(w)) return g;
+  return null;
+}
+function isBlocked(p, word){
+  const w = norm(word);
+  return (p.questions || []).some(q => q.type === 'vocab' && (q.target || []).map(norm).includes(w));
+}
+function glossAnywhere(word){
+  for (const p of passages){ const g = findGloss(p, word); if (g) return g; }
+  return null;
+}
+function attemptsFor(pid){ return attempts.filter(a => a.passageId === pid); }
+const PQ = 'rs-prac-outbox';
+function pqGet(){ try { return JSON.parse(localStorage.getItem(PQ) || '{}') || {}; } catch(e){ return {}; } }
+function pqSet(o){ try { localStorage.setItem(PQ, JSON.stringify(o)); } catch(e){} }
+function overlayPending(){ const pend = pqGet(); Object.keys(pend).forEach(k => { if (!practiced[k] || (practiced[k].count || 0) < (pend[k].count || 0)) practiced[k] = pend[k]; }); }
+async function savePracticed(pid, doc){
+  practiced[pid] = doc; const pend = pqGet(); pend[pid] = doc; pqSet(pend); refresh();
+  if (!db) return false;
+  try { await db.doc('practiced/' + pid).set(doc); const p2 = pqGet(); delete p2[pid]; pqSet(p2); return true; }
+  catch(e){ try { logErr('practiced', e); } catch(_){} return false; }
+}
+overlayPending();
+async function flushPrac(){ const pend = pqGet(); for (const k of Object.keys(pend)){ await savePracticed(k, pend[k]); } }
+setInterval(() => { if (Object.keys(pqGet()).length) flushPrac(); }, 30000);
+function markPracticeDone(pid){
+  if (pracN(pid) > 0) return;
+  savePracticed(pid, {count: 1, best: null, last: todayKST(), manual: true, manualBy: 'parent', manualAt: new Date().toISOString(), runs: []}).then(ok => toast(ok ? '✔ 완료로 표시했어요 (부모 확인)' : '✔ 완료로 표시했어요. 서버 연결되면 자동 저장돼요', 3000));
+}
+/* one-time parent marks requested 2026-11-21 (S1 practice not saved on StanbyMe) */
+const PARENT_SEED = ['L2-01','L2-02','L2-03','L2-04','L1-02','p004','L3-01','L3-02','L1-01','p002','p003','L3-04'];
+let seeded = false;
+function seedParentMarks(){ if (seeded) return; seeded = true; PARENT_SEED.forEach((pid, i) => { if (!practiced[pid] || !(practiced[pid].count > 0)) setTimeout(() => savePracticed(pid, {count: 1, best: null, last: '2026-11-21', manual: true, manualBy: 'parent', manualAt: '2026-11-22T12:50:00+09:00', runs: []}), 400 * i); }); }
+function pracN(pid){ return (practiced[pid] && practiced[pid].count) || 0; }
+
+document.querySelectorAll('[data-fs]').forEach(b => b.addEventListener('click', async () => {
+  try {
+    if (document.fullscreenElement) await document.exitFullscreen();
+    else await document.documentElement.requestFullscreen();
+  } catch(e){ toast('Full screen is not allowed here'); }
+}));
+
+/* ============ data ============ */
+let loadTimer = setTimeout(() => { if (!ready.p) renderHomeMsg('Can\'t reach the saved data yet. Check the internet and that you are signed in to claude.ai.'); }, 10000);
+setTimeout(async () => { if (ready.a || !db) return; try { const s = await db.collection('attempts').orderBy('startedAt','asc').get(); if (!ready.a){ dbAttempts = s.docs.map(d => Object.assign({id:d.id}, d.data())); ready.a = true; recomputeAttempts(); refresh(); setTimeout(flushOutbox, 1500); } } catch(e){ try { logErr('attemptsGet', e); } catch(_){} } }, 12000);
+setTimeout(() => { if (!ready.a && !ready.c && $('home').classList.contains('on')){ const m = $('homeMain'); m.innerHTML = ''; m.appendChild(el('div',{class:'msg',style:'grid-column:1/-1'}, 'Records are slow to load. (기록 불러오기가 늦어지고 있어요) Tap to try again.')); m.appendChild(el('button',{class:'bigbtn navy',style:'grid-column:1/-1',onclick:() => location.reload()}, '🔄 Try again')); } }, 25000);
+
+setInterval(async () => { if (ready.a || !db || syncing) return; try { const s = await db.collection('attempts').orderBy('startedAt','asc').get(); if (!ready.a){ dbAttempts = s.docs.map(d => Object.assign({id:d.id}, d.data())); ready.a = true; lastSync = Date.now(); recomputeAttempts(); refresh(); setTimeout(flushOutbox, 1500); setTimeout(autoRepair, 4000); } } catch(e){} }, 30000);
+/* ===== sync bar ===== */
+let lastSync = null, syncing = false;
+function updSync(){
+  const home = $('home'); if (!home) return;
+  let bar = $('syncbar');
+  if (!bar){
+    bar = el('div',{id:'syncbar',style:'display:flex;align-items:center;justify-content:flex-end;gap:10px;margin:0;padding:6px 14px;font-size:15px;color:#6E6E73'});
+    bar.appendChild(el('span',{id:'syncinfo'}, ''));
+    bar.appendChild(el('button',{id:'syncbtn',style:'font-size:18px;padding:6px 14px;border-radius:12px;border:1px solid #C8C8CC;background:#fff;cursor:pointer',onclick:doSync}, '🔄 Sync'));
+    bar.appendChild(el('button',{id:'reloadbtn',style:'font-size:18px;padding:6px 14px;border-radius:12px;border:1px solid #C8C8CC;background:#fff;cursor:pointer',onclick:doReload}, '↻ 새로고침'));
+    home.insertBefore(bar, home.firstChild);
+  }
+  if (ready.a && navigator.onLine && !syncing) lastSync = lastSync && (Date.now() - lastSync < 1000) ? lastSync : Date.now();
+  const n = dbAttempts.filter(a => (a.mode || 'game') === 'game').length, q = obGet().length + Object.keys(pqGet()).length;
+  const off = !navigator.onLine || !ready.a;
+  const t = lastSync ? new Date(lastSync) : null;
+  const hm = t ? String(t.getHours()).padStart(2,'0') + ':' + String(t.getMinutes()).padStart(2,'0') : '--:--';
+  const info = $('syncinfo');
+  info.textContent = (off ? (ready.c ? '⚠️ 서버 연결 끊김 · 기기 기록 표시 중' : '⚠️ 연결 확인 중') : '☁️ ' + hm + ' 동기화') + ' · Game ' + n + '판 · 대기 ' + q + '건';
+  info.style.color = off ? '#C0392B' : q ? '#C4922F' : '#6E6E73';
+  info.style.fontWeight = (off || q) ? '700' : '400';
+}
+async function doReload(){
+  const b = $('reloadbtn'); if (b){ b.textContent = '⏳ 저장 중…'; b.disabled = true; }
+  try { if (obGet().length) await Promise.race([flushOutbox(), new Promise(r => setTimeout(r, 5000))]); } catch(e){}
+  if (b) b.textContent = '↻ 새로고침 중…';
+  setTimeout(() => { try { location.reload(); } catch(e){ location.href = location.href; } }, 200);
+}
+async function doSync(){
+  if (syncing || !db) return; syncing = true;
+  const b = $('syncbtn'); if (b){ b.textContent = '⏳ Syncing…'; b.disabled = true; }
+  const before = dbAttempts.length;
+  try {
+    try { await flushOutbox(); } catch(e){}
+    try { await flushPrac(); } catch(e){}
+    const s = await db.collection('attempts').orderBy('startedAt','asc').get();
+    dbAttempts = s.docs.map(d => Object.assign({id:d.id}, d.data()));
+    if (!ready.a){ ready.a = true; }
+    recomputeAttempts(); lastSync = Date.now();
+    const add = dbAttempts.length - before;
+    toast(add > 0 ? '✅ ' + add + '판 추가 반영됨' : '✅ 최신 상태예요 (Game ' + dbAttempts.filter(a => (a.mode || 'game') === 'game').length + '판)', 3000);
+  } catch(e){
+    try { logErr('sync', e); } catch(_){}
+    toast('⚠️ 서버에 연결하지 못했어요. 인터넷과 로그인을 확인해 주세요.', 4000);
+  }
+  syncing = false; const b2 = $('syncbtn'); if (b2){ b2.textContent = '🔄 Sync'; b2.disabled = false; }
+  refresh();
+}
+setInterval(() => { try { updSync(); } catch(e){} }, 15000);
+window.addEventListener('online', () => { try { updSync(); } catch(e){} });
+window.addEventListener('offline', () => { try { updSync(); } catch(e){} });
+(async function init(){
+  try { db = (window.claude && window.claude.use) ? await window.claude.use('db') : null; } catch(e){ db = null; }
+  if (!db){ clearTimeout(loadTimer); renderHomeMsg('Open this page with the family link (bit.ly) to load Aaron\'s shots.'); return; }
+  const onErr = e => { clearTimeout(loadTimer); renderHomeMsg('Data connection stopped (' + (e && e.code || 'error') + '). Open the page again.'); };
+  db.collection('passages').onSnapshot(s => {
+    dbPassages = s.docs.map(d => Object.assign({id:d.id}, d.data()));
+    mergePassages();
+    if (!s.metadata.fromCache){ ready.p = true; clearTimeout(loadTimer); }
+    refresh();
+  }, onErr);
+  db.collection('attempts').orderBy('startedAt','asc').onSnapshot(s => {
+    dbAttempts = s.docs.map(d => Object.assign({id:d.id}, d.data()));
+    if (s.docs.length) ready.c = true;
+    if (!s.metadata.fromCache){
+      const ids = new Set(dbAttempts.map(a => a.cid || a.id));
+      const ob = obGet(); if (ob.some(x => ids.has(x.cid))) obSet(ob.filter(x => !ids.has(x.cid)));
+      if (!ready.a){ ready.a = true; setTimeout(flushOutbox, 1500); setTimeout(autoRepair, 4000); }
+    }
+    recomputeAttempts();
+    refresh();
+  }, onErr);
+  db.collection('milestones').onSnapshot(s => {
+    milestones = {}; s.docs.forEach(d => milestones[d.id] = d.data()); if (!s.metadata.fromCache){ ready.m = true; setTimeout(checkCeremonies, 800); }
+  }, () => {});
+  db.collection('practiced').onSnapshot(s => {
+    practiced = {}; s.docs.forEach(d => practiced[d.id] = d.data());
+    const pend = pqGet();
+    if (!s.metadata.fromCache){ const left = {}; Object.keys(pend).forEach(k => { if (!practiced[k] || (practiced[k].count || 0) < (pend[k].count || 0)) left[k] = pend[k]; }); pqSet(left); seedParentMarks(); }
+    overlayPending(); refresh();
+  }, () => {});
+  db.collection('approvals').onSnapshot(s => {
+    approvals = {}; s.docs.forEach(d => approvals[d.id] = d.data());
+    mergePassages(); refresh();
+  }, onErr);
+  try { const u = await window.claude.use('user'); if (u && u.isOwner) isOwner = !!(await u.isOwner()); if (u && u.can){ const v = await u.can('data.write'); canWrite = v == null ? null : !!v; refresh(); } } catch(e){}
+  setInterval(flushOutbox, 60000);
+  setInterval(() => { try { if (P && db && !P.pausedAt) db.doc('config/settings').get().catch(e => logErr('keepalive', e)); } catch(e){} }, 45000);
+  setInterval(() => { if ($('upBar') && !UP.busy && Date.now() >= UP.next && lastResult) uploadNow(lastResult); }, 1000);
+  window.addEventListener('online', () => setTimeout(flushOutbox, 2000));
+  db.doc('config/settings').onSnapshot(s => {
+    settings = Object.assign({}, DEF, s.exists ? s.data() : {});
+    refresh();
+  }, onErr);
+})();
+
+function refresh(){
+  try { updSync(); } catch(e){}
+  if ($('home').classList.contains('on')) { if (db && !ready.a && !ready.c) renderHomeMsg('🏀 Loading Aaron\'s shots... (기록 불러오는 중)'); else renderHome(); }
+  if ($('parent').classList.contains('on')) renderParent();
+  if ($('words').classList.contains('on')) renderWords();
+  if ($('pick').classList.contains('on')) renderPick();
+}
+
+/* ============ HOME ============ */
+const LEVELS = {
+  1:{em:'🎯', en:'Free Throw', ko:'자유투', pts:1, color:'#4FA3E0', lex:'Lexile 600–700'},
+  2:{em:'🏀', en:'2-Pointer', ko:'2점슛', pts:2, color:'#F28C28', lex:'Lexile 700–800'},
+  3:{em:'🔥', en:'3-Pointer', ko:'3점슛', pts:3, color:'#E0533D', lex:'Lexile 800–900'}
+};
+let pickLevel = null, pickTopic = null;
+function lvlOf(x){ const v = Number(x && x.level); return v === 2 || v === 3 ? v : 1; }
+const MADE_AT = 4;
+function seasonOf(p){ const v = Number(p && p.season); return v > 0 ? v : 1; }
+function seasonList(){ const s = new Set(gameAll().map(seasonOf)); return [...s].sort((a,b)=>a-b); }
+function tileState(pid){
+  const at = attempts.filter(a => a.passageId === pid);
+  if (!at.length) return {state:'open', best:null, tries:0};
+  const firstMade = at.findIndex(a => (a.correct||0) >= MADE_AT);
+  const best = at.reduce((m,a) => (a.points||0) > (m ? m.points||0 : -1) ? a : m, null);
+  if (firstMade < 0) return {state:'chance', best, tries:at.length};
+  return {state: firstMade === 0 ? 'made' : 'rebound', best, tries:at.length};
+}
+function seasonStats(s){
+  const all = gameAll().filter(p => seasonOf(p) === s);
+  let pts = 0, made = 0, reb = 0;
+  all.forEach(p => { const t = tileState(p.id); if (t.best) pts += t.best.points || 0; if (t.state === 'made') made++; if (t.state === 'rebound'){ made++; reb++; } });
+  const pall = passages.concat(drafts).filter(p => !isGame(p) && seasonOf(p) === s);
+  const pdone = pall.filter(p => pracN(p.id) > 0).length;
+  const gameDone = all.length > 0 && made === all.length;
+  return {all, pts, made, reb, total: all.length, gameDone, ptotal: pall.length, pdone, done: gameDone && pdone === pall.length};
+}
+const RANKS = [['Rookie',0,'🌱'],['Starter',400,'⭐'],['All-Star',1500,'🌟'],['MVP',3000,'👑'],['Hall of Famer',5000,'🏛️']];
+const LEAGUES = ['Rookie League','Junior League','High School League','College League','Pro League'];
+function seasonLeague(s){ const p = gameAll().find(x => seasonOf(x) === s && x.league); return p ? p.league : 'Rookie League'; }
+function career(){
+  const ss = seasonList(); let pts = 0, titles = 0;
+  ss.forEach(s => { const st = seasonStats(s); pts += st.pts; if (st.done) titles++; });
+  let r = 0; RANKS.forEach((x, i) => { if (pts >= x[1]) r = i; });
+  const next = RANKS[r + 1];
+  return {pts, titles, rank: RANKS[r], rankIdx: r, next, toNext: next ? next[1] - pts : 0, passages: new Set(attempts.map(a => a.passageId)).size};
+}
+function seasonLocked(x){ return x > currentSeason(); }
+function lockMsg(){ const c = currentSeason(), st = seasonStats(c); toast('🔒 Finish Season ' + c + ' first! (시즌 ' + c + '을 먼저 마치고 오세요) · Game ' + st.made + '/' + st.total + ' · Practice ' + st.pdone + '/' + st.ptotal, 4000); }
+function currentSeason(){ const ss = seasonList(); for (const s of ss){ if (!seasonStats(s).done) return s; } return ss[ss.length-1] || 1; }
+let viewSeason = null;
+const TILE = {open:['⬜','Open'], made:['🏀','Made'], chance:['🔁','Rebound chance'], rebound:['💪','Rebound']};
+function gameTarget(){ const v = Number(settings.gameTarget); return isFinite(v) && v > 0 ? v : 100; }
+function gameState(extra){
+  const target = gameTarget(); let game = 1, pts = 0, won = 0;
+  attempts.concat(extra ? [extra] : []).forEach(a => { pts += a.points || 0; if (pts >= target){ won++; game++; pts = 0; } });
+  return {game, pts, target, won};
+}
+function boxScore(){
+  const b = {1:[0,0], 2:[0,0], 3:[0,0]}; const ao = [0,0];
+  attempts.forEach(a => { const L = lvlOf(a); (a.answers || []).forEach(x => {
+    b[L][1]++; if (x.correct) b[L][0]++;
+    if (x.proofOk === true || x.proofOk === false){ ao[1]++; if (x.correct && x.proofOk) ao[0]++; }
+  }); });
+  return {b, ao, fg:[b[1][0]+b[2][0]+b[3][0], b[1][1]+b[2][1]+b[3][1]]};
+}
+function pctTxt(a){ return a[1] ? (a[0]/a[1]*100).toFixed(1) + '%' : '–'; }
+function renderHomeMsg(t){ const m = $('homeMain'); m.innerHTML=''; m.appendChild(el('div',{class:'msg',style:'grid-column:1/-1'}, t)); }
+
+function pickNext(list){
+  if (!list.length) return null;
+  let best = null, bestN = Infinity;
+  for (const p of list){ const n = attemptsFor(p.id).length; if (n < bestN){ best = p; bestN = n; } }
+  return best;
+}
+
+function renderHome(){
+  const m = $('homeMain'); m.innerHTML = '';
+  if (!passages.length){ renderHomeMsg(ready.p ? 'No passages yet. Ask Dad to add some! 📚' : 'Loading…'); return; }
+  const bs = boxScore();
+  const cur = currentSeason(), ss = seasonList();
+  const s = viewSeason && ss.includes(viewSeason) ? viewSeason : cur;
+  const st = seasonStats(s);
+
+  if (homeMode === 'start'){
+    const cs = seasonStats(cur), wrap = el('div',{class:'startwrap'});
+    if (canWrite === false) wrap.appendChild(el('div',{class:'wwarn'}, '⚠️ This sign-in can\'t save Game shots. Sign in to claude.ai with Dad\'s account.'));
+    const qn = obGet().length; if (qn) wrap.appendChild(el('div',{class:'wwarn'}, '📥 ' + qn + ' shot(s) waiting to upload. They will upload when the connection is back.'));
+    const cr = career();
+    const raf = el('div',{class:'rafters'});
+    const lg = {};
+    seasonList().filter(x => x <= cur).forEach(x => (lg[seasonLeague(x)] = lg[seasonLeague(x)] || []).push(x));
+    Object.keys(lg).forEach(L => {
+      const row = el('div',{class:'rrow2'}, el('div',{class:'rlg'}, L));
+      lg[L].forEach(x => { const st2 = seasonStats(x);
+        row.appendChild(el('button',{class:'banner' + (st2.done ? ' won' : ' live'), onclick:()=>{ viewSeason = x; homeMode = 'game'; renderHome(); }},
+          el('div',{class:'bn1'}, st2.done ? '🏆' : '🏀'), el('div',{class:'bn2'}, 'S' + x), el('div',{class:'bn3'}, st2.done ? st2.pts + ' PTS' : st2.made + '/' + st2.total))); });
+      raf.appendChild(row);
+    });
+    wrap.appendChild(raf);
+    const pl = pool(), pd = pl.filter(p => pracN(p.id)).length;
+    const mbar = (n, t) => el('div',{class:'mbar'}, el('i',{style:'width:' + (t ? Math.round(n/t*100) : 0) + '%'}));
+    wrap.appendChild(el('button',{class:'modebtn game', onclick:()=>{ homeMode = 'game'; practiceMode = false; renderHome(); }},
+      el('div',{class:'mem'},'🏀'), el('div',{class:'mtext'}, el('div',{class:'mbig'},'Game'), el('div',{class:'mstat'}, 'Season ' + cur + ' · ' + cs.pts + ' PTS · 🏀 ' + cs.made + ' / ' + cs.total + ' tiles'), mbar(cs.made, cs.total), el('div',{class:'msmall'}, cr.rank[2] + ' ' + cr.rank[0] + ' · Career ' + cr.pts + ' PTS' + (cr.titles ? ' · 🏆×' + cr.titles : '') + (cr.next ? ' · ' + cr.toNext + ' to ' + cr.next[0] : '')))));
+    wrap.appendChild(el('button',{class:'modebtn prac', onclick:()=>{ practiceMode = true; openPick(); }},
+      el('div',{class:'mem'},'🏋️'), el('div',{class:'mtext'}, el('div',{class:'mbig'},'Practice'), el('div',{class:'mstat'}, 'Season ' + practiceSeason() + ' · ✔ ' + pd + ' / ' + pl.length + ' done'), mbar(pd, pl.length), el('div',{class:'msmall'},'Pick any shot & topic · scores not recorded'))));
+    const ng = attempts.length;
+    if (seasonList().some(x => x > cur) || pracSeasons().some(x => x > cur)){
+      wrap.appendChild(el('div',{class:'unlockline',style:'grid-column:1/-1;text-align:center;font-size:1.05em;font-weight:700;color:#856318;padding:.4em'},
+        '🔒 Season ' + (cur + 1) + ' opens after Season ' + cur + ': Game ' + cs.made + '/' + cs.total + ' · Practice ' + cs.pdone + '/' + cs.ptotal));
+    }
+    wrap.appendChild(el('button',{class:'modebtn rr', onclick: () => openRR()},
+      el('div',{class:'mem'},'🎬'), el('div',{class:'mtext'}, el('div',{class:'mbig'},'Review Room'), el('div',{class:'msmall'},'Watch your past shots again · ' + ng + (ng === 1 ? ' game' : ' games')))));
+    wrap.appendChild(el('button',{class:'modebtn lib', onclick: openLibrary},
+      el('div',{class:'mem'},'📚'), el('div',null, el('div',{class:'mbig'},'Library'), el('div',{class:'msmall'},'Read your passages like a book · ' + libraryList().length + (libraryList().length === 1 ? ' book' : ' books')))));
+    m.appendChild(wrap); return;
+  }
+
+  const left = el('div',{class:'hcol'});
+  const board = el('div',{class:'card board'},
+    el('div',{class:'bhead'}, el('span',null,'SEASON ' + s + (s < cur ? ' · 🏆 CHAMPION' : '')),
+      ss.length > 1 ? el('span',{class:'stabs'}, ss.map(x => el('button',{class:'stab' + (x > cur ? ' locked' : '') + (x === s ? ' on' : ''), onclick:()=>{ viewSeason = x; renderHome(); }}, 'S' + x + (x > cur ? ' 🔒' : '')))) : null),
+    el('div',{class:'bscore'}, el('b',null, String(st.pts)), el('span',null, ' PTS')),
+    el('div',{class:'bline'}, '🏀 ' + st.made + ' / ' + st.total + ' tiles' + (st.reb ? ' · 💪 Rebounds ' + st.reb : '')),
+    el('div',{class:'bbar'}, el('i',{style:'width:' + (st.total ? st.made/st.total*100 : 0) + '%'}))
+  );
+  if (s > cur) board.appendChild(el('div',{class:'bnote'}, '🔒 Season ' + s + ' opens when Season ' + cur + ' is done (Game ' + seasonStats(cur).made + '/' + seasonStats(cur).total + ' · Practice ' + seasonStats(cur).pdone + '/' + seasonStats(cur).ptotal + ')'));
+  else if (st.gameDone && !st.done) board.appendChild(el('div',{class:'bnote'}, '🏀 All Game tiles made! Finish Practice (' + st.pdone + '/' + st.ptotal + ') to win Season ' + s + '.'));
+  if (st.done) board.appendChild(el('div',{class:'bnote'}, '🏆 Season ' + s + ' champion! ' + (seasonList().some(x => x > s) ? 'Season ' + (s+1) + ' is open.' : 'Dad is making Season ' + (s+1) + '.')));
+  // map
+  const map = el('div',{class:'smap'});
+  [1,2,3].forEach(L => {
+    const row = st.all.filter(p => lvlOf(p) === L); if (!row.length) return;
+    const d = LEVELS[L];
+    const tiles = el('div',{class:'trow'});
+    row.forEach(p => {
+      const locked = p.status === 'draft' && !p._approved, sl = s > cur;
+      const t = tileState(p.id), sym = locked ? ['🔒','Coming soon'] : sl ? ['🔒','Locked'] : TILE[t.state], tp = topicOf(p);
+      tiles.appendChild(el('button',{class:'tile ' + (locked || sl ? 'locked' : t.state), disabled: locked, onclick:()=>{ if (sl){ lockMsg(); return; } practiceMode = false; startPlay(p); }},
+        el('div',{class:'ttl'}, el('span',{class:'tcat'}, '(' + tp[2] + ')'), ' ' + (p.short || p.title)),
+        el('div',{class:'tst'}, sym[0] + ' ' + sym[1] + (t.best && !locked ? ' · ' + t.best.correct + '/5' : ''))));
+    });
+    map.appendChild(el('div',{class:'lrow'}, el('div',{class:'llab',style:'color:' + d.color}, d.em + ' ' + d.en, el('small',null, d.lex)), tiles));
+  });
+  board.appendChild(map);
+  board.appendChild(el('div',{class:'legend2'}, '⬜ Open · 🏀 Made (4+ of 5) · 🔁 Rebound chance · 💪 Rebound · 🔒 Coming soon'));
+  left.appendChild(el('button',{class:'iconbtn backhome', onclick:()=>{ homeMode = 'start'; renderHome(); }}, '← Home'));
+  left.appendChild(board);
+
+  const right = el('div',{class:'hcol'});
+  const tb = el('table',{class:'box'});
+  tb.appendChild(el('tr',null, el('th',null,'Shooting'), el('th',{class:'num'},'Made / Att'), el('th',{class:'num'},'%')));
+  [1,2,3].forEach(L => { const v = bs.b[L], d = LEVELS[L];
+    tb.appendChild(el('tr',null, el('td',null, d.em + ' ' + d.en + ' (' + d.pts + 'pt)'), el('td',{class:'num'}, v[0] + ' / ' + v[1]), el('td',{class:'num pct'}, pctTxt(v)))); });
+  tb.appendChild(el('tr',{class:'tot'}, el('td',null,'🏀 Total'), el('td',{class:'num'}, bs.fg[0] + ' / ' + bs.fg[1]), el('td',{class:'num pct'}, pctTxt(bs.fg))));
+  tb.appendChild(el('tr',{class:'and1'}, el('td',null,'📍 And-1 (proof)'), el('td',{class:'num'}, bs.ao[0] + ' / ' + bs.ao[1]), el('td',{class:'num pct'}, pctTxt(bs.ao))));
+  right.appendChild(el('div',{class:'card boxcard'}, el('h3',null,'📊 My Stats'), tb));
+
+  const rec = el('div',{class:'card boxcard'}, el('h3',null,'🗓️ Recent Shots'));
+  if (!attempts.length) rec.appendChild(el('div',{class:'muted',style:'font-weight:800'}, 'No shots yet. Take your first shot!'));
+  attempts.slice(-5).reverse().forEach(a => { const d = LEVELS[lvlOf(a)];
+    rec.appendChild(el('div',{class:'rrow'},
+      el('span',{class:'rl', style:'background:' + d.color}, d.em + ' ' + d.pts + 'pt'),
+      el('span',{class:'rt'}, a.title || a.passageId, el('small',null, (a.date || '') + ' · ' + a.correct + '/' + a.total + ' made')),
+      el('span',{class:'rp'}, '+' + (a.points || 0))));
+  });
+  right.appendChild(rec);
+  m.appendChild(left); m.appendChild(right);
+}
+
+/* ============ PICK: shot type -> topic ============ */
+function openPick(){ pickLevel = null; pickTopic = null; show('pick'); renderPick(); }
+function renderPick(){
+  const m = $('pickMain'); m.innerHTML = '';
+  const bs = boxScore();
+  m.appendChild(el('h2',{class:'pickh'}, '① Pick your shot'));
+  const row = el('div',{class:'shots'});
+  [1,2,3].forEach(L => {
+    const d = LEVELS[L], list = pool().filter(p => lvlOf(p) === L), fresh = list.filter(p => !pracN(p.id)).length;
+    row.appendChild(el('button',{class:'shotcard' + (pickLevel === L ? ' on' : ''), disabled: !list.length, style:'--c:' + d.color,
+      onclick:()=>{ pickLevel = L; pickTopic = null; renderPick(); }},
+      el('div',{class:'sem'}, d.em), el('div',{class:'sname'}, d.en), el('div',{class:'spts'}, '+' + d.pts + (d.pts > 1 ? ' points' : ' point')),
+      el('div',{class:'slex'}, d.lex),
+      el('div',{class:'sinfo'}, list.length ? ((list.length - fresh) + ' / ' + list.length + ' done ✔') : 'Coming soon')));
+  });
+  m.appendChild(row);
+  m.appendChild(el('div',{class:'rmode'},
+    el('button',{class:'rmbtn' + (readMode === 'quarter' ? ' on' : ''), onclick:()=>{ readMode = 'quarter'; try{localStorage.setItem('rs-readmode','quarter')}catch(e){} renderPick(); }}, '🧩 Quarter mode', el('small',null,'one paragraph at a time')),
+    el('button',{class:'rmbtn' + (readMode === 'whole' ? ' on' : ''), onclick:()=>{ readMode = 'whole'; try{localStorage.setItem('rs-readmode','whole')}catch(e){} renderPick(); }}, '📄 Whole page', el('small',null,'like the real test'))));
+  const pss = pracSeasons();
+  if (pss.length > 1) m.appendChild(el('div',{class:'rrtabs'}, pss.map(x => el('button',{class:'rrtab' + (((pracView && pss.includes(pracView)) ? pracView : practiceSeason()) === x ? ' on' : ''), onclick:()=>{ pracView = x; pickTopic = null; renderPick(); }}, 'Season ' + x + (seasonLocked(x) ? ' 🔒' : '')))));
+  m.appendChild(el('div',{class:'practice on'}, '🏋️ Practice · Season ' + ((pracView && pss.includes(pracView)) ? pracView : practiceSeason()) + ' practice passages. Scores are not recorded, only a ✔ for finished passages.'));
+  if (!pickLevel) return;
+  const d = LEVELS[pickLevel], list = pool().filter(p => lvlOf(p) === pickLevel);
+  m.appendChild(el('h2',{class:'pickh'}, '② Pick a topic for your ' + d.en));
+  const grid = el('div',{class:'topics'});
+  const topics = [...new Set(list.map(p => p.topic || 'other'))];
+  topics.forEach(k => { const t = TOPICS[k] || TOPICS.other, tl = list.filter(p => (p.topic || 'other') === k);
+    const fresh = tl.filter(p => !pracN(p.id)).length;
+    const card = el('button',{class:'card topiccard' + (pickTopic === k ? ' on' : '') + (fresh ? '' : ' done'), style:'width:100%', onclick:()=>{ if (tl.length === 1) pracGo(tl[0]); else { pickTopic = k; renderPick(); } }},
+      el('div',{class:'tem'}, t[0]), el('div',{class:'tname'}, t[1]), el('div',{class:'tinfo'}, tl.length + (tl.length > 1 ? ' passages' : ' passage') + (fresh ? ' · ' + fresh + ' new' : ' · all done ✔')));
+    const undone = tl.filter(p => !pracN(p.id)).map(p => p.id);
+    grid.appendChild(el('div',{style:'display:flex;flex-direction:column;gap:.3em;align-self:start'}, card, fresh && !seasonLocked(seasonOf(tl[0])) ? holdMark(undone, '부모: 2초 눌러 ' + (undone.length > 1 ? undone.length + '개 모두 ' : '') + '완료 표시') : null)); });
+  grid.appendChild(el('button',{class:'card topiccard', onclick:()=> { const n = Math.min(...list.map(p => pracN(p.id))); const c = list.filter(p => pracN(p.id) === n); pracGo(c[Math.floor(Math.random()*c.length)]); }},
+    el('div',{class:'tem'}, '🎲'), el('div',{class:'tname'}, 'Surprise me'), el('div',{class:'tinfo'}, 'Any topic')));
+  m.appendChild(grid);
+  if (pickTopic){
+    const tl = list.filter(p => (p.topic || 'other') === pickTopic), t = TOPICS[pickTopic] || TOPICS.other;
+    m.appendChild(el('h2',{class:'pickh'}, '③ Pick a passage: ' + t[0] + ' ' + t[1]));
+    const box = el('div',{class:'card',style:'padding:.6em 1em'});
+    tl.forEach(p => { const c = pracN(p.id);
+      box.appendChild(el('button',{class:'prow', onclick:()=> pracGo(p)},
+        el('span',{class:'em'}, t[0]), el('span',{class:'t'}, p.title, el('small',null, (p.status === 'draft' && !p._approved ? 'Draft · ' : '') + (p.questions||[]).length + ' questions')),
+        el('span',{class:'cnt'}, c ? (practiced[p.id] && practiced[p.id].manual ? '✔ Done (부모)' : '✔ Done ' + c + 'x') : 'NEW')));
+      if (!c && !seasonLocked(seasonOf(p))) box.appendChild(holdMark(p.id)); });
+    m.appendChild(box);
+  }
+}
+$('pickClose').addEventListener('click', () => { practiceMode = false; pickTopic = null; homeMode = 'start'; show('home'); renderHome(); });
+
+function holdMark(pid, label){
+  const f = el('span',{class:'fill',style:'position:absolute;left:0;top:0;bottom:0;width:0;background:rgba(196,146,47,.35);border-radius:10px;pointer-events:none'});
+  const b = el('button',{class:'holdmark',style:'position:relative;overflow:hidden;display:block;margin:-.2em 0 .6em auto;font-size:.8em;padding:.35em .9em;border-radius:10px;border:1px dashed #C8C8CC;background:transparent;color:#6E6E73;cursor:pointer'}, label || '부모: 2초 눌러 완료 표시', f);
+  let t0 = null, raf = null;
+  const stop = () => { t0 = null; cancelAnimationFrame(raf); f.style.width = '0'; };
+  const loop = () => { if (t0 == null) return; const r = (performance.now() - t0) / 2000; f.style.width = Math.min(100, r*100) + '%'; if (r >= 1){ stop(); [].concat(pid).forEach((x, i) => setTimeout(() => markPracticeDone(x), 300 * i)); return; } raf = requestAnimationFrame(loop); };
+  b.addEventListener('pointerdown', e => { e.stopPropagation(); t0 = performance.now(); loop(); });
+  ['pointerup','pointerleave','pointercancel'].forEach(ev => b.addEventListener(ev, stop));
+  b.addEventListener('click', e => e.stopPropagation());
+  return b;
+}
+/* parent gate: hold 2 seconds */
+(function(){
+  const b = $('parentBtn'), f = b.querySelector('.fill'); let t0 = null, raf = null;
+  const stop = () => { t0 = null; cancelAnimationFrame(raf); f.style.width = '0'; };
+  const loop = () => {
+    if (t0 == null) return;
+    const r = (performance.now() - t0) / 2000;
+    f.style.width = Math.min(100, r*100) + '%';
+    if (r >= 1){ stop(); openParent(); return; }
+    raf = requestAnimationFrame(loop);
+  };
+  b.addEventListener('pointerdown', e => { t0 = performance.now(); loop(); });
+  ['pointerup','pointerleave','pointercancel'].forEach(ev => b.addEventListener(ev, stop));
+})();
+
+/* ============ PLAY ============ */
+function startPlay(p){
+  const sents = sentencesOf(p);
+  const qs = (p.questions || []).map(q => ({...q, order: shuffle(q.choices.map((_,i)=>i))}));
+  const minRead = Math.max(20, Math.round(wordCount(p) * (Number(settings.readSecPerWord) || DEF.readSecPerWord)));
+  P = { p, sents, qs, qi:-1, phase:'read', t0: Date.now(), readSec:null, minRead, answers:[], choice:null, proof:null, qStart:0, hints:[], timeoutsUsed:0, level: lvlOf(p), practice: practiceMode, pausedAt:null, pauses:0, pauseSec:0 };
+  P.quarter = P.practice && readMode === 'quarter' && (p.paragraphs || []).length > 1;
+  P.qp = 0; P.kw = []; P.paraSec = []; P.paraStartE = 0; P.seen = {}; P.skipped = {}; P.spent = {};
+  hideHint();
+  $('pTitle').textContent = p.title;
+  const t = topicOf(p), lv = LEVELS[lvlOf(p)]; $('pTopic').textContent = lv.em + ' ' + lv.en + ' · ' + t[0] + ' ' + t[1];
+  renderPassage();
+  renderSide();
+  renderSteps();
+  renderTimeouts();
+  show('play');
+  clearInterval(tick);
+  tick = setInterval(onTick, 250);
+  onTick();
+}
+
+function elapsed(){ return (Date.now() - P.t0) / 1000; }
+
+function onTick(){
+  if (!P) return;
+  $('timer').textContent = mmss(elapsed());
+  if (P.phase === 'read' && P.quarter){
+    const r = P.seen[P.qp] ? 1 : Math.min(1, paraRead() / paraMin(P.qp));
+    const bar = $('readBar'); if (bar) bar.style.width = (r*100) + '%';
+    const btn = $('goQ'); if (btn){ const why = quarterWhy(), last = P.qp >= P.p.paragraphs.length - 1; btn.classList.toggle('waiting', !!why); const t = why || (last ? 'Full court → Questions 🏀' : 'Next quarter ▶'); if (btn.textContent !== t) btn.textContent = t; }
+  } else if (P.phase === 'read'){
+    const r = Math.min(1, elapsed() / P.minRead);
+    const bar = $('readBar'); if (bar) bar.style.width = (r*100) + '%';
+    const btn = $('goQ');
+    if (btn && r >= 1 && btn.disabled){ btn.disabled = false; btn.textContent = 'I read it all → Questions'; }
+  }
+  if (P.phase === 'q'){
+    const left = (Number(settings.thinkSec) || 0) - (Date.now() - P.qStart)/1000;
+    const ring = $('ringArc'), lab = $('thinkLab');
+    if (ring){
+      const total = Number(settings.thinkSec) || 1;
+      const r = Math.max(0, left) / total;
+      ring.setAttribute('stroke-dasharray', (r * 100.5) + ' 100.5');
+    }
+    if (left <= 0 && P.locked){
+      P.locked = false;
+      document.querySelectorAll('.choice').forEach(c => c.disabled = false);
+      const sb = $('skipBtn'); if (sb) sb.disabled = false;
+      if (lab) lab.textContent = 'Now pick your answer!';
+    } else if (lab && P.locked){ lab.textContent = 'Think first… ' + Math.ceil(left); }
+    const sc = $('scfill');
+    if (sc){
+      const tot = clockSec(P.qs[P.qi].type), used = (Date.now() - P.qStart)/1000, rem = Math.max(0, tot - used), r = rem / tot;
+      sc.style.width = (r*100) + '%';
+      sc.style.background = r > .5 ? 'var(--green)' : r > .2 ? 'var(--yellow)' : '#9AA0AE';
+      $('scnum').textContent = rem > 0 ? mmss(rem) : '';
+      const sb = $('skipBtn');
+      $('sclab').textContent = rem > 0 ? '⏱ Shot clock' : (sb ? '🤔 Stuck? Skip it and come back later 🔁' : '⏳ Take your time. Check the proof, then shoot!');
+      if (sb) sb.classList.toggle('hot', rem <= 0);
+    }
+    if (!P.stuckShown && (Date.now() - P.qStart)/1000 > 90){
+      P.stuckShown = true;
+      const card = document.querySelector('.qcard');
+      if (card) card.insertBefore(el('div',{class:'hint warn'}, '🤔 Stuck? Read the passage again and look for key words from the question.'), card.querySelector('.choices'));
+    }
+  }
+}
+
+function renderSteps(){
+  const s = $('steps'); s.innerHTML = '';
+  s.appendChild(el('div',{class:'step read' + (P.phase==='read'?' cur':' ok')}, '📖 Read'));
+  P.qs.forEach((q,i) => {
+    const a = P.answers[i];
+    let c = 'step';
+    if (a) c += a.correct ? ' ok' : ' bad';
+    else if (i === P.qi) c += ' cur';
+    else if (P.skipped && P.skipped[i]) c += ' skip';
+    s.appendChild(el('div',{class:c}, (P.skipped && P.skipped[i] && !a ? '🔁' : '') + String(i+1)));
+  });
+}
+
+function renderPassage(){
+  const box = $('passage'); box.innerHTML = '';
+  box.appendChild(el('h2',null, P.p.title));
+  box.appendChild(el('div',{class:'hinttip'}, '💡 Don\'t know a word? Press and hold it. (Timeouts (words): ' + hintMax() + ')'));
+  let gi = 0;
+  (P.p.paragraphs || []).forEach((para, pi) => {
+    const txt = el('div',{class:'ptext'});
+    para.forEach(s => {
+      const n = ++gi;
+      const span = el('span',{class:'s','data-n':n});
+      String(s).split(/([A-Za-z][A-Za-z']*)/).forEach((part, i) => {
+        if (!part) return;
+        span.appendChild(i % 2 === 1 ? el('span',{class:'w','data-w':part}, part) : document.createTextNode(part));
+      });
+      span.addEventListener('click', () => { if (suppressClick){ suppressClick = false; return; } onSentence(n); });
+      txt.appendChild(span);
+      txt.appendChild(document.createTextNode(' '));
+    });
+    box.appendChild(el('div',{class:'para','data-pi':pi}, el('div',{class:'pnum'}, String(pi+1)), txt));
+  });
+  applyQuarter();
+}
+function pickKeyword(w){
+  if (!P || !P.quarter || P.phase !== 'read') return false;
+  const pe = w.closest('.para'); if (!pe) return false;
+  if (Number(pe.dataset.pi) !== P.qp){ toast('👉 Tap a word in the yellow paragraph ' + (P.qp + 1)); scrollToCur(); return true; }
+  pe.querySelectorAll('.w.kw').forEach(x => x.classList.remove('kw'));
+  w.classList.add('kw'); P.kw[P.qp] = w.dataset.w;
+  renderSide(); return true;
+}
+function scrollToCur(){ const cur = document.querySelector('#passage .para.cur'); if (cur) cur.scrollIntoView({block:'center', behavior:'smooth'}); }
+function quarterWhy(){
+  if (P.seen[P.qp]) return null;
+  const left = Math.ceil(paraMin(P.qp) - paraRead());
+  return left > 0 ? '📖 Keep reading… ' + left + 's' : null;
+}
+function applyQuarter(){
+  const on = P && P.quarter && P.phase === 'read';
+  document.querySelectorAll('#passage .para').forEach(pe => {
+    const pi = Number(pe.dataset.pi);
+    pe.classList.toggle('fog', !!on && pi > P.qp);
+    pe.classList.toggle('readdone', !!on && pi < P.qp);
+    pe.classList.toggle('cur', !!on && pi === P.qp);
+  });
+  $('passage').classList.toggle('quarter', !!on);
+}
+function paraMin(pi){
+  const para = (P.p.paragraphs || [])[pi] || [];
+  const w = para.join(' ').trim().split(/\s+/).length;
+  return Math.max(5, Math.round(w * (Number(settings.readSecPerWord) || DEF.readSecPerWord)));
+}
+function paraRead(){ return (P.paraSec[P.qp] || 0) + (elapsed() - P.paraStartE); }
+function quarterReady(){ return !!P.seen[P.qp] || paraRead() >= paraMin(P.qp); }
+function nextQuarter(){
+  if (!quarterReady()) return;
+  P.paraSec[P.qp] = (P.paraSec[P.qp] || 0) + Math.round(elapsed() - P.paraStartE);
+  P.seen[P.qp] = true;
+  const n = (P.p.paragraphs || []).length;
+  if (P.qp >= n - 1){ P.qp = n; applyQuarter(); toQuestions(); return; }
+  P.qp++; P.paraStartE = elapsed();
+  applyQuarter(); renderSide(); scrollToCur();
+}
+
+function prevQuarter(){
+  if (!P || P.qp <= 0) return;
+  P.paraSec[P.qp] = (P.paraSec[P.qp] || 0) + Math.round(elapsed() - P.paraStartE);
+  if (quarterReady()) P.seen[P.qp] = true;
+  P.qp--; P.paraStartE = elapsed();
+  applyQuarter(); renderSide(); scrollToCur();
+}
+
+function renderSide(){
+  const side = $('side'); side.innerHTML = '';
+  if (P.phase === 'read' && P.quarter){
+    const n = P.p.paragraphs.length, last = P.qp >= n - 1, kw = P.kw[P.qp];
+    side.appendChild(el('div',{class:'card readbox'},
+      el('h3',null,'🧩 Quarter ' + (P.qp + 1) + ' of ' + n),
+      el('div',{class:'qpills'}, P.p.paragraphs.map((_, i) => el('span',{class:'qpill' + (i < P.qp ? ' done' : i === P.qp ? ' cur' : '')}, 'Q' + (i + 1)))),
+      el('ul',null,
+        el('li',null,'👆 Read the yellow paragraph ' + (P.qp + 1) + ' with your finger.'),
+        el('li',null,'🔊 Whisper the hard words out loud.')),
+      el('div',{style:'flex:1'}),
+      el('div',{class:'bar'}, el('i',{id:'readBar'})),
+      el('div',{class:'qnav'},
+      el('button',{class:'bigbtn navy backq', disabled: P.qp === 0, onclick: prevQuarter}, '◀ Back'),
+      el('button',{class:'bigbtn' + (quarterReady() ? '' : ' waiting'), id:'goQ', onclick: () => { const why = quarterWhy(); if (why){ toast(why); scrollToCur(); return; } nextQuarter(); }}, quarterWhy() || (last ? 'Full court → Questions 🏀' : 'Next quarter ▶')))
+    ));
+    return;
+  }
+  if (P.phase === 'read'){
+    side.appendChild(el('div',{class:'card readbox'},
+      el('h3',null,'📖 Step 1. Read the whole passage'),
+      el('ul',null,
+        el('li',null,'👆 Follow the lines with your finger.'),
+        el('li',null,'🐢 Read carefully. There is no prize for fast.'),
+        el('li',null,'🤔 Ask yourself: what is this mostly about?')),
+      el('div',{style:'flex:1'}),
+      el('div',{class:'bar'}, el('i',{id:'readBar'})),
+      el('button',{class:'bigbtn', id:'goQ', disabled:true, onclick: toQuestions}, 'Keep reading…')
+    ));
+    return;
+  }
+  const q = P.qs[P.qi];
+  const qt = QTYPES[q.type] || QTYPES.fact;
+  const card = el('div',{class:'card qcard'});
+  card.appendChild(el('div',{style:'display:flex;justify-content:space-between;align-items:center'},
+    el('span',{class:'badge', style:'background:'+qt[3]}, qt[0] + ' ' + qt[1]),
+    el('span',{style:'font-weight:900;color:var(--gray);font-size:.85em'}, (P.skipped[P.qi] ? '🔁 Back to ' : 'Question ') + (P.qi+1) + ' / ' + P.qs.length)));
+  card.appendChild(el('div',{class:'qprompt'}, q.prompt));
+  if (P.phase === 'q') card.appendChild(el('div',{class:'shotclock', id:'shotclock'},
+    el('span',{class:'sclab', id:'sclab'}, '⏱ Shot clock'), el('div',{class:'scbar'}, el('i',{id:'scfill'})), el('b',{id:'scnum'}, '')));
+
+  if (P.phase === 'q'){
+    const think = Number(settings.thinkSec) || 0;
+    if (think > 0 && P.locked){
+      const svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
+      svg.setAttribute('viewBox','0 0 36 36'); svg.setAttribute('class','ring');
+      svg.innerHTML = '<circle cx="18" cy="18" r="16" fill="none" stroke="#E9E1F7" stroke-width="4"/>' +
+        '<circle id="ringArc" cx="18" cy="18" r="16" fill="none" stroke="#8A5CD1" stroke-width="4" stroke-linecap="round" transform="rotate(-90 18 18)" stroke-dasharray="100.5 100.5"/>';
+      card.appendChild(el('div',{class:'think'}, svg, el('span',{id:'thinkLab'}, 'Think first…')));
+    }
+  }
+
+  const ch = el('div',{class:'choices'});
+  q.order.forEach((orig, k) => {
+    if (P.phase === 'fb' && orig !== q.answer && orig !== P.choice) return;
+    let cls = 'choice';
+    if (P.phase === 'fb'){
+      if (orig === q.answer) cls += ' right';
+      else if (orig === P.choice) cls += ' wrong';
+    } else if (orig === P.choice) cls += ' sel';
+    ch.appendChild(el('button',{class:cls, disabled: P.phase==='fb' || P.locked, onclick:()=> onChoice(orig)},
+      el('span',{class:'L'}, LETTERS[k]), el('span',null, q.choices[orig])));
+  });
+  card.appendChild(ch);
+
+  if (P.phase === 'q'){
+    const needProof = needsProof(q);
+    if (P.choice != null && needProof){
+      card.appendChild(el('div',{class:'hint'}, P.proof == null
+        ? '📍 Proof time! Tap the sentence in the passage that proves your answer.'
+        : '📍 Proof picked. You can tap another sentence to change it.'));
+    }
+    const ok = P.choice != null && (!needProof || P.proof != null);
+    card.appendChild(el('div',{style:'flex:1'}));
+    const canSkip = nextOpen(P.qi) >= 0;
+    card.appendChild(el('div',{class:'qnav'},
+      canSkip ? el('button',{class:'bigbtn skipbtn', id:'skipBtn', disabled: P.locked, onclick: skipQ}, '⏭ Skip for now') : null,
+      el('button',{class:'bigbtn', disabled: !ok, onclick: onShoot}, '🏀 Shoot!')));
+  } else {
+    const a = P.answers[P.qi];
+    const lines = [];
+    if (a.correct) lines.push(el('div',{class:'head'}, (P.level === 3 ? 'THREE! 🔥' : P.level === 2 ? 'SWISH!' : 'GOOD!') + ' +' + P.level));
+    else lines.push(el('div',{class:'head'}, 'Missed this one.'));
+    if (needsProof(q)){
+      lines.push(el('div',{class:'line'}, a.correct && a.proofOk ? '📍 AND-ONE! Your proof was right. +1'
+        : a.proofOk ? '📍 Your proof sentence was right. Read it again and check the answer.'
+        : '📍 The proof is the green sentence in the passage.'));
+    }
+    card.appendChild(el('div',{class:'fb ' + (a.correct ? 'good':'bad')}, lines));
+    card.appendChild(isFast(a)
+      ? el('div',{class:'hint warn'}, '⚡ Fast shot (' + a.thinkSec + 's). Slow down: Look, Think, then Shoot.')
+      : el('div',{class:'hint',style:'background:#E8F6EE;color:#17643F'}, '✅ Good pace (' + a.thinkSec + 's)'));
+    if (q.explain){
+      if (a.correct || a.showWhy) card.appendChild(el('div',{class:'explain'}, '💡 ' + q.explain));
+      else card.appendChild(el('button',{class:'whybtn', onclick:()=>{ a.showWhy = true; renderSide(); }}, '💡 Why is that the answer? Tap to see'));
+    }
+    if (!a.correct){
+      card.appendChild(el('div',{style:'font-weight:900;color:var(--navy)'}, '📒 Why did I miss it?'));
+      card.appendChild(el('div',{class:'reasons'}, REASONS.map(([k,lab]) =>
+        el('button',{class:'reason' + (a.reason===k?' sel':''), onclick:()=>{ a.reason = k; renderSide(); }}, lab))));
+    }
+    card.appendChild(el('div',{style:'flex:1'}));
+    const nj = nextOpen(P.qi), last = nj < 0;
+    card.appendChild(el('button',{class:'bigbtn ' + (last?'green':'navy'), disabled: !a.correct && !a.reason, onclick: nextQ},
+      last ? 'See my score 🏆' : (nj < P.qi ? '🔁 Back to Q' + (nj + 1) + ' →' : 'Next question →')));
+  }
+  side.appendChild(card);
+}
+
+function toQuestions(){
+  P.readSec = Math.round(elapsed());
+  P.phase = 'q'; P.qi = 0; applyQuarter();
+  beginQ();
+}
+function beginQ(){
+  hideHint();
+  P.stuckShown = false;
+  P.choice = null; P.proof = null; P.qStart = Date.now();
+  P.locked = !P.skipped[P.qi] && (Number(settings.thinkSec) || 0) > 0;
+  document.querySelectorAll('#passage .s').forEach(s => s.classList.remove('sel','proof'));
+  document.body.classList.remove('proofing');
+  renderSide(); renderSteps(); onTick();
+}
+function onChoice(orig){
+  if (P.phase !== 'q' || P.locked) return;
+  P.choice = orig;
+  const q = P.qs[P.qi];
+  if (needsProof(q)) document.body.classList.add('proofing');
+  renderSide();
+}
+function onSentence(n){
+  if (!P || P.phase !== 'q' || P.choice == null) return;
+  if (!needsProof(P.qs[P.qi])) return;
+  P.proof = n;
+  document.querySelectorAll('#passage .s').forEach(s => s.classList.toggle('sel', Number(s.dataset.n) === n));
+  renderSide();
+}
+function onShoot(){
+  const q = P.qs[P.qi];
+  const correct = P.choice === q.answer;
+  const needProof = needsProof(q);
+  const ev = (q.evidence || []).map(Number);
+  const proofOk = needProof ? ev.includes(P.proof) : null;
+  const L = P.level;
+  const points = (correct ? L : 0) + (correct && proofOk ? 1 : 0);
+  P.answers[P.qi] = { qid: q.qid || ('q'+(P.qi+1)), type: q.type, difficulty: q.difficulty || null,
+    prompt: q.prompt, chosenText: q.choices[P.choice], answerText: q.choices[q.answer],
+    chosen: P.choice, correct, proof: needProof ? P.proof : null, proofOk, points, maxPoints: maxPoints(q, L),
+    thinkSec: Math.round((P.spent[P.qi] || 0) + (Date.now() - P.qStart)/1000), skipped: P.skipped[P.qi] || 0, reason: null };
+  P.phase = 'fb';
+  document.body.classList.remove('proofing');
+  document.querySelectorAll('#passage .s').forEach(s => {
+    const n = Number(s.dataset.n);
+    s.classList.toggle('proof', needProof && ev.includes(n));
+    s.classList.toggle('sel', needProof && n === P.proof && !ev.includes(n));
+  });
+  if (needProof && ev.length){ const f = document.querySelector('#passage .s.proof'); if (f) f.scrollIntoView({block:'center', behavior:'smooth'}); }
+  renderSide(); renderSteps();
+}
+function openQs(except){ return P.qs.map((_, i) => i).filter(i => !P.answers[i] && i !== except); }
+function nextOpen(from){
+  const open = openQs(from);
+  const after = open.filter(i => i > from);
+  return after.length ? after[0] : (open.length ? open[0] : -1);
+}
+function nextQ(){
+  const j = nextOpen(P.qi);
+  if (j >= 0){ P.qi = j; P.phase = 'q'; beginQ(); }
+  else finish();
+}
+function skipQ(){
+  if (!P || P.phase !== 'q' || P.locked) return;
+  const j = nextOpen(P.qi); if (j < 0) return;
+  P.spent[P.qi] = (P.spent[P.qi] || 0) + (Date.now() - P.qStart) / 1000;
+  P.skipped[P.qi] = (P.skipped[P.qi] || 0) + 1;
+  toast('🔁 Q' + (P.qi + 1) + ' saved for later. You will come back to it!');
+  P.qi = j; P.phase = 'q'; beginQ();
+}
+
+function finish(){
+  clearInterval(tick);
+  hideHint();
+  const A = P.answers;
+  const rec = {
+    shotNo: attempts.length + 1, level: P.level, words: wordCount(P.p),
+    passageId: P.p.id, title: P.p.title, topic: P.p.topic || 'other',
+    startedAt: new Date(P.t0).toISOString(), date: todayKST(),
+    readSec: P.readSec, totalSec: Math.round(elapsed()),
+    points: A.reduce((s,a)=>s+a.points,0), maxPoints: A.reduce((s,a)=>s+a.maxPoints,0),
+    correct: A.filter(a=>a.correct).length, total: A.length,
+    proofCorrect: A.filter(a=>a.proofOk).length, proofTotal: A.filter(a=>a.proofOk!==null).length,
+    answers: A, readMode: P.quarter ? 'quarter' : 'whole', quarterKw: P.quarter ? P.kw : null, paraSec: P.quarter ? P.paraSec : null, pauses: P.pauses, pauseSec: Math.round(P.pauseSec),
+    hints: P.hints, timeoutsUsed: P.timeoutsUsed,
+    mode: P.practice ? 'practice' : 'game',
+    device: devName(), cid: 'a' + Date.now().toString(36) + Math.random().toString(36).slice(2,7),
+    ledger: attempts.filter(a => a.cid).slice(-40).map(a => ({cid: a.cid, passageId: a.passageId, title: a.title, topic: a.topic || null, level: a.level, season: a.season || 1, points: a.points || 0, maxPoints: a.maxPoints || 0, correct: a.correct || 0, total: a.total || 5, date: a.date, startedAt: a.startedAt, shotNo: a.shotNo || null, tileAfter: a.tileAfter || null, readSec: a.readSec || null}))
+  };
+  const sents = sentencesOf(P.p);
+  rec._review = A.map((a, i) => ({a, q: P.qs[i], n: i + 1})).filter(x => x.a && !x.a.correct).map(x => ({
+    n: x.n, ev: (x.q.evidence || []).map(Number), prompt: x.q.prompt, chosen: x.a.chosenText, answer: x.a.answerText, explain: x.q.explain || '',
+    proof: (x.q.evidence || []).map(k => sents[Number(k) - 1] && sents[Number(k) - 1].text).filter(Boolean) }));
+  rec._gloss = (P.p.glossary || []).filter(g => !isBlocked(P.p, g.word));
+  rec.season = seasonOf(P.p);
+  if (!P.practice){
+    const prev = tileState(P.p.id);
+    const madeNow = rec.correct >= MADE_AT;
+    rec.tileBefore = prev.state;
+    rec.tileAfter = (prev.state === 'made' || prev.state === 'rebound') ? prev.state : madeNow ? (prev.tries ? 'rebound' : 'made') : 'chance';
+    const before = seasonStats(rec.season).pts, oldBest = prev.best ? prev.best.points || 0 : 0;
+    rec.seasonPtsAfter = before + Math.max(0, rec.points - oldBest);
+  }
+  const paraWords = (P.p.paragraphs || []).map(pp => pp.join(' ').trim().split(/\s+/).length);
+  show('result');
+  P = null;
+  if (rec.mode === 'practice'){
+    const pv = practiced[rec.passageId] || {};
+    const runs = (pv.runs || []).concat([{date: rec.date, correct: rec.correct, readMode: rec.readMode, kw: rec.quarterKw, paraSec: rec.paraSec, paraWords, readSec: rec.readSec, timeouts: rec.timeoutsUsed}]).slice(-10);
+    savePracticed(rec.passageId, {count: (pv.count || 0) + 1, last: rec.date, lastCorrect: rec.correct, best: Math.max(pv.best || 0, rec.correct), runs});
+    renderResult(rec, 'practice'); return;
+  }
+  pendingSave = rec;
+  renderResult(rec, 'saving');
+  save();
+}
+let UP = {tries: 0, next: 0, busy: false};
+async function uploadNow(r){
+  if (UP.busy) return; UP.busy = true;
+  const t = $('upText'), b = $('upNow');
+  if (t) t.textContent = '📤 Uploading now…'; if (b) b.disabled = true;
+  await flushOutbox();
+  UP.busy = false; UP.tries++; UP.next = Date.now() + 15000;
+  if (!obGet().some(x => x.cid === r.cid)) return uploadDone();
+  if (t) t.textContent = '⏳ Not yet. Trying again automatically… try ' + UP.tries;
+  if (b) b.disabled = false;
+}
+function uploadDone(){
+  UP = {tries: 0, next: 0, busy: false};
+  const st = $('saveStamp'); if (st){ st.textContent = '✅ SAVED'; st.className = 'savestamp ok'; }
+  const w = document.querySelector('.queuedwarn'); if (w) w.remove();
+  const us = document.querySelector('.upstat'); if (us) us.remove();
+  const b = $('upNow'); if (b) b.remove();
+  toast('🎉 Upload complete! Your shot is saved.');
+}
+setInterval(() => {
+  const bar = $('upBar'), t = $('upText'); if (!bar || UP.busy) return;
+  const left = Math.max(0, UP.next - Date.now());
+  bar.style.width = (100 - left / 150) + '%';
+  if (t && !UP.busy && left > 0) t.textContent = '⏳ Uploading automatically… try ' + UP.tries + ' · next try in ' + Math.ceil(left / 1000) + 's';
+}, 250);
+function isSaved(r){ return r.mode === 'practice' || (!pendingSave && !obGet().some(x => x.cid === r.cid)); }
+function goHome(mode){ homeMode = mode; practiceMode = false; show('home'); renderHome(); setTimeout(checkCeremonies, 400); }
+let milestones = {}, ceremonyOpen = false;
+function msSeen(id){ try { if (localStorage.getItem('rs-ms-' + id)) return true; } catch(e){} return !!milestones[id]; }
+function msMark(id, data){ try { localStorage.setItem('rs-ms-' + id, '1'); } catch(e){} if (db) db.doc('milestones/' + id).set(Object.assign({at: new Date().toISOString()}, data || {})).catch(e => logErr('milestone', e)); }
+function checkCeremonies(){
+  if (ceremonyOpen || !ready.a || !ready.m || P) return;
+  if (!$('home').classList.contains('on')) return;
+  const ss = seasonList();
+  for (const s of ss){
+    const st = seasonStats(s), id = 'season-' + s;
+    if (st.done && !msSeen(id)){ showSeasonCeremony(s, st, ss.includes(s + 1)); msMark(id, {pts: st.pts}); return; }
+  }
+  const cr = career(), id2 = 'rank-' + cr.rankIdx;
+  if (cr.rankIdx > 0 && !msSeen(id2)){ showRankCeremony(cr); msMark(id2, {rank: cr.rank[0], pts: cr.pts}); }
+}
+function confetti(box){ const cols = ['#F28C28','#FFD84D','#2B5CE6','#2FA36B','#E0533D','#fff']; for (let i = 0; i < 70; i++){ const c = el('i',{class:'cf'}); c.style.left = Math.random()*100 + '%'; c.style.background = cols[i % cols.length]; c.style.animationDelay = (Math.random()*1.5) + 's'; c.style.animationDuration = (2.5 + Math.random()*2) + 's'; box.appendChild(c); } }
+function ceremony(children){
+  ceremonyOpen = true;
+  const ov = el('div',{class:'cerov'}); const box = el('div',{class:'cerbox'}); children.forEach(c => c && box.appendChild(c));
+  box.appendChild(el('button',{class:'bigbtn green', onclick:()=>{ ov.remove(); ceremonyOpen = false; renderHome(); setTimeout(checkCeremonies, 300); }}, 'Let\'s go! 🏀'));
+  ov.appendChild(box); confetti(ov); document.body.appendChild(ov);
+}
+function showSeasonCeremony(s, st, hasNext){
+  const at = attempts.filter(a => (a.season || 1) === s);
+  const ok = at.reduce((n,a) => n + (a.correct||0), 0), tot = at.reduce((n,a) => n + (a.total||0), 0);
+  ceremony([
+    el('div',{class:'cbig'}, '🏆'),
+    el('div',{class:'ctitle'}, 'SEASON ' + s + ' CHAMPION!'),
+    el('div',{class:'csub'}, seasonLeague(s) + ' · All ' + st.total + ' tiles made'),
+    el('div',{class:'cstats'},
+      el('div',null, el('b',null, String(st.pts)), el('span',null,'Season PTS')),
+      el('div',null, el('b',null, tot ? Math.round(ok/tot*100) + '%' : '-'), el('span',null,'Shots made')),
+      el('div',null, el('b',null, String(at.length)), el('span',null,'Games played'))),
+    el('div',{class:'cnext'}, hasNext ? '🎉 Season ' + (s + 1) + ' is here! New passages are waiting.' : '🛠️ Dad is making Season ' + (s + 1) + '. Get ready!')
+  ]);
+}
+function showRankCeremony(cr){
+  ceremony([
+    el('div',{class:'cbig'}, cr.rank[2]),
+    el('div',{class:'ctitle'}, 'You are now ' + (/^[AEIOU]/.test(cr.rank[0]) ? 'an ' : 'a ') + cr.rank[0].toUpperCase() + '!'),
+    el('div',{class:'csub'}, 'Career ' + cr.pts + ' PTS' + (cr.next ? ' · Next: ' + cr.next[2] + ' ' + cr.next[0] + ' at ' + cr.next[1] + ' PTS' : ''))
+  ]);
+}
+function leaveResult(r, mode){
+  if (isSaved(r)) return goHome(mode);
+  const ov = el('div',{class:'leaveov'});
+  ov.appendChild(el('div',{class:'leavebox'},
+    el('div',{class:'lbig'}, '🙏 Not saved yet!'),
+    el('div',{class:'lsub'}, 'Wait a moment. Your shot is still uploading.'),
+    el('button',{class:'bigbtn green', onclick:()=> ov.remove()}, '⏳ I will wait'),
+    el('button',{class:'bigbtn navy', style:'opacity:.8', onclick:()=>{ ov.remove(); goHome(mode); }}, 'Leave anyway (keep it on this screen)')));
+  document.body.appendChild(ov);
+}
+/* ============ MISS REVIEW (with passage) ============ */
+let RV = null;
+function openReview(r, i){ RV = {r, i: i || 0, why: {}}; show('review'); renderReview(); }
+function renderReview(){
+  const r = RV.r, list = r._review || [], x = list[RV.i];
+  const p = passages.concat(drafts).find(q => q.id === r.passageId);
+  $('rvTitle').textContent = '🔁 Review · ' + r.title;
+  const box = $('rvPassage'); box.innerHTML = '';
+  box.appendChild(el('h2',null, r.title));
+  let gi = 0, first = null;
+  ((p && p.paragraphs) || []).forEach((para, pi) => {
+    const txt = el('div',{class:'ptext'});
+    para.forEach(s => {
+      const n = ++gi, isP = x && x.ev.includes(n);
+      const span = el('span',{class:'s' + (isP ? ' proof' : '')}, String(s));
+      if (isP && !first) first = span;
+      txt.appendChild(span); txt.appendChild(document.createTextNode(' '));
+    });
+    box.appendChild(el('div',{class:'para'}, el('div',{class:'pnum'}, String(pi+1)), txt));
+  });
+  const side = $('rvSide'); side.innerHTML = '';
+  const card = el('div',{class:'card qcard'});
+  card.appendChild(el('div',{class:'rvtabs'}, list.map((y, k) => el('button',{class:'rvtab' + (k === RV.i ? ' on' : ''), onclick:()=>{ RV.i = k; renderReview(); }}, 'Q' + y.n))));
+  if (x){
+    card.appendChild(el('div',{class:'rvq',style:'font-size:1.15em'}, 'Q' + x.n + '. ' + x.prompt));
+    card.appendChild(el('div',{class:'rvbad'}, '❌ My answer: ' + x.chosen));
+    card.appendChild(el('div',{class:'rvgood'}, '✅ Answer: ' + x.answer));
+    card.appendChild(el('div',{class:'hint'}, x.ev.length ? '📍 The green sentence in the passage is the proof. Read it out loud.' : '📍 This one is about the whole passage. Skim it again.'));
+    if (x.explain){
+      if (RV.why[RV.i]) card.appendChild(el('div',{class:'explain'}, '💡 ' + x.explain));
+      else card.appendChild(el('button',{class:'whybtn', onclick:()=>{ RV.why[RV.i] = true; renderReview(); }}, '💡 Why? Tap to see'));
+    }
+  }
+  card.appendChild(el('div',{style:'flex:1'}));
+  const last = RV.i >= list.length - 1;
+  card.appendChild(el('button',{class:'bigbtn ' + (last ? 'green' : 'navy'), onclick:()=>{ if (last){ show('result'); } else { RV.i++; renderReview(); } }}, last ? 'Done reviewing ✓' : 'Next miss →'));
+  side.appendChild(card);
+  if (first) setTimeout(() => first.scrollIntoView({block:'center', behavior:'smooth'}), 60);
+}
+$('rvBack').addEventListener('click', () => show('result'));
+$('rvHome').addEventListener('click', () => { homeMode = 'start'; practiceMode = false; show('home'); renderHome(); });
+
+/* ============ REVIEW ROOM ============ */
+let RR = {season: null, pid: null, missed: false, open: {}};
+function openRR(pid){ RR.pid = pid || null; if (RR.season == null) RR.season = currentSeason(); show('rroom'); renderRR(); }
+function renderRR(){
+  const m = $('rrMain'); m.innerHTML = '';
+  const all = passages.concat(drafts);
+  const seasons = [...new Set(attempts.map(a => a.season || 1))].sort((a,b)=>a-b);
+  const tabs = el('div',{class:'rrtabs'});
+  seasons.forEach(s => tabs.appendChild(el('button',{class:'rrtab' + (RR.season === s ? ' on' : ''), onclick:()=>{ RR.season = s; RR.pid = null; renderRR(); }}, 'Season ' + s)));
+  tabs.appendChild(el('button',{class:'rrtab' + (RR.season === 0 ? ' on' : ''), onclick:()=>{ RR.season = 0; RR.pid = null; renderRR(); }}, 'All'));
+  tabs.appendChild(el('div',{style:'flex:1'}));
+  tabs.appendChild(el('button',{class:'rrtab miss' + (RR.missed ? ' on' : ''), onclick:()=>{ RR.missed = !RR.missed; renderRR(); }}, RR.missed ? '❌ Missed only: ON' : '❌ Missed only'));
+  m.appendChild(tabs);
+  const at = attempts.filter(a => RR.season === 0 || (a.season || 1) === RR.season);
+  if (!at.length){ m.appendChild(el('div',{class:'muted',style:'font-size:1.2em;padding:2em;text-align:center'}, '🎬 No Game shots yet. Play a Game and your shots will show up here!')); return; }
+  if (RR.pid) return renderRRDetail(m, all.find(p => p.id === RR.pid), at.filter(a => a.passageId === RR.pid));
+  const by = {};
+  at.forEach(a => (by[a.passageId] = by[a.passageId] || []).push(a));
+  const g = el('div',{class:'libgrid'});
+  Object.keys(by).map(pid => ({pid, p: all.find(x => x.id === pid), list: by[pid]}))
+    .filter(x => !RR.missed || x.list.some(a => (a.correct||0) < (a.total||5)))
+    .sort((x,y) => String(y.list[y.list.length-1].startedAt).localeCompare(String(x.list[x.list.length-1].startedAt)))
+    .forEach(x => {
+      const ts = tileState(x.pid), best = Math.max(...x.list.map(a => a.correct || 0)), miss = x.list.reduce((n,a) => n + ((a.total||5) - (a.correct||0)), 0);
+      const lv = x.p ? lvlOf(x.p) : (x.list[0].level || 1);
+      g.appendChild(el('button',{class:'book lv' + lv, onclick:()=>{ RR.pid = x.pid; renderRR(); }},
+        el('div',{class:'btitle'}, (TILE[ts.state] || TILE.open)[0] + ' ' + (x.p ? (x.p.short || x.p.title) : x.list[0].title)),
+        el('div',{class:'bmeta'}, LEVELS[lv].en + ' · ' + x.list.length + (x.list.length === 1 ? ' try' : ' tries') + ' · best ' + best + '/5'),
+        el('div',{class:'bmeta'}, miss ? '❌ ' + miss + ' missed in total' : '✅ No misses')));
+    });
+  m.appendChild(g);
+}
+function renderRRDetail(m, p, list){
+  const head = el('div',{class:'rrhead'},
+    el('button',{class:'iconbtn backhome', onclick:()=>{ RR.pid = null; renderRR(); }}, '← All shots'),
+    el('h2',null, p ? p.title : list[0].title),
+    p ? el('button',{class:'iconbtn backhome', onclick:()=> openReader(p.id)}, '📖 Read it') : null);
+  m.appendChild(head);
+  const sents = p ? sentencesOf(p) : [];
+  list.slice().reverse().forEach((a, k) => {
+    const card = el('div',{class:'rrcard'});
+    card.appendChild(el('div',{class:'rrmeta'},
+      el('b',null, 'Try ' + (list.length - k) + ' · ' + a.date),
+      el('span',null, ' · ' + (a.correct||0) + '/' + (a.total||5) + ' · ' + (a.points||0) + ' PTS · reading ' + mmss(a.readSec||0) + (a.tileAfter ? ' · ' + (TILE[a.tileAfter]||TILE.open)[1] : ''))));
+    (a.answers || []).forEach((x, i) => {
+      if (RR.missed && x.correct) return;
+      const q = p ? (p.questions || []).find(qq => qq.qid === x.qid) : null;
+      const proof = q && (q.evidence || []).map(n => sents[Number(n)-1] && sents[Number(n)-1].text).filter(Boolean).join(' ');
+      const key = a.cid + ':' + i;
+      const row = el('div',{class:'rrq ' + (x.correct ? 'ok' : 'bad')},
+        el('div',{class:'rvq'}, 'Q' + (i+1) + ' · ' + ((QTYPES[x.type]||QTYPES.fact)[1] || x.type) + ' · ' + x.prompt),
+        el('div',{class: x.correct ? 'rvgood' : 'rvbad'}, (x.correct ? '✅ ' : '❌ ') + 'My answer: ' + x.chosenText),
+        x.correct ? null : el('div',{class:'rvgood'}, '✅ Answer: ' + x.answerText),
+        el('div',{class:'rrtags'},
+          el('span',null, '⏱ ' + (x.thinkSec != null ? x.thinkSec + 's' : '-')),
+          isFast(x) ? el('span',{class:'tagw'}, '⚡ Fast shot') : null,
+          x.skipped ? el('span',null, '🔁 Skipped, came back') : null,
+          x.proofOk === true ? el('span',null, '📍 Proof ✓') : x.proofOk === false ? el('span',{class:'tagw'}, '📍 Proof ✗') : null),
+        proof ? el('div',{class:'rvproof'}, '📍 "' + proof + '"') : null);
+      if (q && q.explain){
+        if (RR.open[key]) row.appendChild(el('div',{class:'explain'}, '💡 ' + q.explain));
+        else row.appendChild(el('button',{class:'whybtn', onclick:()=>{ RR.open[key] = true; renderRR(); }}, '💡 Why? Tap to see'));
+      }
+      card.appendChild(row);
+    });
+    if (a.restored) card.appendChild(el('div',{class:'muted'}, '🔧 Restored from the record book: score only, no question details.'));
+    else if (RR.missed && (a.answers||[]).every(x => x.correct)) card.appendChild(el('div',{class:'muted'}, '✅ No misses in this try'));
+    m.appendChild(card);
+  });
+}
+$('rrBack').addEventListener('click', () => { homeMode = 'start'; show('home'); renderHome(); });
+
+/* ============ LIBRARY ============ */
+let showWords = (() => { try { return localStorage.getItem('rs-showwords') !== '0'; } catch(e){ return true; } })();
+function libraryList(){
+  const ids = new Set(allAttempts.map(a => a.passageId).concat(Object.keys(practiced)));
+  return passages.concat(drafts).filter(p => ids.has(p.id));
+}
+function openLibrary(){ show('library'); renderLibrary(); }
+function renderLibrary(){
+  const m = $('libMain'); m.innerHTML = '';
+  const list = libraryList();
+  if (!list.length){ m.appendChild(el('div',{class:'muted',style:'font-size:1.2em;padding:2em;text-align:center'}, '📚 No books yet. Finish a Game or Practice passage and it will show up here!')); return; }
+  const byT = {};
+  list.forEach(p => (byT[p.topic] = byT[p.topic] || []).push(p));
+  Object.keys(TOPICS).filter(k => byT[k]).forEach(k => {
+    const tp = TOPICS[k];
+    m.appendChild(el('h2',{class:'libh'}, tp[0] + ' ' + tp[1] + ' (' + tp[2] + ')'));
+    const g = el('div',{class:'libgrid'});
+    byT[k].sort((a,b) => lvlOf(a) - lvlOf(b)).forEach(p => {
+      const nG = allAttempts.filter(a => a.passageId === p.id && a.mode !== 'practice').length, nP = pracN(p.id);
+      g.appendChild(el('button',{class:'book lv' + lvlOf(p), onclick:()=> openReader(p.id)},
+        el('div',{class:'bspine'}),
+        el('div',{class:'btitle'}, p.short || p.title),
+        el('div',{class:'bmeta'}, LEVELS[lvlOf(p)].en + (isGame(p) ? ' · 🏀 Game' : ' · 🏋️ Practice') + ' · read ' + (nG + nP) + 'x')));
+    });
+    m.appendChild(g);
+  });
+}
+function openReader(pid){
+  const p = passages.concat(drafts).find(x => x.id === pid); if (!p) return;
+  show('reader');
+  $('rdTitle').textContent = '📖 ' + p.title;
+  const t = $('rdText'); t.innerHTML = '';
+  t.appendChild(el('h1',{class:'bktitle'}, p.title));
+  if (p.summary){
+    const body = el('div',{class:'nsbody'}, p.summary);
+    const tg = el('button',{class:'nstoggle'}, '▲ Hide');
+    tg.addEventListener('click', () => { const hid = body.style.display === 'none'; body.style.display = hid ? '' : 'none'; tg.textContent = hid ? '▲ Hide' : '▼ Show'; });
+    t.appendChild(el('div',{class:'nutshell bk'}, el('div',{class:'nshead'}, el('h3',null,'📝 In a Nutshell'), tg), body));
+  }
+  t.appendChild(el('div',{class:'bkmeta'}, topicOf(p)[0] + ' ' + topicOf(p)[1] + ' · ' + LEVELS[lvlOf(p)].en + ' · ' + LEVELS[lvlOf(p)].lex));
+  const gl = p.glossary || [];
+  const forms = [];
+  gl.forEach(g => (g.forms || [g.word]).concat([g.word]).forEach(f => forms.push(f)));
+  const esc = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const re = forms.length ? new RegExp('\\b(' + forms.sort((a,b)=>b.length-a.length).map(esc).join('|') + ')\\b', 'gi') : null;
+  (p.paragraphs || []).forEach(para => {
+    const pe = el('p',{class:'bkpara'});
+    const text = para.join(' ');
+    if (!re){ pe.textContent = text; }
+    else {
+      let last = 0; text.replace(re, (mt, _g, off) => { pe.appendChild(document.createTextNode(text.slice(last, off))); pe.appendChild(el('span',{class:'gw'}, mt)); last = off + mt.length; return mt; });
+      pe.appendChild(document.createTextNode(text.slice(last)));
+    }
+    t.appendChild(pe);
+  });
+  t.appendChild(el('div',{class:'bkend'}, '🏀 The End'));
+  t.scrollTop = 0;
+  const w = $('rdGloss'); w.innerHTML = '';
+  w.appendChild(el('h3',null,'📒 Key Words'));
+  if (!gl.length) w.appendChild(el('div',{class:'muted'},'No word list for this one.'));
+  gl.forEach(g => w.appendChild(el('div',{class:'bkw'},
+    el('div',{class:'tww'}, g.word, g.pos ? el('span',{class:'hpos'}, ' ' + g.pos) : null),
+    g.en ? el('div',{class:'hen'}, '🇺🇸 ' + g.en) : null,
+    g.ko ? el('div',{class:'hko'}, '🇰🇷 ' + g.ko) : null)));
+  applyWordsToggle();
+}
+function applyWordsToggle(){
+  $('rdMain').classList.toggle('nowords', !showWords);
+  $('rdWords').textContent = showWords ? '📒 Hide words' : '📒 Show words';
+}
+$('rdWords').addEventListener('click', () => { showWords = !showWords; try { localStorage.setItem('rs-showwords', showWords ? '1' : '0'); } catch(e){} applyWordsToggle(); });
+$('rdBack').addEventListener('click', openLibrary);
+$('libClose').addEventListener('click', () => { homeMode = 'start'; show('home'); renderHome(); });
+
+async function save(){
+  if (!pendingSave) return;
+  const r = pendingSave;
+  const body = Object.assign({}, r); delete body._gloss; delete body._review;
+  try {
+    await writeAttempt(body);
+    pendingSave = null;
+    renderResult(r, 'saved');
+  } catch(e){
+    obSet(obGet().filter(x => x.cid !== body.cid).concat([body]));
+    pendingSave = null; recomputeAttempts();
+    renderResult(r, 'queued', e && e.code);
+  }
+}
+let lastResult = null;
+function renderResult(r, state, code){
+  lastResult = r;
+  const c = $('rcard'); c.innerHTML = '';
+  const rate = r.maxPoints ? r.points / r.maxPoints : 0;
+  const proofRate = r.proofTotal ? r.proofCorrect / r.proofTotal : null;
+  const head = rate >= 0.8 ? 'Great shooting! 🔥' : rate >= 0.5 ? 'Good work! Keep shooting 💪' : 'Every shot makes you stronger 🌱';
+  let msg;
+  if (proofRate != null && proofRate >= 0.8) msg = 'You found the proof almost every time. That is how real readers win!';
+  else if (proofRate != null) msg = 'Next time, find the proof sentence before you shoot. Look → Think → Shoot → Check.';
+  else msg = 'Look → Think → Shoot → Check.';
+  const d = LEVELS[lvlOf(r)];
+  const practice = r.mode === 'practice';
+  c.appendChild(el('div',{class:'rtop'},
+    el('button',{class:'iconbtn rtopbtn', onclick:()=> leaveResult(r, 'start')}, '🏠 Home'),
+    practice ? null : el('button',{class:'iconbtn rtopbtn', onclick:()=> leaveResult(r, 'game')}, '🏀 Court')));
+  if (!practice) c.appendChild(el('div',{class:'savestamp ' + (state === 'saved' ? 'ok' : 'wait'), id:'saveStamp'}, state === 'saved' ? '✅ SAVED' : state === 'saving' ? '⏳ Saving your shot…' : '⏳ Not saved yet. Keep this screen open'));
+  c.appendChild(el('div',{class:'shotno'}, (practice ? '🏋️ PRACTICE · NOT COUNTED · ' : 'SEASON ' + r.season + ' · ') + d.em + ' ' + d.en.toUpperCase()));
+  if (!practice){
+    const ts = TILE[r.tileAfter] || TILE.chance;
+    const big = r.tileAfter === 'rebound' && r.tileBefore === 'chance' ? '💪 REBOUND! You came back and made it!'
+      : r.tileAfter === 'made' && r.tileBefore === 'open' ? '🏀 Made! Tile conquered!'
+      : r.tileAfter === 'chance' ? '🔁 Rebound chance! You can try this tile again.'
+      : head;
+    c.appendChild(el('div',{class:'rhead'}, big));
+    c.appendChild(el('div',{class:'bscore',style:'justify-content:center'}, el('b',null,'+' + r.points), el('span',null,'  →  Season ' + r.season + ': ' + r.seasonPtsAfter + ' PTS')));
+    if (r.tileBefore === 'made' || r.tileBefore === 'rebound') c.appendChild(el('div',{class:'muted',style:'font-weight:800'}, 'This tile was already conquered. Only your best score counts for the season.'));
+    else if (r.tileBefore === 'chance' && r.tileAfter === 'chance') c.appendChild(el('div',{class:'muted',style:'font-weight:800'}, 'Only your best score on a tile counts for the season. Keep trying!'));
+  } else c.appendChild(el('div',{class:'rhead'}, head));
+  c.appendChild(el('div',{class:'rgrid'},
+    el('div',{class:'stat'}, el('b',null, r.correct + ' / ' + r.total), el('span',null,'Shots made')),
+    el('div',{class:'stat'}, el('b',null, r.points + ' / ' + r.maxPoints), el('span',null,'Points')),
+    el('div',{class:'stat'}, el('b',null, r.proofTotal ? r.proofCorrect + ' / ' + r.proofTotal : '–'), el('span',null,'Proof found')),
+    el('div',{class:'stat'}, el('b',null, mmss(r.totalSec)), el('span',null,'Time used'))
+  ));
+  c.appendChild(el('div',{class:'rmsg'}, msg));
+  if (r.readSec != null && r.words){
+    const lo = Math.round(r.words / 125 * 60), hi = Math.round(r.words / 60 * 60), fast = Math.round(r.words / 200 * 60);
+    const tag = r.readSec < fast ? '⚡ Too fast' : r.readSec < lo ? '🟡 A little fast' : r.readSec <= hi ? '✅ Good pace' : '🐢 Slow and careful';
+    c.appendChild(el('div',{class:'hint',style:'width:100%'}, '📖 Reading time ' + mmss(r.readSec) + ' (good: ' + mmss(lo) + '–' + mmss(hi) + ') · ' + tag));
+  }
+  const sp = passages.concat(drafts).find(x => x.id === r.passageId);
+  if (sp && sp.summary){
+    c.appendChild(el('div',{class:'nutshell'},
+      el('h3',null,'📝 The Story in a Nutshell'),
+      el('div',{class:'nsbody'}, sp.summary),
+      el('div',{class:'nstell'}, '🗣️ Now tell Dad in your own words!')));
+  }
+  const rv = r._review || [];
+  if (rv.length){
+    const box = el('div',{class:'review'}, el('h3',null,'🔁 Let\'s review the misses (' + rv.length + ')'), el('div',{class:'twsub'}, 'Read the proof sentence again. Then tap 💡 to check why.'),
+      el('button',{class:'bigbtn navy rvopen', onclick:()=> openReview(r, 0)}, '📖 Review with the whole passage'));
+    rv.forEach(x => {
+      const why = el('div',{class:'explain',style:'display:none'}, '💡 ' + x.explain);
+      box.appendChild(el('div',{class:'rvrow'},
+        el('div',{class:'rvq'}, 'Q' + x.n + '. ' + x.prompt),
+        el('div',{class:'rvbad'}, '❌ My answer: ' + x.chosen),
+        el('div',{class:'rvgood'}, '✅ Answer: ' + x.answer),
+        x.proof.length ? el('div',{class:'rvproof'}, '📍 Proof: "' + x.proof.join(' ') + '"') : null,
+        x.explain ? el('button',{class:'whybtn', onclick:(ev)=>{ why.style.display = 'block'; ev.target.style.display = 'none'; }}, '💡 Why? Tap to see') : null,
+        why));
+    });
+    c.appendChild(box);
+  }
+  const gl = r._gloss || [], seenTO = new Set(), toWords = [];
+  (r.hints || []).forEach(x => {
+    let g = null;
+    if (x.result === 'aiShown' && x.gloss) g = x.gloss;
+    else if (x.result === 'shown') g = gl.find(y => (y.forms || [y.word]).concat([y.word]).map(norm).includes(norm(x.word)));
+    if (g && !seenTO.has(norm(g.word))){ seenTO.add(norm(g.word)); toWords.push(g); }
+  });
+  const rest = gl.filter(g => !seenTO.has(norm(g.word)));
+  if (toWords.length || rest.length){
+    const row = (g, to) => el('div',{class:'twrow' + (to ? ' to' : '')},
+      el('div',{class:'tww'}, g.word, g.pos ? el('span',{class:'hpos'}, ' ' + g.pos) : null),
+      g.en ? el('div',{class:'hen'}, '🇺🇸 ' + g.en) : null,
+      g.ko ? el('div',{class:'hko'}, '🇰🇷 ' + g.ko) : null);
+    const box = el('div',{class:'todaywords'}, el('h3',null,'📒 Today\'s Words'), el('div',{class:'twsub'}, 'Read each one out loud!'));
+    if (toWords.length){
+      box.appendChild(el('div',{class:'twsec'}, '⏸ My Timeout words (' + toWords.length + ')'));
+      toWords.forEach(g => box.appendChild(row(g, true)));
+    }
+    if (rest.length){
+      if (toWords.length) box.appendChild(el('div',{class:'twsec'}, '📒 More words from this passage'));
+      rest.forEach(g => box.appendChild(row(g, false)));
+    }
+    c.appendChild(box);
+  }
+  if (state === 'saving') c.appendChild(el('div',{class:'muted'}, 'Saving…'));
+  if (state === 'queued') c.appendChild(el('div',{class:'hint warn queuedwarn'}, '⚠️ Not uploaded yet (' + (code||'error') + '). Keep this screen open. No need to press anything: it will upload by itself.'));
+  const btns = el('div',{class:'rbtns'});
+  if (state === 'queued'){
+    UP.tries = UP.tries || 1; UP.next = Date.now() + 15000;
+    c.appendChild(el('div',{class:'upstat'}, el('div',{id:'upText'}, '⏳ Uploading automatically… try ' + UP.tries), el('div',{class:'mbar up'}, el('i',{id:'upBar'}))));
+    btns.appendChild(el('button',{class:'bigbtn ghost', id:'upNow', onclick: () => uploadNow(r)}, '🔄 Try now'));
+  }
+  btns.appendChild(el('button',{class:'bigbtn navy', onclick:()=> leaveResult(r, practiceMode ? 'start' : 'game')}, state === 'practice' ? 'Back to home 🏠' : 'Back to the court 🏀'));
+  c.appendChild(btns);
+}
+
+function pauseGame(){
+  if (!P || P.pausedAt) return;
+  P.pausedAt = Date.now(); P.pauses++;
+  clearInterval(tick); hideHint();
+  $('pauseOv').classList.add('on');
+}
+function resumeGame(){
+  if (!P || !P.pausedAt) { $('pauseOv').classList.remove('on'); return; }
+  const d = Date.now() - P.pausedAt;
+  P.t0 += d; if (P.qStart) P.qStart += d; P.pauseSec += d / 1000; P.pausedAt = null;
+  $('pauseOv').classList.remove('on');
+  clearInterval(tick); tick = setInterval(onTick, 250); onTick();
+}
+$('pauseBtn').addEventListener('click', pauseGame);
+$('resumeBtn').addEventListener('click', resumeGame);
+document.addEventListener('visibilitychange', () => { if (document.hidden && P && $('play').classList.contains('on')) pauseGame(); });
+
+$('quitBtn').addEventListener('click', () => {
+  if (!P) return;
+  if (!$('quitBtn').dataset.armed){
+    $('quitBtn').dataset.armed = '1'; $('quitBtn').textContent = 'Quit? Tap again';
+    setTimeout(()=>{ delete $('quitBtn').dataset.armed; $('quitBtn').textContent = '✕'; }, 2500);
+    return;
+  }
+  delete $('quitBtn').dataset.armed; $('quitBtn').textContent = '✕';
+  clearInterval(tick); hideHint(); P = null; document.body.classList.remove('proofing'); $('pauseOv').classList.remove('on');
+  show('home'); renderHome();
+});
+
+
+/* ============ WORD HINTS (press and hold) ============ */
+let suppressClick = false;
+function hintMax(){ const v = Number(settings.hintMax); return isFinite(v) && v >= 0 ? v : DEF.hintMax; }
+function renderTimeouts(){
+  const t = $('timeouts'); if (!P){ t.textContent=''; return; }
+  const left = Math.max(0, hintMax() - P.timeoutsUsed);
+  t.textContent = '⏸ Timeouts (words): ' + left;
+  t.classList.toggle('empty', left === 0);
+}
+(function(){
+  const box = $('passage'); let timer = null, target = null, sx = 0, sy = 0;
+  const cancel = () => { clearTimeout(timer); timer = null; if (target) target.classList.remove('pressing'); target = null; };
+  box.addEventListener('contextmenu', e => e.preventDefault());
+  box.addEventListener('pointerdown', e => {
+    const w = e.target.closest && e.target.closest('.w');
+    if (!w || !P) return;
+    cancel(); target = w; sx = e.clientX; sy = e.clientY;
+    w.classList.add('pressing');
+    timer = setTimeout(() => { const t = target; cancel(); suppressClick = true; setTimeout(()=> suppressClick = false, 700); openHint(t); }, 600);
+  });
+  box.addEventListener('pointermove', e => { if (timer && Math.hypot(e.clientX-sx, e.clientY-sy) > 12) cancel(); });
+  box.addEventListener('pointerup', e => {
+    const t = target, short = !!timer;
+    cancel();
+  });
+  ['pointercancel','pointerleave'].forEach(ev => box.addEventListener(ev, cancel));
+  box.addEventListener('scroll', cancel);
+})();
+document.addEventListener('pointerdown', e => {
+  const pop = $('hintpop');
+  if (pop.style.display === 'block' && !pop.contains(e.target) && !(e.target.closest && e.target.closest('.w'))) hideHint();
+});
+function hideHint(){ $('hintpop').style.display = 'none'; }
+function openHint(wEl){
+  if (!P) return;
+  const raw = wEl.dataset.w, key = norm(raw);
+  const g = findGloss(P.p, raw);
+  const word = g ? g.word : key;
+  const prev = P.hints.find(h => norm(h.word) === norm(word) && h.result === 'shown');
+  const pop = $('hintpop'); pop.innerHTML = '';
+  let rec = null;
+  pop.appendChild(el('div',{class:'hw'}, raw, g && g.pos ? el('span',{class:'hpos'}, ' ' + g.pos) : null));
+  if (isBlocked(P.p, raw)){
+    pop.appendChild(el('div',{class:'hnote'}, '🕵️ This is a quiz word! Read the sentences around it and figure it out like a detective.'));
+    if (!P.hints.some(h => norm(h.word) === key && h.result === 'blocked')) rec = {word:key, result:'blocked'};
+  } else if (g && (prev || P.timeoutsUsed < hintMax())){
+    if (g.en) pop.appendChild(el('div',{class:'hen'}, '🇺🇸 ' + g.en));
+    if (!prev){ P.timeoutsUsed++; rec = {word, result:'shown'}; }
+  } else if (g){
+    pop.appendChild(el('div',{class:'hnote'}, '⏸ No timeouts left! Guess from the sentence. You will see this word on Today\'s Words after the passage.'));
+    if (!P.hints.some(h => norm(h.word) === norm(word))) rec = {word, result:'noTimeout'};
+  } else {
+    const prevAi = P.hints.find(h => norm(h.word) === key && h.result === 'aiShown');
+    const dg = DICT[key] || DICT[raw.toLowerCase()];
+    if (dg && (prevAi || P.timeoutsUsed < hintMax())){
+      if (dg.pos) pop.querySelector('.hw').appendChild(el('span',{class:'hpos'}, ' ' + dg.pos));
+      pop.appendChild(el('div',{class:'hen'}, '🇺🇸 ' + dg.en));
+      if (!prevAi){ P.timeoutsUsed++; rec = {word: dg.word, result:'aiShown', gloss: {word: dg.word, pos: dg.pos, en: dg.en, ko: dg.ko}, src:'dict'}; }
+      document.querySelectorAll('.w').forEach(x => { if (norm(x.dataset.w) === key) x.classList.add('looked'); });
+    } else if (prevAi || P.timeoutsUsed < hintMax()){
+      if (!prevAi) P.timeoutsUsed++;
+      const slot = el('div',{class:'hnote'}, '🔎 Looking it up…');
+      pop.appendChild(slot);
+      const sentence = (wEl.closest('.s') || wEl).textContent.trim();
+      lookupWord(raw, sentence).then(gl => {
+        slot.remove();
+        const foot = pop.querySelector('.hfoot');
+        if (!gl){ pop.insertBefore(el('div',{class:'hnote'}, '😅 I could not look it up right now. Try reading the sentence again! (No timeout used)'), foot); if (!prevAi) P.timeoutsUsed--; const fs = foot && foot.querySelector('span'); if (fs) fs.textContent = '⏸ Timeouts (words) left: ' + Math.max(0, hintMax() - P.timeoutsUsed); renderTimeouts(); return; }
+        if (gl.pos) pop.querySelector('.hw').appendChild(el('span',{class:'hpos'}, ' ' + gl.pos));
+        pop.insertBefore(el('div',{class:'hen'}, '🇺🇸 ' + gl.en), foot);
+        if (!prevAi && P){ P.hints.push({word: gl.word || key, result:'aiShown', gloss: gl, phase: P.phase === 'read' ? 'read' : 'question', at: Math.round(elapsed())}); }
+        document.querySelectorAll('.w').forEach(x => { if (norm(x.dataset.w) === key) x.classList.add('looked'); });
+      });
+    } else {
+      pop.appendChild(el('div',{class:'hnote'}, '⏸ No timeouts left! Read the sentence again and guess what it means.'));
+      if (!P.hints.some(h => norm(h.word) === key)) rec = {word:key, result:'notInList'};
+    }
+  }
+  if (rec){ rec.phase = P.phase === 'read' ? 'read' : 'question'; rec.at = Math.round(elapsed()); P.hints.push(rec); }
+  if (g) document.querySelectorAll('.w').forEach(x => { if (norm(x.dataset.w) === key) x.classList.add('looked'); });
+  const left = Math.max(0, hintMax() - P.timeoutsUsed);
+  pop.appendChild(el('div',{class:'hfoot'}, el('span',null, '⏸ Timeouts (words) left: ' + left), el('button',{onclick: hideHint}, 'Got it')));
+  pop.style.display = 'block';
+  const r = wEl.getBoundingClientRect(), pw = pop.offsetWidth, ph = pop.offsetHeight;
+  let x = Math.min(window.innerWidth - pw - 12, Math.max(12, r.left + r.width/2 - pw/2));
+  let y = r.bottom + 10; if (y + ph > window.innerHeight - 12) y = r.top - ph - 10;
+  pop.style.left = x + 'px'; pop.style.top = Math.max(12, y) + 'px';
+  renderTimeouts();
+}
+
+let sampler; 
+async function lookupWord(raw, sentence){
+  const key = norm(raw); if (!key) return null;
+  try { if (db){ const c = await db.doc('wordcache/' + key).get(); if (c.exists) return c.data(); } } catch(e){}
+  try {
+    if (sampler === undefined) sampler = await window.claude.use('sample');
+    if (!sampler) return null;
+    const prompt = 'You write a children\'s dictionary for a 6-year-old Korean boy who reads English. ' +
+      'Define the word "' + raw + '" exactly as it is used in this sentence: "' + sentence + '". ' +
+      'Return ONLY JSON: {"word": base form, "pos": one of noun|verb|adjective|adverb|phrase|other, ' +
+      '"en": 1-2 short sentences, 12-28 words, simple words only, children\'s dictionary style (e.g. "To toss something means to throw it gently."), ' +
+      '"ko": Korean equivalent word, a colon, then 1-2 friendly sentences ending in ~예요/~해요 style, 20-60 Korean characters, no hanja}.';
+    const v = await sampler.json(prompt, {modelTier:'quick'});
+    if (!v || !v.en || !v.ko) return null;
+    const gl = {word: String(v.word || raw).slice(0,40), pos: String(v.pos || '').slice(0,12), en: String(v.en).slice(0,300), ko: String(v.ko).slice(0,200), ai: true};
+    try { if (db) await db.doc('wordcache/' + key).set(gl); } catch(e){}
+    return gl;
+  } catch(e){ logErr('lookup', e); return null; }
+}
+
+/* ============ MY WORDS (kid view) ============ */
+function collectWords(){
+  const map = {};
+  attempts.forEach(a => {
+    const p = passages.concat(drafts).find(pp => pp.id === a.passageId);
+    const looked = new Set((a.hints || []).filter(x => x.result === 'shown' || x.result === 'noTimeout').map(x => norm(x.word)));
+    ((p && p.glossary) || []).forEach(g => {
+      if (p && isBlocked(p, g.word)) return;
+      const k = norm(g.word);
+      const m = map[k] || (map[k] = {word: g.word, gloss: g, seen:0, asked:0, passages:new Set(), first:a.date, last:a.date});
+      m.seen++; if (looked.has(k)) m.asked++; m.passages.add(a.title || a.passageId);
+      if (a.date < m.first) m.first = a.date; if (a.date > m.last) m.last = a.date;
+    });
+    (a.hints || []).filter(x => x.result === 'aiShown' && x.gloss).forEach(x => {
+      const k = norm(x.gloss.word || x.word);
+      const m = map[k] || (map[k] = {word: x.gloss.word || x.word, gloss: x.gloss, seen:0, asked:0, passages:new Set(), first:a.date, last:a.date});
+      m.seen++; m.asked++; m.passages.add(a.title || a.passageId);
+      if (a.date > m.last) m.last = a.date;
+    });
+  });
+  return Object.values(map).sort((a,b) => b.asked - a.asked || (b.last > a.last ? 1 : b.last < a.last ? -1 : (a.word < b.word ? -1 : 1)));
+}
+function renderWords(){
+  const m = $('wordsMain'); m.innerHTML = '';
+  const list = collectWords();
+  if (!list.length){ m.appendChild(el('div',{class:'msg'}, 'No words yet. Finish a passage and its hard words will appear here!')); return; }
+  const g = el('div',{class:'wgrid'});
+  list.forEach(w => g.appendChild(el('div',{class:'card wcard'},
+    el('b',null, (w.asked ? '⭐ ' : '') + w.word, w.gloss.pos ? el('span',{class:'hpos'}, ' ' + w.gloss.pos) : null),
+    w.gloss.en ? el('div',{class:'en'}, w.gloss.en) : null,
+    w.gloss.ko ? el('div',{class:'ko'}, w.gloss.ko) : null,
+    el('div',{class:'cnt'}, w.asked ? 'Pressed ' + w.asked + (w.asked > 1 ? ' times' : ' time') : 'Met in ' + w.passages.size + (w.passages.size > 1 ? ' passages' : ' passage')))));
+  m.appendChild(g);
+}
+$('wordsBtn').addEventListener('click', () => { show('words'); renderWords(); });
+$('wordsClose').addEventListener('click', () => { show('home'); renderHome(); });
+
+
+/* ============ LAYOUT (auto / portrait / landscape) ============ */
+let layoutPref = 'auto';
+try { layoutPref = localStorage.getItem('rs-layout') || 'auto'; } catch(e){}
+function applyLayout(){
+  const auto = window.innerHeight > window.innerWidth || window.innerWidth < 900;
+  const pt = layoutPref === 'portrait' ? true : layoutPref === 'landscape' ? false : auto;
+  document.body.classList.toggle('pt', pt);
+  document.body.classList.toggle('col', pt && window.innerWidth > window.innerHeight * 0.75);
+  const lab = {auto:'🔄 Layout: Auto', portrait:'📱 Layout: Portrait', landscape:'🖥 Layout: Landscape'}[layoutPref];
+  const b = $('layoutBtn'); if (b) b.textContent = lab;
+}
+$('layoutBtn').addEventListener('click', () => {
+  layoutPref = {auto:'portrait', portrait:'landscape', landscape:'auto'}[layoutPref];
+  try { localStorage.setItem('rs-layout', layoutPref); } catch(e){}
+  applyLayout(); refresh();
+});
+window.addEventListener('resize', applyLayout);
+applyLayout();
+
+/* ============ PARENT ============ */
+function openParent(){ show('parent'); renderParent(); }
+$('parentClose').addEventListener('click', () => { show('home'); renderHome(); });
+
+function kstDay(off){ const d = new Date(Date.now() + 9*3600*1000 - (off||0)*86400000); return d.toISOString().slice(0,10); }
+function weekStats(from, to){
+  const g = attempts.filter(a => a.date >= from && a.date <= to);
+  const s = {games: g.length, pts:0, maxp:0, ok:0, tot:0, pc:0, pt:0, wpm:[], fast:0, pauses:0, pauseSec:0, timeouts:0, byType:{}, misses:[]};
+  g.forEach(a => {
+    s.pts += a.points||0; s.maxp += a.maxPoints||0; s.ok += a.correct||0; s.tot += a.total||0; s.pc += a.proofCorrect||0; s.pt += a.proofTotal||0;
+    if (a.readSec && a.words){ const w = a.words / (a.readSec/60); s.wpm.push(w); if (w > 125) s.fast++; }
+    s.pauses += a.pauses||0; s.pauseSec += a.pauseSec||0; s.timeouts += a.timeoutsUsed||0;
+    (a.answers||[]).forEach(x => { const t = (s.byType[x.type] = s.byType[x.type] || [0,0]); t[0] += x.correct?1:0; t[1]++; if (!x.correct) s.misses.push({title:a.title, type:x.type, prompt:x.prompt, date:a.date}); });
+  });
+  const runs = [];
+  Object.keys(practiced).forEach(pid => (practiced[pid].runs || []).forEach(r => { if (r.date >= from && r.date <= to) runs.push(Object.assign({pid}, r)); }));
+  s.pruns = runs.length; s.qruns = runs.filter(r => r.readMode === 'quarter' && r.paraSec && r.paraWords);
+  const spw = target => {};
+  s.para = [];
+  s.qruns.forEach(r => r.paraSec.forEach((sec, i) => { const w = r.paraWords[i]; if (!w || sec == null) return; const p = (s.para[i] = s.para[i] || {sec:0, w:0, n:0}); p.sec += sec; p.w += w; p.n++; }));
+  s.kws = s.qruns.map(r => ({pid: r.pid, kw: (r.kw||[]).filter(Boolean)}));
+  return s;
+}
+function parentWeekly(b){
+  const to = kstDay(0), from = kstDay(6), pto = kstDay(7), pfrom = kstDay(13);
+  const s = weekStats(from, to), ps = weekStats(pfrom, pto);
+  const tgt = Number(settings.readSecPerWord) || DEF.readSecPerWord;
+  const acc = (a,b) => b ? (a/b*100) : null, f1 = v => v == null ? 'n.a.' : v.toFixed(1) + '%';
+  const avg = a => a.length ? a.reduce((x,y)=>x+y,0)/a.length : null;
+  b.appendChild(el('h2',null,'주간 리포트 · ' + from + ' ~ ' + to));
+  const kpi = el('div',{class:'kpis'});
+  [['Game 플레이', s.games + '회', '전주 ' + ps.games + '회'],
+   ['정답률', f1(acc(s.ok,s.tot)), '전주 ' + f1(acc(ps.ok,ps.tot))],
+   ['근거 문장 정확도', f1(acc(s.pc,s.pt)), '전주 ' + f1(acc(ps.pc,ps.pt))],
+   ['평균 읽기 속도', avg(s.wpm) == null ? 'n.a.' : Math.round(avg(s.wpm)) + ' wpm', '적정 60–125 wpm'],
+   ['Practice', s.pruns + '회', 'Quarter ' + s.qruns.length + '회'],
+   ['Pause · 단어 타임아웃', s.pauses + '회 · ' + s.timeouts + '회', 'Pause 합계 ' + mmss(s.pauseSec)]
+  ].forEach(k => kpi.appendChild(el('div',{class:'kpi'}, el('div',{class:'kl'},k[0]), el('div',{class:'kv'},k[1]), el('div',{class:'ks'},k[2]))));
+  b.appendChild(kpi);
+  b.appendChild(el('h3',null,'문제 유형별 정답률 (Game)'));
+  const types = Object.keys(s.byType);
+  if (!types.length) b.appendChild(el('div',{class:'muted'},'이번 주 Game 기록 없음'));
+  types.sort((x,y) => (s.byType[x][0]/s.byType[x][1]) - (s.byType[y][0]/s.byType[y][1])).forEach(t => b.appendChild(hbar((QTYPES[t]||QTYPES.fact)[2], s.byType[t][0], s.byType[t][1])));
+  b.appendChild(el('h3',null,'문단별 읽기 속도 (Practice Quarter 모드)'));
+  if (!s.para.length) b.appendChild(el('div',{class:'muted'},'이번 주 Quarter 모드 기록 없음'));
+  else {
+    const tb = el('table',{class:'ptable'}, el('tr',null, el('th',null,'문단'), el('th',null,'평균 초/단어'), el('th',null,'목표(' + tgt + ') 대비'), el('th',null,'횟수')));
+    s.para.forEach((p, i) => { if (!p) return; const v = p.sec / p.w; tb.appendChild(el('tr',null, el('td',null, (i+1) + '문단'), el('td',null, v.toFixed(2)), el('td',null, Math.round(v/tgt*100) + '%'), el('td',null, String(p.n)))); });
+    b.appendChild(tb);
+    b.appendChild(el('div',{class:'muted'},'목표 대비 100% 근처는 최소 읽기 시간만 채우고 넘긴 경우임. 문단이 뒤로 갈수록 수치가 낮아지면 집중 저하 신호로 볼 수 있음'));
+  }
+  if (false){
+    b.appendChild(el('h3',null,'고른 키워드 (Quarter 모드)'));
+    s.kws.forEach(k => { const p = passages.concat(drafts).find(x => x.id === k.pid); b.appendChild(el('div',{class:'muted'}, (p ? (p.short || p.title) : k.pid) + ': ' + (k.kw.join(' · ') || '-'))); });
+  }
+  // insights
+  const ins = [];
+  if (types.length){ const w = types[0], r = s.byType[w]; if (r[1] >= 2 && r[0]/r[1] < 0.8) ins.push('약한 유형: ' + (QTYPES[w]||QTYPES.fact)[2] + ' ' + f1(acc(r[0],r[1])) + ' → 다음 주 해당 유형 오답 리뷰 우선 필요함'); }
+  const aw = avg(s.wpm); if (aw != null){ ins.push(aw > 125 ? '읽기 속도가 적정 범위보다 빠름(' + Math.round(aw) + ' wpm) → 읽기 서두름 여부 확인 필요함' : aw < 60 ? '읽기 속도가 적정 범위보다 느림(' + Math.round(aw) + ' wpm) → 어휘 부담 여부 확인 필요함' : '읽기 속도는 적정 범위 안에 있음(' + Math.round(aw) + ' wpm)'); }
+  if (s.para.length >= 2 && s.para[0]){ const base = s.para[0].sec / s.para[0].w; s.para.forEach((p, i) => { if (i && p && (p.sec/p.w) < base * 0.7) ins.push((i+1) + '문단에서 읽기 속도가 1문단 대비 30% 이상 빨라짐 → 해당 지점에서 집중 저하 가능성 있음'); }); }
+  if (s.games === 0) ins.push('이번 주 Game 기록이 없음 → 주 3회 이상 플레이 권장함');
+  b.appendChild(el('h3',null,'시사점'));
+  if (!ins.length) b.appendChild(el('div',{class:'muted'},'데이터가 더 쌓이면 표시됨'));
+  ins.forEach(t => b.appendChild(el('div',{class:'insight'}, '- ' + t)));
+  if (s.misses.length){
+    b.appendChild(el('h3',null,'이번 주 오답 (' + s.misses.length + ')'));
+    s.misses.forEach(m => b.appendChild(el('div',{class:'muted'}, m.date + ' · ' + m.title + ' · ' + (QTYPES[m.type]||QTYPES.fact)[2] + ' · ' + m.prompt)));
+  }
+  const txt = ['▪ Aaron Reading Shots 주간 리포트 (' + from + ' ~ ' + to + ')',
+    '  - Game ' + s.games + '회 (전주 ' + ps.games + '회), 정답률 ' + f1(acc(s.ok,s.tot)) + ', 근거 문장 ' + f1(acc(s.pc,s.pt)),
+    '  - 평균 읽기 속도 ' + (aw == null ? 'n.a.' : Math.round(aw) + ' wpm') + ', Practice ' + s.pruns + '회 (Quarter ' + s.qruns.length + '회)',
+    '  - Pause ' + s.pauses + '회, 단어 타임아웃 ' + s.timeouts + '회', '', '▪ 시사점'].concat(ins.map(t => '  - ' + t)).join('\n');
+  b.appendChild(el('button',{class:'pbtn',style:'margin-top:1em', onclick: async () => { try { await navigator.clipboard.writeText(txt); toast('복사됨'); } catch(e){ toast('복사 실패'); } }}, '리포트 텍스트 복사 (메신저용)'));
+}
+function exportBackup(kind){
+  const all = passages.concat(drafts);
+  let data, name, type;
+  if (kind === 'json'){
+    data = JSON.stringify({exportedAt: new Date().toISOString(), attempts: allAttempts.filter(a => !a._queued), practiced}, null, 1);
+    name = 'reading-shots-backup-' + kstDay(0) + '.json'; type = 'application/json';
+  } else {
+    const esc = v => '"' + String(v == null ? '' : v).replace(/"/g,'""') + '"';
+    const rows = [['date','season','passageId','title','level','try_correct','points','readSec','q','type','prompt','myAnswer','answer','correct','proofOk','thinkSec','fast','skipped','wrongReason']];
+    attempts.forEach(a => (a.answers||[]).forEach((x,i) => rows.push([a.date, a.season||1, a.passageId, a.title, a.level, a.correct, a.points, a.readSec, i+1, x.type, x.prompt, x.chosenText, x.answerText, x.correct?1:0, x.proofOk == null ? '' : (x.proofOk?1:0), x.thinkSec, isFast(x)?1:0, x.skipped||0, x.reason||''])));
+    data = '\ufeff' + rows.map(r => r.map(esc).join(',')).join('\n');
+    name = 'reading-shots-answers-' + kstDay(0) + '.csv'; type = 'text/csv';
+  }
+  try {
+    const url = URL.createObjectURL(new Blob([data], {type}));
+    const a = el('a',{href:url, download:name}); document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 5000);
+    toast('⬇ ' + name);
+  } catch(e){ toast('다운로드 실패 · 복사 버튼을 사용해 주세요'); }
+  return data;
+}
+function parentBackup(b){
+  b.appendChild(el('h2',null,'기록 백업 (내보내기)'));
+  b.appendChild(el('div',{class:'muted',style:'margin-bottom:.6em'}, 'Game ' + attempts.length + '회 · Practice 지문 ' + Object.keys(practiced).length + '개 기록. 시즌 종료 시마다 내려받아 보관하는 것을 권장함'));
+  b.appendChild(el('button',{class:'pbtn',style:'margin:.3em .5em .3em 0', onclick:()=> exportBackup('csv')}, '⬇ 엑셀용 CSV (문항별 1행)'));
+  b.appendChild(el('button',{class:'pbtn',style:'margin:.3em .5em .3em 0', onclick:()=> exportBackup('json')}, '⬇ 전체 백업 JSON'));
+  b.appendChild(el('button',{class:'pbtn',style:'margin:.3em 0;background:#6E6E73', onclick: async ()=>{ const d = JSON.stringify({exportedAt: new Date().toISOString(), attempts: allAttempts.filter(a => !a._queued), practiced, milestones}); try { await navigator.clipboard.writeText(d); toast('전체 백업 JSON 복사됨'); } catch(e){ toast('복사 실패'); } }}, '📋 백업 JSON 복사 (다운로드가 안 될 때)'));
+  const ta = el('textarea',{style:'width:100%;height:7em;margin-top:.8em;font-size:.85em',placeholder:'다른 버전에서 복사한 백업 JSON을 여기에 붙여넣기'});
+  b.appendChild(el('h3',{style:'margin-top:1.2em'},'📥 기록 가져오기'));
+  b.appendChild(el('div',{class:'muted'},'다른 버전(Claude 게임 ↔ 새 웹 버전)의 "📋 백업 JSON 복사" 내용을 붙여넣으면, 없는 기록만 추가함. 이미 있는 기록은 건드리지 않음.'));
+  b.appendChild(ta);
+  b.appendChild(el('button',{class:'pbtn',style:'margin:.3em 0', onclick: async ()=>{ let j; try { j = JSON.parse(ta.value); } catch(e){ toast('JSON 형식이 아니에요'); return; } if (!db){ toast('서버 연결이 필요해요'); return; }
+    const have = new Set(dbAttempts.map(a => a.cid || a.id)); let na = 0, np = 0, nm = 0;
+    for (const a of (j.attempts || [])){ const id = a.cid || a.id; if (!id || have.has(id)) continue; const v = {}; Object.keys(a).forEach(k => { if (k[0] !== '_' && k !== 'id') v[k] = a[k]; }); v.cid = id; v.importedAt = new Date().toISOString(); try { await db.doc('attempts/' + id).set(v); na++; } catch(e){ const o = obGet(); if (!o.some(x => x.cid === id)){ o.push(v); obSet(o); } na++; } await sleep(150); }
+    for (const [pid, d] of Object.entries(j.practiced || {})){ if (!d || !(d.count > 0) || pracN(pid) >= d.count) continue; await savePracticed(pid, d); np++; await sleep(150); }
+    for (const [mid, d] of Object.entries(j.milestones || {})){ if (milestones[mid]) continue; try { await db.doc('milestones/' + mid).set(d); nm++; } catch(e){} await sleep(100); }
+    toast('가져오기 완료: Game ' + na + '판 · Practice ' + np + '개 · 기념 ' + nm + '개', 5000); refresh(); }}, '📥 붙여넣은 기록 가져오기'));
+}
+function parentDiag(b){
+  b.appendChild(el('h2',null,'연결 진단'));
+  const info = el('div',{class:'muted',style:'line-height:1.7'});
+  info.textContent = '기기: ' + devName() + ' · 온라인: ' + (navigator.onLine ? '예' : '아니오') + ' · 저장 권한: ' + (canWrite === null ? '확인 불가' : canWrite ? '있음' : '없음') + ' · 업로드 대기: ' + obGet().length + '건';
+  b.appendChild(info);
+  const out = el('pre',{style:'white-space:pre-wrap;font-size:.85em;background:#F4F4F5;padding:.8em;border-radius:.6em;min-height:3em'}, '아래 버튼을 누르면 읽기·쓰기 테스트를 함');
+  b.appendChild(el('button',{class:'pbtn',style:'margin:.6em 0', onclick: async () => {
+    out.textContent = '테스트 중…';
+    const lines = [];
+    let t = performance.now();
+    try { const s = await db.doc('config/settings').get(); lines.push('읽기: 성공 (' + Math.round(performance.now() - t) + 'ms, 설정 문서 ' + (s.exists ? '있음' : '없음') + ')'); }
+    catch(e){ logErr('diag-read', e); lines.push('읽기: 실패 ' + (e && e.code) + ' · ' + (e && e.message || '')); }
+    t = performance.now();
+    try { await db.doc('diag/' + devName()).set({at: new Date().toISOString(), ua: navigator.userAgent.slice(0,200)}); lines.push('쓰기: 성공 (' + Math.round(performance.now() - t) + 'ms)'); }
+    catch(e){ logErr('diag-write', e); lines.push('쓰기: 실패 ' + (e && e.code) + ' · ' + (e && e.message || '')); }
+    if (obGet().length){ await flushOutbox(); lines.push('업로드 대기 처리 후 남은 건수: ' + obGet().length); }
+    out.textContent = lines.join('\n');
+  }}, '연결 테스트 실행'));
+  b.appendChild(out);
+  let log = []; try { log = JSON.parse(localStorage.getItem(ERRLOG) || '[]'); } catch(e){}
+  b.appendChild(el('h2',null,'최근 오류 (이 기기, ' + log.length + '건)'));
+  b.appendChild(el('pre',{style:'white-space:pre-wrap;font-size:.8em;background:#F4F4F5;padding:.8em;border-radius:.6em'},
+    log.length ? log.slice().reverse().map(x => x.at.replace('T',' ').slice(0,19) + 'Z · ' + x.op + ' · ' + x.code + ' · online=' + x.online + '\n  ' + x.msg).join('\n') : '없음'));
+  b.appendChild(el('div',{class:'muted'}, 'UA: ' + navigator.userAgent));
+}
+function renderParent(){
+  const tabs = [['weekly','주간 리포트'],['summary','요약'],['analysis','오답 분석'],['words','단어장'],['bank','지문 은행'],['log','풀이 기록'],['settings','설정'],['backup','기록 백업'],['diag','연결 진단']];
+  const t = $('ptabs'); t.innerHTML = '';
+  tabs.forEach(([k,l]) => t.appendChild(el('button',{class:'ptab' + (parentTab===k?' on':''), onclick:()=>{parentTab=k; renderParent();}}, l)));
+  const b = $('pbody'); b.innerHTML = '';
+  if (parentTab === 'summary') parentSummary(b);
+  if (parentTab === 'analysis') parentAnalysis(b);
+  if (parentTab === 'words') parentWords(b);
+  if (parentTab === 'bank') parentBank(b);
+  if (parentTab === 'diag') parentDiag(b);
+  if (parentTab === 'weekly') parentWeekly(b);
+  if (parentTab === 'backup') parentBackup(b);
+  if (parentTab === 'log') parentLog(b);
+  if (parentTab === 'settings') parentSettings(b);
+}
+
+function hbar(lab, a, b){
+  const v = pct(a,b);
+  return el('div',{class:'hbar'}, el('span',{class:'lab'}, lab),
+    el('span',{class:'trk'}, el('i',{style:'width:' + (v||0) + '%'})),
+    el('span',{class:'val'}, fmtPct(v) + ' (' + a + '/' + b + ')'));
+}
+
+function parentSummary(b){
+  const n = attempts.length;
+  let pts=0,maxp=0,pc=0,pt=0,rs=0,rc=0;
+  const byType = {}, byTopic = {}, byDiff = {}, reasons = {};
+  attempts.forEach(a => {
+    pts+=a.points||0; maxp+=a.maxPoints||0; pc+=a.proofCorrect||0; pt+=a.proofTotal||0;
+    if (a.readSec != null){ rs += a.readSec; rc++; }
+    const tp = (byTopic[a.topic] = byTopic[a.topic] || [0,0]);
+    (a.answers||[]).forEach(x => {
+      const ty = (byType[x.type] = byType[x.type] || [0,0]); ty[0] += x.correct?1:0; ty[1]++;
+      tp[0] += x.correct?1:0; tp[1]++;
+      if (x.difficulty){ const d = (byDiff[x.difficulty] = byDiff[x.difficulty] || [0,0]); d[0] += x.correct?1:0; d[1]++; }
+      if (x.reason) reasons[x.reason] = (reasons[x.reason]||0) + 1;
+    });
+  });
+  b.appendChild(el('h2',null,'전체 현황'));
+  b.appendChild(el('div',{class:'kpis'},
+    el('div',{class:'kpi'}, el('b',null, 'SEASON ' + currentSeason() + ' · ' + seasonStats(currentSeason()).pts + '점'), el('span',null,'정복 ' + seasonStats(currentSeason()).made + '/' + seasonStats(currentSeason()).total + '칸 · 리바운드 ' + seasonStats(currentSeason()).reb + ' · 누적 ' + n + '회 풀이')),
+    el('div',{class:'kpi'}, el('b',null, fmtPct(pct(pts,maxp))), el('span',null,'득점률 (정답 1·2·3점 + 근거 1점)')),
+    el('div',{class:'kpi'}, el('b',null, fmtPct(pct(pc,pt))), el('span',null,'근거 문장 정답률')),
+    el('div',{class:'kpi'}, el('b',null, rc ? mmss(rs/rc) : 'n.a.'), el('span',null,'평균 읽기 시간'))
+  ));
+  b.appendChild(el('h2',null,'단계별 성공률 (슛 기록)'));
+  const bsx = boxScore();
+  [1,2,3].forEach(L => b.appendChild(hbar(LEVELS[L].ko + ' (' + L + '단계)', bsx.b[L][0], bsx.b[L][1])));
+  b.appendChild(hbar('근거 적중 (And-1)', bsx.ao[0], bsx.ao[1]));
+  b.appendChild(el('h2',null,'문항 유형별 정답률'));
+  Object.keys(QTYPES).forEach(k => { const v = byType[k]; if (v) b.appendChild(hbar(QTYPES[k][2], v[0], v[1])); });
+  b.appendChild(el('h2',null,'난이도별 정답률'));
+  [1,2,3].forEach(k => { const v = byDiff[k]; if (v) b.appendChild(hbar('난이도 ' + DIFF[k], v[0], v[1])); });
+  b.appendChild(el('h2',null,'주제별 정답률'));
+  Object.keys(byTopic).forEach(k => { const v = byTopic[k]; b.appendChild(hbar((TOPICS[k]||TOPICS.other)[2], v[0], v[1])); });
+  b.appendChild(el('h2',null,'오답 원인 (Aaron 선택)'));
+  const rt = Object.values(reasons).reduce((s,x)=>s+x,0);
+  if (!rt) b.appendChild(el('div',{class:'muted'}, '아직 기록 없음'));
+  Object.keys(REASON_KO).forEach(k => { if (reasons[k]) b.appendChild(hbar(REASON_KO[k], reasons[k], rt)); });
+  if (!n) b.appendChild(el('p',{class:'muted',style:'margin-top:1em'}, '풀이 기록이 쌓이면 위 지표가 채워짐'));
+}
+
+
+function allAnswers(){
+  const out = [];
+  attempts.forEach((a, ai) => (a.answers || []).forEach((x, qi) => out.push(Object.assign({}, x, {shot: a.shotNo || ai+1, date:a.date, title:a.title || a.passageId, passageId:a.passageId, topic:a.topic, qi}))));
+  return out;
+}
+function qText(x){
+  if (x.prompt) return {prompt:x.prompt, chosen:x.chosenText, answer:x.answerText};
+  const p = passages.find(pp => pp.id === x.passageId), q = p && p.questions && p.questions[x.qi];
+  return q ? {prompt:q.prompt, chosen:q.choices[x.chosen], answer:q.choices[q.answer]} : {prompt:'n.a.', chosen:'n.a.', answer:'n.a.'};
+}
+function parentAnalysis(b){
+  const A = allAnswers();
+  if (!A.length){ b.appendChild(el('div',{class:'muted'}, '아직 기록 없음. 풀이가 쌓이면 오답 패턴이 표시됨')); return; }
+  const wrong = A.filter(x => !x.correct);
+  const sk = A.filter(x => x.skipped);
+  b.appendChild(el('h3',null,'건너뛰고 돌아온 문제'));
+  b.appendChild(sk.length ? hbar('건너뛴 뒤 정답률', sk.filter(x => x.correct).length, sk.length) : el('div',{class:'muted'},'아직 건너뛴 문제 없음'));
+  const proofQs = A.filter(x => x.proofOk !== null && x.proofOk !== undefined);
+  const wrongProofOk = wrong.filter(x => x.proofOk === true).length;
+  const wrongProofBad = wrong.filter(x => x.proofOk === false).length;
+  const quick = A.filter(x => isFast(x)), slow = A.filter(x => x.thinkSec != null && !isFast(x));
+  const acc = arr => fmtPct(pct(arr.filter(x=>x.correct).length, arr.length));
+
+  b.appendChild(el('h2',null,'오답 패턴 요약'));
+  b.appendChild(el('div',{class:'kpis'},
+    el('div',{class:'kpi'}, el('b',null, wrong.length + ' / ' + A.length), el('span',null,'오답 수 / 전체 문항')),
+    el('div',{class:'kpi'}, el('b',null, String(wrongProofOk)), el('span',null,'근거는 맞혔는데 답이 틀림 (판단 실수)')),
+    el('div',{class:'kpi'}, el('b',null, String(wrongProofBad)), el('span',null,'근거도 못 찾고 틀림 (근거 미확인)')),
+    el('div',{class:'kpi'}, el('b',null, acc(quick) + ' vs ' + acc(slow)), el('span',null,'정답률: 급한 답(주제·세부·어휘 15초, NOT·추론·순서 20초 미만) vs 적정 속도 답 · 급한 답 ' + quick.length + '건'))
+  ));
+  b.appendChild(el('p',{class:'muted',style:'margin-top:.5em'}, '급한 답의 정답률이 적정 속도 답보다 뚜렷하게 낮으면 찍기 패턴이 남아 있는 것으로 판단됨. 적정 범위: 주제·세부·어휘 20~60초, NOT·추론·순서 30~90초'));
+
+  b.appendChild(el('h2',null,'10회 구간별 추이'));
+  const tb = el('table');
+  tb.appendChild(el('tr',null, ['구간','회차 수','득점률','정답률','근거 정답률','평균 읽기 시간','평균 힌트 사용'].map((x,i)=> el('th',{class:i?'num':null}, x))));
+  for (let s = 0; s < attempts.length; s += 10){
+    const blk = attempts.slice(s, s+10);
+    let pts=0,mx=0,c=0,t=0,pc=0,pt=0,rs=0,rc=0,hu=0;
+    blk.forEach(a => { pts+=a.points||0; mx+=a.maxPoints||0; c+=a.correct||0; t+=a.total||0; pc+=a.proofCorrect||0; pt+=a.proofTotal||0; if(a.readSec!=null){rs+=a.readSec;rc++;} hu+=a.timeoutsUsed||0; });
+    tb.appendChild(el('tr',null, el('td',null,(s+1)+'~'+(s+blk.length)+'회'), el('td',{class:'num'},String(blk.length)),
+      el('td',{class:'num'},fmtPct(pct(pts,mx))), el('td',{class:'num'},fmtPct(pct(c,t))), el('td',{class:'num'},fmtPct(pct(pc,pt))),
+      el('td',{class:'num'}, rc ? mmss(rs/rc) : 'n.a.'), el('td',{class:'num'}, (hu/blk.length).toFixed(1) + '회')));
+  }
+  b.appendChild(tb);
+
+  b.appendChild(el('h2',null,'유형 × 난이도 정답률'));
+  const mt = el('table');
+  mt.appendChild(el('tr',null, el('th',null,'유형'), [1,2,3].map(d => el('th',{class:'num'}, '난이도 ' + DIFF[d])), el('th',{class:'num'},'전체')));
+  Object.keys(QTYPES).forEach(k => {
+    const row = A.filter(x => x.type === k); if (!row.length) return;
+    const cell = d => { const r = row.filter(x => x.difficulty === d); return el('td',{class:'num'}, r.length ? acc(r) + ' (' + r.filter(x=>x.correct).length + '/' + r.length + ')' : '-'); };
+    mt.appendChild(el('tr',null, el('td',null, QTYPES[k][2]), [1,2,3].map(cell), el('td',{class:'num'}, acc(row) + ' (' + row.filter(x=>x.correct).length + '/' + row.length + ')')));
+  });
+  b.appendChild(mt);
+
+  b.appendChild(el('h2',null,'주제별 오답'));
+  const byT = {};
+  A.forEach(x => { const t = byT[x.topic] = byT[x.topic] || [0,0]; t[1]++; if (!x.correct) t[0]++; });
+  Object.keys(byT).forEach(k => b.appendChild(hbar((TOPICS[k]||TOPICS.other)[2] + ' 오답률', byT[k][0], byT[k][1])));
+
+  b.appendChild(el('h2',null,'오답 원인 (Aaron 선택)'));
+  const rs = {}; wrong.forEach(x => { if (x.reason) rs[x.reason] = (rs[x.reason]||0) + 1; });
+  const rt = Object.values(rs).reduce((s,x)=>s+x,0);
+  if (!rt) b.appendChild(el('div',{class:'muted'}, '아직 기록 없음'));
+  Object.keys(REASON_KO).forEach(k => { if (rs[k]) b.appendChild(hbar(REASON_KO[k], rs[k], rt)); });
+
+  b.appendChild(el('h2',null,'오답 목록 (' + wrong.length + '건, 최신순)'));
+  const wt = el('table');
+  wt.appendChild(el('tr',null, ['회차','날짜','지문','유형·난이도','문제','고른 답','정답','근거','생각 시간','원인'].map((x,i)=> el('th',{class:(i===0||i===8)?'num':null}, x))));
+  wrong.slice().reverse().forEach(x => {
+    const t = qText(x);
+    wt.appendChild(el('tr',null, el('td',{class:'num'},String(x.shot)), el('td',null,x.date||''), el('td',null,x.title),
+      el('td',null, el('span',{class:'tag d'+(x.difficulty||'')}, (QTYPES[x.type]||QTYPES.fact)[2] + '·' + (DIFF[x.difficulty]||'?'))),
+      el('td',null,t.prompt), el('td',null,t.chosen||'n.a.'), el('td',null,t.answer||'n.a.'),
+      el('td',null, x.proofOk === true ? '맞음' : x.proofOk === false ? '틀림' : '해당 없음'),
+      el('td',{class:'num'}, x.thinkSec != null ? x.thinkSec + '초' : 'n.a.'),
+      el('td',null, REASON_KO[x.reason] || '-')));
+  });
+  b.appendChild(wt);
+}
+
+function parentWords(b){
+  const list = collectWords();
+  const blocked = {}; attempts.forEach(a => (a.hints||[]).forEach(x => { if (x.result === 'blocked') blocked[norm(x.word)] = (blocked[norm(x.word)]||0) + 1; }));
+  b.appendChild(el('div',{style:'display:flex;align-items:center;gap:1em'},
+    el('h2',{style:'margin:0'}, '단어장 (' + list.length + '개)'),
+    el('button',{class:'pbtn', onclick: async () => {
+      const txt = list.map(w => w.word + (w.gloss && w.gloss.ko ? ' - ' + w.gloss.ko : '')).join('\n');
+      try { await navigator.clipboard.writeText(txt); toast('단어 목록을 복사함'); } catch(e){ toast('복사가 허용되지 않음'); }
+    }}, '단어 목록 복사')));
+  b.appendChild(el('p',{class:'muted',style:'margin:.5em 0 .8em'}, '게임으로 푼 지문의 어려운 단어를 모은 목록 (연습 제외). Aaron이 길게 눌러 뜻을 본 단어(⭐)가 위에 옴'));
+  if (!list.length){ b.appendChild(el('div',{class:'muted'}, '아직 기록 없음')); }
+  else {
+    const tb = el('table');
+    tb.appendChild(el('tr',null, ['단어','품사','뜻 (영)','뜻 (한)','뜻 본 횟수','만난 횟수','지문','처음','최근'].map((x,i)=> el('th',{class:(i===4||i===5)?'num':null}, x))));
+    list.forEach(w => tb.appendChild(el('tr',null,
+      el('td',null, el('b',null,(w.asked ? '⭐ ' : '') + w.word)), el('td',null, w.gloss.pos || ''), el('td',null, w.gloss.en || 'n.a.'), el('td',null, w.gloss.ko || 'n.a.'),
+      el('td',{class:'num'}, String(w.asked)), el('td',{class:'num'}, String(w.seen)),
+      el('td',null, [...w.passages].join(', ')), el('td',null, w.first||''), el('td',null, w.last||''))));
+    b.appendChild(tb);
+  }
+  const extra = {}; attempts.forEach(a => (a.hints||[]).forEach(x => { if (x.result === 'notInList' || x.result === 'saved') extra[norm(x.word)] = (extra[norm(x.word)]||0) + 1; }));
+  const ek = Object.keys(extra);
+  if (ek.length){
+    b.appendChild(el('h2',null,'단어 카드에 없는데 눌러 본 단어'));
+    b.appendChild(el('p',{class:'muted'}, '다음 지문 단어 카드나 Book Class 단어 공부에 참고할 목록'));
+    b.appendChild(el('p',null, ek.map(k => k + ' (' + extra[k] + '회)').join(', ')));
+  }
+  const bk = Object.keys(blocked);
+  if (bk.length){
+    b.appendChild(el('h2',null,'퀴즈 단어를 찾아보려 한 기록'));
+    b.appendChild(el('p',{class:'muted'}, bk.map(k => k + ' (' + blocked[k] + '회)').join(', ')));
+  }
+}
+
+function parentBank(b){
+  b.appendChild(el('h2',null,'지문 은행 (' + passages.length + '개)'));
+  const sumBox = el('details',{style:'margin-bottom:1em'}, el('summary',{style:'font-weight:900;cursor:pointer'}, '📝 지문 요약본 보기 (' + passages.filter(p => p.summary).length + '개)'));
+  passages.slice().sort((x,y) => (isGame(y)?1:0) - (isGame(x)?1:0) || lvlOf(x) - lvlOf(y)).forEach(p => { if (p.summary) sumBox.appendChild(el('div',{style:'margin:.6em 0'}, el('b',null, (isGame(p) ? '[Game] ' : '[Practice] ') + (p.short || p.title)), el('div',{class:'muted'}, p.summary))); });
+  b.appendChild(sumBox);
+  b.appendChild(el('p',{class:'muted',style:'margin-bottom:.8em'}, '새 지문은 Claude가 초안을 만들어 부모 컨펌을 받은 뒤 등록함. 상태가 "초안"인 지문은 게임에 표시되지 않음'));
+  const tb = el('table');
+  tb.appendChild(el('tr',null, ['ID','등록일','상태','단계','주제','제목','렉사일','단어 수','힌트 단어','문항 (유형·난이도)','풀이'].map((h,i) => el('th',{class: (i===7||i===10)?'num':null}, h))));
+  passages.forEach(p => {
+    tb.appendChild(el('tr',null,
+      el('td',null, p.id), el('td',null, p.dateAdded || 'n.a.'), el('td',null, p._approved ? '승인 (' + (p._approved.date || '') + ')' : (STATUS[p.status] || p.status || 'n.a.')), el('td',null, lvlOf(p) + '단계 (' + LEVELS[lvlOf(p)].ko + ', ' + LEVELS[lvlOf(p)].lex.replace('Lexile ','') + 'L)'),
+      el('td',null, (topicOf(p))[2]), el('td',null, p.title),
+      el('td',null, p.lexileEst || 'n.a.'), el('td',{class:'num'}, String(wordCount(p))),
+      el('td',null, (p.glossary||[]).map(g => g.word).join(', ') || 'n.a.'),
+      el('td',null, (p.questions||[]).map((q,i) => el('span',{class:'tag d' + (q.difficulty||'')}, (i+1) + '. ' + ((QTYPES[q.type]||QTYPES.fact)[2]) + '·' + (DIFF[q.difficulty]||'?')))),
+      el('td',{class:'num'}, String(attemptsFor(p.id).length))
+    ));
+  });
+  b.appendChild(tb);
+  b.appendChild(el('h2',null,'컨펌 대기 초안 (' + drafts.length + '개)'));
+  if (!drafts.length){ b.appendChild(el('div',{class:'muted'}, '대기 중인 초안 없음')); return; }
+  if (isOwner) b.appendChild(el('button',{class:'pbtn',style:'background:#2FA36B;margin-bottom:.6em', onclick: async (ev) => {
+    const list = drafts.slice(); ev.target.disabled = true; let ok = 0;
+    for (const p of list){
+      ev.target.textContent = '승인 중… ' + (ok+1) + '/' + list.length;
+      try { await db.doc('approvals/' + p.id).set({date: todayKST(), at: new Date().toISOString()}); ok++; } catch(e){}
+    }
+    toast(ok + '개 승인됨' + (ok < list.length ? ' · ' + (list.length - ok) + '개 실패, 다시 눌러 주세요' : '. 모두 게임에 올라감'));
+    ev.target.disabled = false;
+  }}, '✓ 초안 ' + drafts.length + '개 한 번에 승인'));
+  b.appendChild(el('p',{class:'muted',style:'margin-bottom:.6em'}, '초안은 게임에 나오지 않음. 제목을 눌러 지문과 문항(정답·근거 문장 포함)을 확인하고 "승인" 버튼을 누르면 바로 게임에 올라감. 수정이 필요하면 채팅으로 알려주면 고쳐서 다시 올림'));
+  drafts.forEach(p => {
+    const body = el('div',{style:'display:none;padding:.8em 1em;background:#fff;border:1px solid #E4E4E7;border-radius:.5em;margin:.3em 0 1em;line-height:1.6'});
+    let n = 0;
+    (p.paragraphs||[]).forEach((para, pi) => body.appendChild(el('p',{style:'margin-bottom:.6em'}, el('b',null, (pi+1) + '. '), para.map(s => { n++; return el('span',null, el('sup',{style:'color:#856318;font-weight:700'}, String(n)), ' ' + s + ' '); }))));
+    (p.questions||[]).forEach((q,i) => body.appendChild(el('div',{style:'margin:.7em 0'},
+      el('div',null, el('b',null, (i+1) + '. [' + ((QTYPES[q.type]||QTYPES.fact)[2]) + '·' + (DIFF[q.difficulty]||'?') + '] '), q.prompt),
+      q.choices.map((c,k) => el('div',{style:'padding-left:1.2em;' + (k===q.answer ? 'color:#17643F;font-weight:700' : '')}, LETTERS[k] + '. ' + c + (k===q.answer ? '  ✓' : ''))),
+      el('div',{class:'muted',style:'padding-left:1.2em'}, '근거 문장: ' + ((q.evidence||[]).join(', ') || '없음') + ' · ' + (q.explain||'')))));
+    if (p.glossary && p.glossary.length) body.appendChild(el('div',{class:'muted'}, '힌트 단어: ' + p.glossary.map(g => g.word + ' (' + g.ko + ')').join(', ')));
+    const words = wordCount(p);
+    if (isOwner) body.appendChild(el('button',{class:'pbtn',style:'margin-top:.6em;background:#2FA36B', onclick: async (ev) => {
+      ev.target.disabled = true;
+      try { await db.doc('approvals/' + p.id).set({date: todayKST(), at: new Date().toISOString()}); toast(p.id + ' 승인됨. 게임에 올라감'); }
+      catch(e){ ev.target.disabled = false; toast('승인 실패: ' + (e && e.code || 'error')); }
+    }}, '✓ 승인하고 게임에 올리기'));
+    else body.appendChild(el('div',{class:'muted',style:'margin-top:.6em'}, '승인 버튼은 소유자 계정에서만 보임'));
+    b.appendChild(el('button',{class:'pbtn',style:'display:block;width:100%;text-align:left;margin-top:.4em;background:#3A3A3C', onclick:()=>{ body.style.display = body.style.display === 'none' ? 'block' : 'none'; }},
+      p.id + ' · ' + lvlOf(p) + '단계 · ' + (topicOf(p))[2] + ' · ' + p.title + ' (' + words + '단어, ' + (p.lexileEst||'') + ')'));
+    b.appendChild(body);
+  });
+}
+
+function parentLog(b){
+  b.appendChild(el('h2',null,'풀이 기록 (게임 ' + attempts.length + '회 · 연습 ' + (allAttempts.length - attempts.length) + '회)'));
+  if (!allAttempts.length){ b.appendChild(el('div',{class:'muted'}, '아직 기록 없음')); return; }
+  const tb = el('table');
+  tb.appendChild(el('tr',null, ['회차','날짜','단계','지문','득점','정답','근거','읽기 시간','총 시간','문항별','오답 원인'].map((h,i)=> el('th',{class:(i>=4&&i<=8)||i===0?'num':null}, h))));
+  allAttempts.slice().reverse().forEach((a, idx) => {
+    const no = a.mode === 'practice' ? '연습' : String(attempts.indexOf(a) + 1);
+    tb.appendChild(el('tr',null,
+      el('td',{class:'num'}, String(no)), el('td',null, a.date || ''), el('td',null, LEVELS[lvlOf(a)].ko), el('td',null, a.title || a.passageId),
+      el('td',{class:'num'}, a.points + '/' + a.maxPoints), el('td',{class:'num'}, a.correct + '/' + a.total),
+      el('td',{class:'num'}, a.proofTotal ? a.proofCorrect + '/' + a.proofTotal : 'n.a.'),
+      el('td',{class:'num'}, a.readSec != null ? mmss(a.readSec) : 'n.a.'), el('td',{class:'num'}, mmss(a.totalSec || 0)),
+      el('td',null, (a.answers||[]).map((x,i) => el('span',{class:'tag ' + (x.correct ? 'd1':'d3')}, (i+1) + (x.correct?'○':'×') + (x.proofOk===true?'+근거':'') + ' ' + (x.thinkSec!=null? x.thinkSec+'초':'')))),
+      el('td',null, (a.answers||[]).filter(x=>x.reason).map(x => REASON_KO[x.reason]).join(', ') || '-')
+    ));
+  });
+  b.appendChild(tb);
+}
+
+function parentSettings(b){
+  b.appendChild(el('h2',null,'설정'));
+  const think = el('input',{type:'number', min:0, max:60, step:1, value: settings.thinkSec});
+  const rpw = el('input',{type:'number', min:0, max:2, step:0.05, value: settings.readSecPerWord});
+  const goal = el('input',{type:'number', min:10, max:500, step:10, value: gameTarget()});
+  const hmax = el('input',{type:'number', min:0, max:10, step:1, value: hintMax()});
+  b.appendChild(el('div',{class:'form'},
+    el('label',null,'생각 시간 (초)'), think, el('span',{class:'note'},'문제가 뜬 뒤 보기 버튼이 열리기까지의 시간. 0이면 바로 열림'),
+    el('label',null,'최소 읽기 시간 (초/단어)'), rpw, el('span',{class:'note'},'지문 단어 수 × 이 값이 지나야 문제로 넘어갈 수 있음 (최소 20초). 0.3이면 230단어 지문에 약 69초'),
+
+    el('label',null,'단어 힌트 (지문당 회)'), hmax, el('span',{class:'note'},'길게 눌러 뜻을 볼 수 있는 횟수. 어휘 문항의 대상 단어는 항상 차단됨'),
+    el('span'), el('button',{class:'pbtn', onclick: async () => {
+      const v = { thinkSec: Number(think.value), readSecPerWord: Number(rpw.value), hintMax: Number(hmax.value) };
+      if ([v.thinkSec, v.readSecPerWord, v.hintMax].some(x => !isFinite(x))){ toast('숫자를 확인해 주세요'); return; }
+      try { await db.doc('config/settings').set(v); toast('저장됨'); } catch(e){ toast('저장 실패: ' + (e && e.code || 'error')); }
+    }}, '저장'), el('span')
+  ));
+}
+</script>
+</body>
+</html>
