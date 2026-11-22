@@ -466,6 +466,16 @@ table.box tr.and1 td{color:var(--purple)}
 .practice{display:block;width:100%;margin:-.4em 0 1.2em;border-radius:1em;padding:.7em 1em;font-weight:900;font-size:1em;background:#F3EDE1;color:var(--body);border:3px dashed #D8CFBE}
 .practice.on{background:#E8F1FB;color:#1E5F99;border-color:var(--sky)}
 .todaywords{width:100%;text-align:left;background:#F7F2E8;border-radius:1em;padding:1em 1.2em}
+.slab{width:100%;box-sizing:border-box;text-align:left;background:#F4F4F5;border:2px solid #E4E4E7;border-radius:1em;padding:1em 1.1em}
+.slab h3{margin:.1em 0 .2em}
+.slitem{background:#fff;border-radius:.8em;padding:.8em .9em;margin-top:.8em;border:1px solid #E4E4E7}
+.sltext{font-size:1.15em;line-height:1.5;font-weight:700;color:#1C1C1E;margin-bottom:.6em}
+.slq{font-weight:800;color:#856318;margin:.2em 0 .4em}
+.slch{display:block;width:100%;text-align:left;margin:.35em 0;padding:.7em .8em;border-radius:.7em;border:2px solid #E4E4E7;background:#FAF9F6;font-size:1em;cursor:pointer}
+.slch.ok{border-color:#1C1C1E;background:#EFE3CC}.slch.bad{border-color:#C0392B;opacity:.75}
+.slexp{margin-top:.6em;border-top:1px dashed #C8C8CC;padding-top:.6em;line-height:1.6}
+.slchunks span{display:inline-block;background:#EFE3CC;border-radius:.4em;padding:.1em .45em;margin:.15em .2em .15em 0}
+.slrow{margin:.3em 0}.slrow b{color:#856318}
 .todaywords h3{font-size:1.2em;font-weight:900;color:var(--navy)}
 .twsub{font-size:.85em;font-weight:800;color:var(--gray);margin-bottom:.4em}
 .twrow{padding:.55em 0;border-bottom:1px solid var(--line)}
@@ -936,6 +946,7 @@ window.addEventListener('offline', () => { try { updSync(); } catch(e){} });
   db.collection('milestones').onSnapshot(s => {
     milestones = {}; s.docs.forEach(d => milestones[d.id] = d.data()); if (!s.metadata.fromCache){ ready.m = true; setTimeout(checkCeremonies, 800); }
   }, () => {});
+  db.collection('sentlab').onSnapshot(s => { sentlab = {}; s.docs.forEach(d => sentlab[d.id] = d.data()); }, () => {});
   db.collection('practiced').onSnapshot(s => {
     practiced = {}; s.docs.forEach(d => practiced[d.id] = d.data());
     const pend = pqGet();
@@ -1860,6 +1871,48 @@ async function save(){
   }
 }
 let lastResult = null;
+/* ===== Sentence Lab (2- and 3-point passages) ===== */
+const SLAB = {};
+let sentlab = {};
+function renderSentenceLab(p, r){
+  const key = (r.cid || r.startedAt || p.id);
+  const st = (SLAB[key] = SLAB[key] || {});
+  const box = el('div',{class:'slab'}, el('h3',null,'🔍 Sentence Lab'), el('div',{class:'twsub'}, 'Tricky sentences! Read slowly, then pick the same meaning.'));
+  p.sentenceLab.forEach((it, i) => {
+    const item = el('div',{class:'slitem'});
+    const draw = () => {
+      item.innerHTML = '';
+      item.appendChild(el('div',{class:'muted',style:'font-weight:800'}, 'Sentence ' + (i + 1) + ' of ' + p.sentenceLab.length));
+      item.appendChild(el('div',{class:'sltext'}, '“' + it.text + '”'));
+      item.appendChild(el('div',{class:'slq'}, 'What does this sentence mean?'));
+      const picked = st[i];
+      it.choices.forEach((ch, k) => {
+        const cls = picked == null ? '' : (k === it.answer ? ' ok' : (k === picked ? ' bad' : ''));
+        item.appendChild(el('button',{class:'slch' + cls, disabled: picked != null, onclick:()=>{ st[i] = k; saveSentLab(p.id, it.sid, k === it.answer); draw(); }}, (picked != null && k === it.answer ? '✅ ' : picked === k ? '❌ ' : '') + ch));
+      });
+      if (picked != null){
+        const ex = el('div',{class:'slexp'});
+        ex.appendChild(el('div',{class:'slrow',style:'font-weight:800'}, picked === it.answer ? '🎯 Nice reading!' : '🌱 Good try! Let\'s break it down.'));
+        const chunks = el('div',{class:'slrow slchunks'}, el('b',null,'✂️ Chunks: '));
+        (it.chunks || []).forEach(x => chunks.appendChild(el('span',null, x)));
+        ex.appendChild(chunks);
+        if (it.core) ex.appendChild(el('div',{class:'slrow'}, el('b',null,'🦴 Core: '), it.core));
+        if (it.easy) ex.appendChild(el('div',{class:'slrow'}, el('b',null,'🙂 Easy English: '), it.easy));
+        if (it.tip) ex.appendChild(el('div',{class:'slrow'}, el('b',null,'💡 '), it.tip));
+        if (it.ko) ex.appendChild(el('div',{class:'slrow'}, el('b',null,'🇰🇷 '), it.ko));
+        item.appendChild(ex);
+      }
+    };
+    draw(); box.appendChild(item);
+  });
+  return box;
+}
+function saveSentLab(pid, sid, ok){
+  const id = pid + '_' + sid, pv = sentlab[id] || {};
+  const doc = {passageId: pid, sid, count: (pv.count || 0) + 1, correct: (pv.correct || 0) + (ok ? 1 : 0), first: pv.first != null ? pv.first : ok, last: ok, date: todayKST()};
+  sentlab[id] = doc;
+  if (db) db.doc('sentlab/' + id).set(doc).catch(e => { try { logErr('sentlab', e); } catch(_){} });
+}
 function renderResult(r, state, code){
   lastResult = r;
   const c = $('rcard'); c.innerHTML = '';
@@ -1923,6 +1976,7 @@ function renderResult(r, state, code){
     });
     c.appendChild(box);
   }
+  if (sp && Array.isArray(sp.sentenceLab) && sp.sentenceLab.length) c.appendChild(renderSentenceLab(sp, r));
   const gl = r._gloss || [], seenTO = new Set(), toWords = [];
   (r.hints || []).forEach(x => {
     let g = null;
@@ -2317,6 +2371,8 @@ function hbar(lab, a, b){
 }
 
 function parentSummary(b){
+  const slv = Object.values(sentlab);
+  if (slv.length){ const f = slv.filter(x => x.first).length; b.appendChild(el('div',{class:'hint',style:'width:100%;margin-bottom:.6em'}, '🔍 Sentence Lab: 문장 ' + slv.length + '개 중 첫 시도 정답 ' + f + '개 (' + Math.round(f / slv.length * 100) + '%)')); }
   const n = attempts.length;
   let pts=0,maxp=0,pc=0,pt=0,rs=0,rc=0;
   const byType = {}, byTopic = {}, byDiff = {}, reasons = {};

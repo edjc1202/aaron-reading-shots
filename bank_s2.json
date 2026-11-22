@@ -2146,6 +2146,47 @@
    "TSMC is headquartered in Hsinchu, Taiwan; leading dedicated contract chipmaker; customers include Apple and Nvidia -> https://en.wikipedia.org/wiki/TSMC",
    "TSMC does not develop its own processors and makes chips for fabless companies including Apple and Nvidia -> https://www.tomshardware.com/tech-industry/tsmc-is-now-the-worlds-largest-semiconductor-maker-by-revenue-beating-intel-and-samsung-analyst",
    "'About the size of a fingernail': A17-class phone chips are roughly 1 cm per side (general description, not a precise claim)"
+  ],
+  "sentenceLab": [
+   {
+    "sid": 2,
+    "text": "A chip is a thin, flat piece of silicon, a material that comes from ordinary sand.",
+    "chunks": [
+     "A chip is",
+     "a thin, flat piece of silicon,",
+     "a material that comes from ordinary sand."
+    ],
+    "core": "A chip is a piece of silicon.",
+    "easy": "A chip is a thin, flat piece of silicon. Silicon comes from sand.",
+    "ko": "칩은 얇고 평평한 실리콘 조각이며, 실리콘은 평범한 모래에서 나오는 물질이다.",
+    "tip": "콤마 뒤 부분은 칩이 아니라 실리콘이 어떤 물질인지 설명하는 말이에요.",
+    "choices": [
+     "A chip is a thin piece of sand that comes from silicon.",
+     "A chip is a thick, round piece of metal found in sand.",
+     "A chip is a thin piece of silicon, and silicon comes from sand."
+    ],
+    "answer": 2
+   },
+   {
+    "sid": 21,
+    "text": "Apple and Nvidia, for instance, design many of their own chips but have TSMC produce them.",
+    "chunks": [
+     "Apple and Nvidia,",
+     "for instance,",
+     "design many of their own chips",
+     "but have TSMC produce them."
+    ],
+    "core": "Apple and Nvidia design chips.",
+    "easy": "Apple and Nvidia plan many of their own chips. Then TSMC makes the chips for them.",
+    "ko": "예를 들어 애플과 엔비디아는 자기 칩을 많이 직접 설계하지만, 생산은 TSMC에 맡긴다.",
+    "tip": "have TSMC produce them은 'TSMC가 칩을 만들게 한다'는 뜻이에요.",
+    "choices": [
+     "TSMC plans the chips, and Apple and Nvidia make them.",
+     "Apple and Nvidia plan and make all their chips by themselves.",
+     "Apple and Nvidia plan their chips, and TSMC makes them."
+    ],
+    "answer": 2
+   }
   ]
  },
  {
@@ -2369,6 +2410,49 @@
    "Title sometimes translated as 'universal ruler'; built power through alliances and fights, conquered most of Mongolia by 1206; largest contiguous land empire, from Pacific Ocean to central Europe at its peak -> https://www.livescience.com/the-mongol-empire",
    "Genghis Khan's conquests gave control of the eastern Silk Road and enabled large-scale trade -> https://en.wikipedia.org/wiki/Genghis_Khan",
    "Yam relay stations usually 20-40 miles apart, with spare horses, food and shelter; messengers covered 200-300 km (120-190 mi) per day; routes supported trade (formal system attributed to Ogedei, rudimentary under Genghis, so passage says 'the Mongols') -> https://en.wikipedia.org/wiki/Yam_(route)"
+  ],
+  "sentenceLab": [
+   {
+    "sid": 11,
+    "text": "In 1206, a great meeting of Mongol leaders gave him a new title, Genghis Khan.",
+    "chunks": [
+     "In 1206,",
+     "a great meeting of Mongol leaders",
+     "gave him",
+     "a new title,",
+     "Genghis Khan."
+    ],
+    "core": "A meeting gave him a title.",
+    "easy": "In 1206, Mongol leaders met. They gave Temujin a new name, Genghis Khan.",
+    "ko": "1206년, 몽골 지도자들의 큰 회의는 그에게 칭기즈 칸이라는 새 칭호를 주었다.",
+    "tip": "주어는 a great meeting of Mongol leaders 전체이고, Genghis Khan은 새 칭호가 무엇인지 알려 줘요.",
+    "choices": [
+     "In 1206, Mongol leaders gave Temujin the name Genghis Khan.",
+     "In 1206, Genghis Khan gave the Mongol leaders new names.",
+     "In 1206, Temujin held a meeting to name his son Genghis Khan."
+    ],
+    "answer": 0
+   },
+   {
+    "sid": 14,
+    "text": "Genghis Khan and the Mongol armies that came after him built a gigantic empire.",
+    "chunks": [
+     "Genghis Khan",
+     "and the Mongol armies",
+     "that came after him",
+     "built a gigantic empire."
+    ],
+    "core": "Genghis Khan and the armies built an empire.",
+    "easy": "Genghis Khan and the Mongol armies after him made a very big empire.",
+    "ko": "칭기즈 칸과 그 뒤를 이은 몽골 군대는 거대한 제국을 세웠다.",
+    "tip": "that came after him은 군대를 꾸며 주는 말이고, 진짜 동사는 built예요.",
+    "choices": [
+     "The Mongol armies came after Genghis Khan to take his empire.",
+     "Genghis Khan and the later Mongol armies made a huge empire.",
+     "Genghis Khan built a huge empire before any Mongol armies came."
+    ],
+    "answer": 1
+   }
   ]
  },
  {
@@ -2579,6 +2663,47 @@
    "26% of the country below sea level; about 60% at risk of flooding; 17,500 km of dykes and dunes; Eastern Scheldt barrier opened 1986, almost 9 km long, with metal doors; called the safest delta in the world -> https://phys.org/news/2015-10-netherlands-safest-delta-world.amp",
    "Kinderdijk: 19 windmills built 1738-1740 to drain the polders; today two electric pumping stations do the work -> https://en.wikipedia.org/wiki/Kinderdijk_windmills",
    "1953 flood on the night of 31 Jan - 1 Feb; 1,836 deaths in the Netherlands; Delta Works of dams and storm surge barriers built afterward, completed 1998 with the Maeslantkering near Rotterdam -> https://en.wikipedia.org/wiki/North_Sea_flood_of_1953"
+  ],
+  "sentenceLab": [
+   {
+    "sid": 7,
+    "text": "They built dikes, which are long, strong walls of earth that hold back the sea and rivers.",
+    "chunks": [
+     "They built dikes,",
+     "which are long, strong walls of earth",
+     "that hold back the sea and rivers."
+    ],
+    "core": "They built dikes.",
+    "easy": "The Dutch built dikes. Dikes are long walls of dirt that keep the water out.",
+    "ko": "그들은 바다와 강물을 막아 주는 길고 튼튼한 흙벽인 제방을 쌓았다.",
+    "tip": "which 뒤의 말은 dike가 무엇인지 설명해 주는 말이에요.",
+    "choices": [
+     "The Dutch built long walls of dirt to keep the water out.",
+     "The Dutch built long rivers to carry the sea water away.",
+     "The sea built long walls of dirt around the Dutch towns."
+    ],
+    "answer": 0
+   },
+   {
+    "sid": 9,
+    "text": "Land that is dried out this way and kept dry is called a polder.",
+    "chunks": [
+     "Land",
+     "that is dried out this way",
+     "and kept dry",
+     "is called a polder."
+    ],
+    "core": "Land is called a polder.",
+    "easy": "When people dry out wet land and keep it dry, that land is called a polder.",
+    "ko": "이런 방식으로 물을 빼고 계속 마른 상태로 유지하는 땅을 폴더(간척지)라고 부른다.",
+    "tip": "Land부터 kept dry까지가 긴 주어이고, 진짜 동사는 is called예요.",
+    "choices": [
+     "A polder is a windmill that pumps water out of land.",
+     "A polder is wet land that is always under the sea.",
+     "A polder is land that was dried out and is kept dry."
+    ],
+    "answer": 2
+   }
   ]
  },
  {
@@ -2786,6 +2911,47 @@
   "summary": "Near the end of a big game, the ball touched Min last before going out, but the referee gave it to Min's team. Min felt bad, so he told the referee the truth. His team lost by one point. Still, the other captain praised him, and Min was proud of his honest choice.",
   "factNotes": [
    "Original fiction; no real-world facts."
+  ],
+  "sentenceLab": [
+   {
+    "sid": 5,
+    "text": "The referee had been watching another player, so he had to guess.",
+    "chunks": [
+     "The referee",
+     "had been watching another player,",
+     "so he had to guess."
+    ],
+    "core": "The referee had to guess.",
+    "easy": "The referee was looking at a different player. So he did not see the play and had to guess.",
+    "ko": "심판은 다른 선수를 보고 있었기 때문에 추측할 수밖에 없었다.",
+    "tip": "so 앞은 이유, so 뒤는 결과라서 '다른 선수를 보고 있어서 추측해야 했다'는 뜻이에요.",
+    "choices": [
+     "The referee saw the play well, so he did not need to guess.",
+     "Min was watching another player, so Min had to guess.",
+     "The referee did not see the play, so he had to guess."
+    ],
+    "answer": 2
+   },
+   {
+    "sid": 24,
+    "text": "Min concluded that he did not regret his choice, because he was proud of how he had played.",
+    "chunks": [
+     "Min concluded",
+     "that he did not regret his choice,",
+     "because he was proud",
+     "of how he had played."
+    ],
+    "core": "Min concluded something.",
+    "easy": "Min was not sorry about his choice. He was proud of the way he played.",
+    "ko": "민은 자신이 경기한 방식이 자랑스러웠기 때문에 자기 선택을 후회하지 않는다고 결론 내렸다.",
+    "tip": "because 뒤 부분이 민이 후회하지 않는 이유를 알려 줘요.",
+    "choices": [
+     "Min was sorry about his choice, because his team lost.",
+     "Min was not sorry about his choice, because he was proud.",
+     "Min was proud, because his team won the trophy that day."
+    ],
+    "answer": 1
+   }
   ]
  },
  {
@@ -3000,6 +3166,47 @@
    "Statue of Liberty copper sheets roughly as thick as two pennies; unveiled Oct 28, 1886; originally shiny reddish-brown like a penny; half green by 1910, fully green around 1920; patina protects metal underneath -> https://www.history.com/news/statue-of-liberty-green-color-change",
    "Green color from copper reacting with air and water; change complete by 1920 -> https://www.livescience.com/29377-copper.html",
    "Eiffel's iron framework supports the statue -> https://www.nps.gov/stli/learn/historyculture/places_creating_statue.htm"
+  ],
+  "sentenceLab": [
+   {
+    "sid": 3,
+    "text": "Its chemical symbol is Cu, which comes from cuprum, an old Latin word for copper.",
+    "chunks": [
+     "Its chemical symbol is Cu,",
+     "which comes from cuprum,",
+     "an old Latin word for copper."
+    ],
+    "core": "Its symbol is Cu.",
+    "easy": "The short name for copper is Cu. It comes from cuprum, an old Latin word for copper.",
+    "ko": "구리의 화학 기호는 Cu인데, 이것은 구리를 뜻하는 옛 라틴어 단어 cuprum에서 왔다.",
+    "tip": "which는 Cu를 설명하고, 마지막 콤마 뒤 부분은 cuprum이 무슨 말인지 설명해 줘요.",
+    "choices": [
+     "Copper's symbol is Cu, which comes from an old Latin word.",
+     "Cuprum's symbol is Cu, which is a new English word for gold.",
+     "Copper's symbol is Cp, which comes from an old French word."
+    ],
+    "answer": 0
+   },
+   {
+    "sid": 8,
+    "text": "Silver costs much more, though, so copper is the smarter choice for most wires.",
+    "chunks": [
+     "Silver costs much more,",
+     "though,",
+     "so copper is the smarter choice",
+     "for most wires."
+    ],
+    "core": "Silver costs more. Copper is smarter.",
+    "easy": "Silver costs a lot more money. So people use copper for most wires.",
+    "ko": "하지만 은은 훨씬 비싸기 때문에 대부분의 전선에는 구리가 더 현명한 선택이다.",
+    "tip": "though는 '하지만'이라는 뜻이고, so 뒤는 은이 비싸서 생긴 결과예요.",
+    "choices": [
+     "Copper costs much more, so silver is used for most wires.",
+     "Silver works better, so silver is used for most wires.",
+     "Silver costs much more, so copper is used for most wires."
+    ],
+    "answer": 2
+   }
   ]
  },
  {
@@ -3212,6 +3419,49 @@
    "Figures were originally painted; in Xi'an's dry air much of the paint flaked off within minutes of exposure -> https://en.wikipedia.org/wiki/Terracotta_army",
    "UNESCO World Heritage Site 1987 -> https://en.wikipedia.org/wiki/Terracotta_army",
    "Army made to protect/guard the emperor in the afterlife (widely held view, phrased as 'many experts believe') -> https://www.history.com/articles/5-things-you-may-not-know-about-the-terra-cotta-army"
+  ],
+  "sentenceLab": [
+   {
+    "sid": 5,
+    "text": "Underneath the fields lay an entire army made of terracotta, or baked clay.",
+    "chunks": [
+     "Underneath the fields",
+     "lay an entire army",
+     "made of terracotta,",
+     "or baked clay."
+    ],
+    "core": "An entire army lay.",
+    "easy": "Under the fields, there was a whole army. It was made of baked clay.",
+    "ko": "들판 아래에는 테라코타, 즉 구운 점토로 만든 군대 전체가 묻혀 있었다.",
+    "tip": "장소가 먼저 나오고 동사 lay가 주어 an entire army보다 앞에 온 거꾸로 된 문장이에요.",
+    "choices": [
+     "A whole army of real soldiers was fighting in the fields.",
+     "A whole army made of baked clay was under the fields.",
+     "A whole army made of clay was standing on top of the fields."
+    ],
+    "answer": 1
+   },
+   {
+    "sid": 19,
+    "text": "However, once they were uncovered, much of the paint flaked off within minutes in the dry air.",
+    "chunks": [
+     "However,",
+     "once they were uncovered,",
+     "much of the paint flaked off",
+     "within minutes",
+     "in the dry air."
+    ],
+    "core": "The paint flaked off.",
+    "easy": "When the soldiers were dug up, much of the paint fell off very fast in the dry air.",
+    "ko": "하지만 병사들이 드러나자, 칠의 상당 부분이 건조한 공기 속에서 몇 분 만에 벗겨져 떨어졌다.",
+    "tip": "once는 '~하자마자'라는 뜻으로, 병사들이 드러난 뒤에 바로 일어난 일을 알려 줘요.",
+    "choices": [
+     "After the soldiers were dug up, much of the paint fell off fast.",
+     "Before the soldiers were dug up, workers painted them in minutes.",
+     "After the soldiers were dug up, the paint stayed bright for years."
+    ],
+    "answer": 0
+   }
   ]
  },
  {
@@ -3425,7 +3675,49 @@
    "Neptune takes about 165 Earth years to orbit the Sun once -> https://science.nasa.gov/neptune/facts",
    "Pluto lies beyond Neptune and was counted as the ninth planet until 2006 (IAU definition of a planet; Pluto did not meet it) -> https://science.nasa.gov/solar-system/planets"
   ],
-  "summary": "Eight planets travel around the Sun, and the Sun's gravity keeps them in their orbits. The four planets closest to the Sun are small and rocky, and the four farther out are big giants. Jupiter is the biggest, and Saturn has rings of ice and rock. In 2006, Pluto was moved into a new group called dwarf planets."
+  "summary": "Eight planets travel around the Sun, and the Sun's gravity keeps them in their orbits. The four planets closest to the Sun are small and rocky, and the four farther out are big giants. Jupiter is the biggest, and Saturn has rings of ice and rock. In 2006, Pluto was moved into a new group called dwarf planets.",
+  "sentenceLab": [
+   {
+    "sid": 4,
+    "text": "The curved path that a planet follows around the Sun is called its orbit.",
+    "chunks": [
+     "The curved path",
+     "that a planet follows around the Sun",
+     "is called its orbit."
+    ],
+    "core": "The path is called its orbit.",
+    "easy": "A planet moves around the Sun on a curved path. That path is its orbit.",
+    "ko": "행성이 태양 주위를 돌며 따라가는 휘어진 길을 궤도라고 부른다.",
+    "tip": "'that a planet follows around the Sun'은 어떤 길인지 설명하는 말이고, 진짜 동사는 'is called'예요.",
+    "choices": [
+     "The path a planet takes around the Sun is its orbit.",
+     "The Sun moves on a curved path around each planet.",
+     "A planet's orbit is the rope that pulls it to the Sun."
+    ],
+    "answer": 0
+   },
+   {
+    "sid": 17,
+    "text": "In 2006, a group of scientists called the International Astronomical Union agreed on new rules for what counts as a planet, and Pluto did not pass.",
+    "chunks": [
+     "In 2006,",
+     "a group of scientists called the International Astronomical Union",
+     "agreed on new rules",
+     "for what counts as a planet,",
+     "and Pluto did not pass."
+    ],
+    "core": "A group agreed. Pluto did not pass.",
+    "easy": "In 2006, a science group made new rules for planets. Pluto did not fit the rules.",
+    "ko": "2006년, 국제천문연맹이라는 과학자 단체가 무엇을 행성으로 볼지에 대한 새 규칙에 합의했고, 명왕성은 그 기준을 통과하지 못했다.",
+    "tip": "'called the International Astronomical Union'은 그 과학자 단체의 이름을 알려 주는 말이에요.",
+    "choices": [
+     "In 2006, Pluto made new rules, and the scientists did not pass.",
+     "In 2006, scientists made new planet rules, and Pluto did not fit.",
+     "In 2006, scientists found a new planet and named it the Union."
+    ],
+    "answer": 1
+   }
+  ]
  },
  {
   "season": 2,
@@ -3646,6 +3938,47 @@
    "Weekly 100-mile round trip (about 50 miles each way) to Meharry Medical College in Nashville for two years; family massaged her leg four times a day; walked without a brace by age 12 -> https://www.si.com/olympics/2020/02/06/black-history-month-wilma-rudolph-legacy",
    "Polio affected her left leg; 200 m won three days after the 100 m final; she anchored the Tennessee State 4x100 m relay team in Rome -> https://nbcsports.com/olympics/news/wilma-rudolph-rome-olympics",
    "One of 22 children; bronze in the 4x100 relay in 1956; family members removed the brace to massage her leg -> https://www.womenshistory.org/node/467"
+  ],
+  "sentenceLab": [
+   {
+    "sid": 3,
+    "text": "As a young girl, she battled pneumonia, scarlet fever, and polio, which badly weakened her left leg.",
+    "chunks": [
+     "As a young girl,",
+     "she battled pneumonia, scarlet fever, and polio,",
+     "which badly weakened her left leg."
+    ],
+    "core": "She battled sicknesses.",
+    "easy": "When Wilma was little, she got very sick many times. Polio made her left leg weak.",
+    "ko": "어린 소녀였을 때 그녀는 폐렴, 성홍열, 소아마비와 싸웠고, 소아마비 때문에 왼쪽 다리가 몹시 약해졌다.",
+    "tip": "'which'는 바로 앞의 polio를 가리키며, 소아마비가 다리를 약하게 만들었다는 뜻이에요.",
+    "choices": [
+     "As a girl, Wilma got sick because her left leg was weak.",
+     "As a grown woman, Wilma got polio and hurt her right leg.",
+     "As a girl, Wilma had polio, and it made her left leg weak."
+    ],
+    "answer": 2
+   },
+   {
+    "sid": 18,
+    "text": "The girl who was once told she would never walk had become one of the fastest women on the planet.",
+    "chunks": [
+     "The girl",
+     "who was once told she would never walk",
+     "had become",
+     "one of the fastest women on the planet."
+    ],
+    "core": "The girl had become one of the fastest.",
+    "easy": "Doctors once said Wilma would never walk. Later she became one of the fastest women in the world.",
+    "ko": "한때 다시는 걷지 못할 거라는 말을 들었던 소녀가 지구에서 가장 빠른 여성 중 한 명이 되었다.",
+    "tip": "'who was once told she would never walk'는 그 소녀가 어떤 아이였는지 설명하고, 진짜 동사는 'had become'이에요.",
+    "choices": [
+     "Wilma was told she would never walk, but she became very fast.",
+     "Wilma told the other girls that they would never walk again.",
+     "Wilma was always very fast, so no one said she could not walk."
+    ],
+    "answer": 0
+   }
   ]
  },
  {
@@ -3871,6 +4204,50 @@
    "Gasol a Barcelona native inspired by the Dream Team; Tony Parker inspired, reportedly wore No. 9 because Jordan wore it at the 1992 Olympics -> https://sports.yahoo.com/1992-dream-team-shaped-dirk-155247726.html",
    "Gasol 'a local kid, not yet a teenager' watching the Dream Team in 1992; two NBA titles with the Lakers -> https://www.nba.com/news/pau-gasol-hall-of-fame-profile-2023",
    "2024-25 opening night rosters: 125 international players from 43 countries -> https://pr.nba.com/nba-rosters-feature-record-tying-125-international-players-from-record-tying-43-countries-across-six-continents"
+  ],
+  "sentenceLab": [
+   {
+    "sid": 2,
+    "text": "That changed on April 7, 1989, when FIBA, the international group that runs basketball, voted 56 to 13 to let professional players compete.",
+    "chunks": [
+     "That changed on April 7, 1989,",
+     "when FIBA,",
+     "the international group that runs basketball,",
+     "voted 56 to 13",
+     "to let professional players compete."
+    ],
+    "core": "That changed. FIBA voted.",
+    "easy": "In 1989, the group that runs world basketball voted to let NBA players play in the Olympics.",
+    "ko": "그것은 1989년 4월 7일에 바뀌었는데, 국제 농구를 운영하는 단체인 FIBA가 56 대 13으로 프로 선수들의 출전을 허용하기로 투표했다.",
+    "tip": "콤마 사이 부분은 FIBA가 어떤 단체인지 설명하는 말이에요.",
+    "choices": [
+     "In 1989, NBA players voted 56 to 13 to start FIBA.",
+     "In 1989, FIBA voted to let pro players play in the Olympics.",
+     "In 1989, FIBA voted 56 to 13 to stop pro players from playing."
+    ],
+    "answer": 1
+   },
+   {
+    "sid": 15,
+    "text": "One of them was Pau Gasol, a Barcelona boy who was not yet a teenager in 1992 and later won two NBA titles.",
+    "chunks": [
+     "One of them",
+     "was Pau Gasol,",
+     "a Barcelona boy",
+     "who was not yet a teenager in 1992",
+     "and later won two NBA titles."
+    ],
+    "core": "One of them was Pau Gasol.",
+    "easy": "Pau Gasol was a young boy in Barcelona in 1992. When he grew up, he won two NBA titles.",
+    "ko": "그중 한 명이 파우 가솔이었는데, 그는 1992년에 아직 십대도 되지 않은 바르셀로나 소년이었고 나중에 NBA 우승을 두 번 했다.",
+    "tip": "'a Barcelona boy' 뒤의 who 부분은 파우 가솔이 어떤 소년이었는지 설명해 줘요.",
+    "choices": [
+     "Pau Gasol was a teenager who played on the Dream Team in 1992.",
+     "Pau Gasol won two NBA titles in 1992 when he was a boy.",
+     "Pau Gasol was a young boy in 1992 and later won two NBA titles."
+    ],
+    "answer": 2
+   }
   ]
  },
  {
@@ -4093,6 +4470,47 @@
    "Workers carry leaf pieces 20 times their own body weight; colony has one queen and up to eight million workers; queens live 15 to 20 years; nests up to 50 feet across and 16 feet deep; found in northern and central South America; leaves used to grow fungus gardens that feed the ants -> https://cincinnatizoo.org/animals-archive/leaf-cutting-ant/",
    "Ants don't eat the leaves; fungus is the only food source for leaf-cutter ants; ants began farming about 50 million years ago, long before humans; smaller workers tend brood and fungus, larger workers gather leaves and maintain the nest -> https://asm.org/articles/2017/september/the-leaf-cutter-ant-s-50-million-years-of-farming",
    "Minims care for fungus, eggs and young; medias harvest leaves; majors defend and maintain trails; minims hitchhike on leaves to defend against parasitic flies; ants crush and mold leaf pieces into pellets and insert them into the fungus garden; refuse workers carry waste to separate underground refuse chambers and stay apart from nestmates -> https://ielc.libguides.com/sdzg/factsheets/leafcutter-ant/behavior"
+  ],
+  "sentenceLab": [
+   {
+    "sid": 6,
+    "text": "The fungus feeds on the leaves, and the ants feed on the fungus, which is the only food leafcutter ants eat.",
+    "chunks": [
+     "The fungus feeds on the leaves,",
+     "and the ants feed on the fungus,",
+     "which is the only food leafcutter ants eat."
+    ],
+    "core": "The fungus feeds. The ants feed.",
+    "easy": "The fungus eats the leaves. The ants eat only the fungus.",
+    "ko": "곰팡이는 잎을 먹고, 개미는 그 곰팡이를 먹는데, 곰팡이는 잎꾼개미가 먹는 유일한 먹이다.",
+    "tip": "'which'는 바로 앞의 fungus를 가리켜서, 곰팡이가 개미의 유일한 먹이라고 설명해요.",
+    "choices": [
+     "The fungus eats the leaves, and the ants eat only the fungus.",
+     "The ants eat the leaves, and the fungus eats the ants.",
+     "The ants eat the leaves, the fungus, and many other foods."
+    ],
+    "answer": 0
+   },
+   {
+    "sid": 10,
+    "text": "The smallest workers, called minims, stay underground to care for the fungus, the eggs, and the young ants.",
+    "chunks": [
+     "The smallest workers,",
+     "called minims,",
+     "stay underground",
+     "to care for the fungus, the eggs, and the young ants."
+    ],
+    "core": "The smallest workers stay underground.",
+    "easy": "The tiniest ants are called minims. They stay under the ground and take care of the fungus, eggs, and baby ants.",
+    "ko": "미님이라고 불리는 가장 작은 일개미들은 땅속에 머물며 곰팡이, 알, 어린 개미들을 돌본다.",
+    "tip": "콤마 사이의 'called minims'는 가장 작은 일개미들의 이름을 알려 주는 말이에요.",
+    "choices": [
+     "The biggest ants, called minims, guard the nest above ground.",
+     "The smallest ants, called minims, stay below and care for the nest.",
+     "The smallest ants go outside to cut leaves for the young ants."
+    ],
+    "answer": 1
+   }
   ]
  },
  {
@@ -4308,6 +4726,47 @@
    "Rising magma triggers earthquake swarms, causes the ground to swell (inflate like a balloon); monitored by seismometers, GPS, tiltmeters, gas (sulfur dioxide) emission rates -> https://www.nps.gov/articles/volcano-monitoring.htm",
    "Pinatubo: quiet about 500 years; earthquakes felt from March 15, 1991; SO2 rose from about 500 t/day (May 13) to more than 5,000 t/day (May 28); at least 58,000 evacuated by June 12; climactic eruption June 15, the world's largest in more than half a century; cloud 25-34 km high; forecasts saved thousands of lives -> https://pubs.usgs.gov/pinatubo/wolfe/index.html",
    "'Far above where airplanes fly': airliners cruise around 10-12 km, well below 34 km (general knowledge, not separately sourced)"
+  ],
+  "sentenceLab": [
+   {
+    "sid": 3,
+    "text": "Because magma is lighter than the solid rock around it, it slowly pushes its way upward.",
+    "chunks": [
+     "Because magma is lighter",
+     "than the solid rock around it,",
+     "it slowly pushes its way upward."
+    ],
+    "core": "It pushes upward.",
+    "easy": "Magma is lighter than the rock around it. So it slowly moves up.",
+    "ko": "마그마는 주변의 단단한 암석보다 가볍기 때문에 천천히 위로 밀고 올라간다.",
+    "tip": "'Because'로 시작하는 앞부분이 이유이고, 콤마 뒤 'it slowly pushes its way upward'가 결과예요.",
+    "choices": [
+     "Magma is heavier than rock, so it slowly sinks down.",
+     "The rock pushes up because it is lighter than magma.",
+     "Magma moves up slowly because it is lighter than rock."
+    ],
+    "answer": 2
+   },
+   {
+    "sid": 6,
+    "text": "While the magma stays deep down, the heavy rock above presses on it and keeps those gases trapped.",
+    "chunks": [
+     "While the magma stays deep down,",
+     "the heavy rock above",
+     "presses on it",
+     "and keeps those gases trapped."
+    ],
+    "core": "The rock presses and keeps gases trapped.",
+    "easy": "When magma is deep underground, heavy rock pushes down on it. This keeps the gas inside.",
+    "ko": "마그마가 깊은 곳에 머무는 동안에는 위에 있는 무거운 암석이 마그마를 누르고 그 기체들을 가둬 둔다.",
+    "tip": "'While'은 '~하는 동안'이라는 뜻이고, 문장의 주인공은 'the heavy rock above'예요.",
+    "choices": [
+     "Deep down, heavy rock presses on magma and keeps the gas inside.",
+     "Deep down, the magma presses on the rock and lets the gas out.",
+     "When magma rises fast, the heavy rock keeps all the gas inside."
+    ],
+    "answer": 0
+   }
   ]
  },
  {
@@ -5429,7 +5888,48 @@
    "Protein builds and replaces body tissues; sources include eggs, legumes (beans), seafood, meat and dairy milk -> https://kidshealth.org/en/kids/protein-def.html",
    "Safety advice (adult checks the bar, stop if it hurts, start small) is general guidance, not a scientific claim"
   ],
-  "summary": "A pull-up uses muscles in your back, arms, and shoulders, and hanging trains your grip. Exercise makes tiny tears in your muscles. Your body fixes them while you rest and sleep, and protein foods help, so the muscles grow stronger. Start with short dead hangs each day and stay safe."
+  "summary": "A pull-up uses muscles in your back, arms, and shoulders, and hanging trains your grip. Exercise makes tiny tears in your muscles. Your body fixes them while you rest and sleep, and protein foods help, so the muscles grow stronger. Start with short dead hangs each day and stay safe.",
+  "sentenceLab": [
+   {
+    "sid": 4,
+    "text": "Your back muscles do most of the pulling, while your arms and shoulders help.",
+    "chunks": [
+     "Your back muscles",
+     "do most of the pulling,",
+     "while your arms and shoulders help."
+    ],
+    "core": "Your back muscles do the pulling.",
+    "easy": "Your back muscles do most of the work. Your arms and shoulders help.",
+    "ko": "등 근육이 당기는 일의 대부분을 하고, 그동안 팔과 어깨가 돕는다.",
+    "tip": "'while' 뒷부분은 같은 때에 팔과 어깨가 돕는다는 것을 알려 줘요.",
+    "choices": [
+     "Your arms do most of the pulling, and your back helps.",
+     "Your back does most of the pulling, and your arms help.",
+     "Your shoulders do all of the pulling, and your back rests."
+    ],
+    "answer": 1
+   },
+   {
+    "sid": 6,
+    "text": "Your grip comes from muscles in your hands and forearms, the part of your arm between your wrist and elbow.",
+    "chunks": [
+     "Your grip",
+     "comes from muscles",
+     "in your hands and forearms,",
+     "the part of your arm between your wrist and elbow."
+    ],
+    "core": "Your grip comes from muscles.",
+    "easy": "You hold on with muscles in your hands and forearms. The forearm is between your wrist and elbow.",
+    "ko": "쥐는 힘은 손과 아래팔, 즉 손목과 팔꿈치 사이 부분의 근육에서 나온다.",
+    "tip": "콤마 뒤 부분은 forearms가 팔의 어느 부분인지 설명하는 말이에요.",
+    "choices": [
+     "Your grip comes from your back, between your neck and hips.",
+     "Your grip comes from your wrist, which is part of your elbow.",
+     "Your grip comes from your hands and the arm part below the elbow."
+    ],
+    "answer": 2
+   }
+  ]
  },
  {
   "id": "S2-P2-02",
@@ -5645,7 +6145,48 @@
    "Experienced family assembles ger in 1-3 hours; door faces south for sun and away from northern winds; central stove; toono crown lets smoke out; honored guests sit in khoimor opposite the entrance -> https://www.discovermongolia.mn/about-mongolia/culture-art-history/ger-mongolian-traditional-dwelling",
    "Hospitality from centuries of nomadic life; settlements far apart, harsh weather; guests offered milk tea and dairy before conversation; herders depend on each other's kindness -> https://toursmongolia.com/about-mongolia/hospitality-mongolia"
   ],
-  "summary": "In Mongolia, many herders move with their animals to find fresh grass. They live in round tents called gers, which they can put up in a few hours and carry to a new camp. A ger is warm and cozy inside. Herders are very kind to guests because life on the wide grasslands is hard."
+  "summary": "In Mongolia, many herders move with their animals to find fresh grass. They live in round tents called gers, which they can put up in a few hours and carry to a new camp. A ger is warm and cozy inside. Herders are very kind to guests because life on the wide grasslands is hard.",
+  "sentenceLab": [
+   {
+    "sid": 4,
+    "text": "Because the animals eat the grass, herders must keep moving to find fresh pasture and water.",
+    "chunks": [
+     "Because the animals eat the grass,",
+     "herders must keep moving",
+     "to find fresh pasture and water."
+    ],
+    "core": "Herders must keep moving.",
+    "easy": "The animals eat up the grass. So the herders move to find new grass and water.",
+    "ko": "가축들이 풀을 먹기 때문에, 목동들은 새 풀밭과 물을 찾아 계속 옮겨 다녀야 한다.",
+    "tip": "'Because' 부분이 이유이고, 콤마 뒤 'herders must keep moving'이 그 결과예요.",
+    "choices": [
+     "The animals eat the grass, so herders move to find more.",
+     "Herders move a lot, so the animals cannot eat the grass.",
+     "The herders eat the grass, so the animals keep moving."
+    ],
+    "answer": 0
+   },
+   {
+    "sid": 6,
+    "text": "Their home is a round tent called a ger, used by native Mongolians for centuries.",
+    "chunks": [
+     "Their home",
+     "is a round tent",
+     "called a ger,",
+     "used by native Mongolians for centuries."
+    ],
+    "core": "Their home is a round tent.",
+    "easy": "Their home is a round tent named a ger. Mongolians have used gers for hundreds of years.",
+    "ko": "그들의 집은 게르라고 불리는 둥근 천막으로, 몽골 원주민들이 수백 년 동안 사용해 왔다.",
+    "tip": "'used by ~' 부분은 게르를 누가 오래 써 왔는지 설명하는 말이에요.",
+    "choices": [
+     "Their home is a new tent that Mongolians just made.",
+     "Their home is a round tent that Mongolians have used for ages.",
+     "Their home is a square wooden house called a ger."
+    ],
+    "answer": 1
+   }
+  ]
  },
  {
   "id": "S2-P2-03",
@@ -5864,7 +6405,49 @@
    "Beacon towers on high ground stored firewood; Ming rule: ~100 enemies = 1 torch + 1 cannon shot ... ~10,000 = 5 torches + 5 shots; smoke by day, fire at night -> https://travelchinaguide.com/china_great_wall/construction/fortifications.htm",
    "Earth circumference ~40,075 km, so 21,196 km is more than half (general knowledge)"
   ],
-  "summary": "The Great Wall of China is a long chain of walls and towers, about 21,196 kilometers in all. Small kingdoms began building walls long ago, and later rulers joined and rebuilt them. Guards in the towers watched for enemies. They used smoke by day and fire by night to warn others, and more signals meant a bigger army."
+  "summary": "The Great Wall of China is a long chain of walls and towers, about 21,196 kilometers in all. Small kingdoms began building walls long ago, and later rulers joined and rebuilt them. Guards in the towers watched for enemies. They used smoke by day and fire by night to warn others, and more signals meant a bigger army.",
+  "sentenceLab": [
+   {
+    "sid": 6,
+    "text": "The work began more than 2,500 years ago, when small kingdoms built walls along their borders.",
+    "chunks": [
+     "The work began",
+     "more than 2,500 years ago,",
+     "when small kingdoms built walls along their borders."
+    ],
+    "core": "The work began.",
+    "easy": "People started building the wall over 2,500 years ago. Small kingdoms built walls at their edges.",
+    "ko": "이 공사는 2,500여 년 전, 작은 왕국들이 국경을 따라 성벽을 쌓으면서 시작되었다.",
+    "tip": "'when' 뒷부분은 2,500년 전에 무슨 일이 있었는지 설명해 줘요.",
+    "choices": [
+     "About 250 years ago, one big kingdom built the whole wall.",
+     "Over 2,500 years ago, small kingdoms knocked down their walls.",
+     "Over 2,500 years ago, small kingdoms built walls at their borders."
+    ],
+    "answer": 2
+   },
+   {
+    "sid": 9,
+    "text": "Most of the wall seen today was rebuilt during the Ming dynasty, from 1368 to 1644.",
+    "chunks": [
+     "Most of the wall",
+     "seen today",
+     "was rebuilt",
+     "during the Ming dynasty,",
+     "from 1368 to 1644."
+    ],
+    "core": "Most of the wall was rebuilt.",
+    "easy": "Most of the wall we see now was built again while the Ming ruled. That was from 1368 to 1644.",
+    "ko": "오늘날 볼 수 있는 성벽의 대부분은 1368년부터 1644년까지의 명나라 때 다시 지어졌다.",
+    "tip": "'was rebuilt'는 수동태라서, 성벽이 '다시 지어졌다'는 뜻이에요.",
+    "choices": [
+     "Most of the wall we see today was built again by the Ming.",
+     "The Ming people knocked down most of the wall in 1644.",
+     "Most of the wall we see today is older than 2,500 years."
+    ],
+    "answer": 0
+   }
+  ]
  },
  {
   "id": "S2-P3-02",
@@ -6088,6 +6671,50 @@
    "1843: translated Menabrea's French article on the Analytical Engine; notes about three times longer; Note G method for Bernoulli numbers; popularly called first computer program; Babbage had earlier unpublished sample programs; engine never built -> https://en.wikipedia.org/wiki/Note_G",
    "She speculated the engine could operate on things besides number, such as musical notes -> https://www.britannica.com/story/ada-lovelace-the-first-computer-programmer",
    "Died November 27, 1852, age 36; Ada programming language named after her -> https://www.britannica.com/biography/Ada-Lovelace"
+  ],
+  "sentenceLab": [
+   {
+    "sid": 11,
+    "text": "In 1843, Ada translated an article about the Analytical Engine that an Italian named Luigi Menabrea had written in French.",
+    "chunks": [
+     "In 1843,",
+     "Ada translated an article",
+     "about the Analytical Engine",
+     "that an Italian named Luigi Menabrea",
+     "had written in French."
+    ],
+    "core": "Ada translated an article.",
+    "easy": "In 1843, Ada translated an article about the machine. An Italian man had written it in French.",
+    "ko": "1843년, 에이다는 루이지 메나브레아라는 이탈리아인이 프랑스어로 쓴 해석기관에 관한 글을 번역했다.",
+    "tip": "'that' 뒷부분은 그 글을 누가 어떤 언어로 썼는지 설명해 줘요.",
+    "choices": [
+     "In 1843, Luigi Menabrea translated an article that Ada wrote.",
+     "In 1843, Ada translated an article that Luigi Menabrea wrote.",
+     "In 1843, Ada wrote an article in French about Italy."
+    ],
+    "answer": 1
+   },
+   {
+    "sid": 13,
+    "text": "In one note, now called Note G, she carefully arranged the steps the machine would follow to work out a series of numbers called Bernoulli numbers.",
+    "chunks": [
+     "In one note,",
+     "now called Note G,",
+     "she carefully arranged the steps",
+     "the machine would follow",
+     "to work out a series of numbers called Bernoulli numbers."
+    ],
+    "core": "She arranged the steps.",
+    "easy": "In Note G, Ada wrote the steps for the machine to follow. The steps would find Bernoulli numbers.",
+    "ko": "지금은 노트 G라고 불리는 한 노트에서, 그녀는 기계가 베르누이 수라는 일련의 수를 계산할 때 따를 단계들을 꼼꼼히 정리했다.",
+    "tip": "콤마 사이의 'now called Note G'는 그 노트를 지금 부르는 이름을 알려 주는 말이에요.",
+    "choices": [
+     "In Note G, the machine wrote steps for Ada to follow.",
+     "In Note G, Ada built a new machine named Bernoulli.",
+     "In Note G, Ada wrote the steps the machine would follow."
+    ],
+    "answer": 2
+   }
   ]
  },
  {
@@ -6307,6 +6934,48 @@
    "Chairs designed for speed and agility; two large cambered wheels, small front castors, one or two rear anti-tip castors -> https://www.paralympic.org/wheelchair-basketball",
    "Classification 1.0 to 4.5 (higher = more ability); five on court may total no more than 14 points -> https://www.paralympic.org/wheelchair-basketball",
    "USA most successful nation: 10 men's and 4 women's Paralympic golds -> https://www.paralympic.org/wheelchair-basketball"
+  ],
+  "sentenceLab": [
+   {
+    "sid": 2,
+    "text": "Those hospitals cared for soldiers who had come home from World War II.",
+    "chunks": [
+     "Those hospitals",
+     "cared for soldiers",
+     "who had come home from World War II."
+    ],
+    "core": "Those hospitals cared for soldiers.",
+    "easy": "The hospitals helped soldiers. These soldiers came back home from World War II.",
+    "ko": "그 병원들은 제2차 세계대전에서 돌아온 군인들을 돌봤다.",
+    "tip": "'who' 뒷부분은 어떤 군인들인지 설명하는 말이에요.",
+    "choices": [
+     "The hospitals helped soldiers who came home from the war.",
+     "The soldiers built hospitals when they came home from war.",
+     "The hospitals sent soldiers away to fight in the war."
+    ],
+    "answer": 0
+   },
+   {
+    "sid": 15,
+    "text": "The five players a team has on the court can add up to no more than 14 points at any time.",
+    "chunks": [
+     "The five players",
+     "a team has on the court",
+     "can add up to",
+     "no more than 14 points",
+     "at any time."
+    ],
+    "core": "The five players can add up.",
+    "easy": "Each team has five players on the court. Their scores added together cannot be over 14.",
+    "ko": "한 팀이 코트에 내보낸 선수 다섯 명의 점수 합은 언제든 14점을 넘을 수 없다.",
+    "tip": "'a team has on the court'는 어떤 다섯 명인지 설명해 주고, 진짜 동사는 'can add up'이에요.",
+    "choices": [
+     "A team must score at least 14 points in every game.",
+     "The five players' scores together can be 14 or less.",
+     "Each of the five players can have up to 14 points."
+    ],
+    "answer": 1
+   }
   ]
  },
  {
@@ -6522,6 +7191,48 @@
    "Amazon biome about 6.7 million km2, roughly twice the size of India; 8 countries plus French Guiana; river more than 6,600 km; 15-16% of world river discharge into oceans; at least 10% of known biodiversity -> https://wwf.panda.org/knowledge_hub/where_we_work/amazon/about_the_amazon",
    "Nearly 60% in Brazil; about 1% of Earth's surface, 10% of known species; green anaconda world's largest and heaviest snake; pink river dolphins; ~400 billion trees of ~16,000 species; ~2.2 million Indigenous people speaking ~300 languages -> https://www.wwf.org.uk/where-we-work/amazon",
    "20% oxygen claim a gross overestimate; trees use over half the oxygen they make and are net absorbers at night; microbes use much of the rest; net effect around zero; most atmospheric oxygen is legacy of ocean phytoplankton; Amazon removes CO2 and stabilizes rainfall; Michael Coe: more like giant air conditioner -> https://www.nationalgeographic.com/environment/article/why-amazon-doesnt-produce-20-percent-worlds-oxygen"
+  ],
+  "sentenceLab": [
+   {
+    "sid": 3,
+    "text": "Winding through the forest is the Amazon River, which flows for more than 6,600 kilometers.",
+    "chunks": [
+     "Winding through the forest",
+     "is the Amazon River,",
+     "which flows for more than 6,600 kilometers."
+    ],
+    "core": "The Amazon River winds through.",
+    "easy": "The Amazon River curves through the forest. It is more than 6,600 kilometers long.",
+    "ko": "숲 사이를 구불구불 지나가는 것은 아마존강인데, 이 강은 6,600킬로미터 넘게 흐른다.",
+    "tip": "순서가 뒤집힌 문장이라서, 진짜 주인공 'the Amazon River'가 동사 'is' 뒤에 나와요.",
+    "choices": [
+     "The forest winds around the river for 6,600 kilometers.",
+     "The Amazon River is less than 6,600 kilometers long.",
+     "The Amazon River runs through the forest for over 6,600 kilometers."
+    ],
+    "answer": 2
+   },
+   {
+    "sid": 21,
+    "text": "Since the survival of so many plants, animals, and people depends on this forest, its protection matters to the whole world.",
+    "chunks": [
+     "Since the survival",
+     "of so many plants, animals, and people",
+     "depends on this forest,",
+     "its protection",
+     "matters to the whole world."
+    ],
+    "core": "Its protection matters.",
+    "easy": "Many plants, animals, and people need this forest to live. So keeping it safe matters to everyone.",
+    "ko": "아주 많은 식물과 동물, 사람들의 생존이 이 숲에 달려 있기 때문에, 이 숲을 지키는 일은 온 세계에 중요하다.",
+    "tip": "여기서 'Since'는 '~때문에'라는 뜻이고, 콤마 뒤 'its protection matters'가 핵심이에요.",
+    "choices": [
+     "Many living things need this forest, so saving it matters to all.",
+     "The forest needs people and animals to protect the whole world.",
+     "Since the forest is safe, plants and animals do not need it."
+    ],
+    "answer": 0
+   }
   ]
  }
 ]

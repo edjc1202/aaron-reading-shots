@@ -1080,7 +1080,49 @@
   "season": 1,
   "short": "Salty Ocean",
   "pool": "practice",
-  "summary": "Ocean water is too salty for people to drink. Much of the salt comes from rocks on land, which rain slowly breaks down so rivers can carry the salt to the sea. More salt comes from hot water deep under the seafloor. When the sun dries up sea water, the salt stays behind and keeps building up."
+  "summary": "Ocean water is too salty for people to drink. Much of the salt comes from rocks on land, which rain slowly breaks down so rivers can carry the salt to the sea. More salt comes from hot water deep under the seafloor. When the sun dries up sea water, the salt stays behind and keeps building up.",
+  "sentenceLab": [
+   {
+    "sid": 7,
+    "text": "When rain falls, it mixes with carbon dioxide gas in the air, which makes it slightly acidic.",
+    "chunks": [
+     "When rain falls,",
+     "it mixes with carbon dioxide gas",
+     "in the air,",
+     "which makes it slightly acidic."
+    ],
+    "core": "Rain mixes with gas. It becomes acidic.",
+    "easy": "Rain mixes with a gas in the air. This makes the rain a little bit acidic.",
+    "ko": "비가 내리면 빗물은 공기 중의 이산화탄소 기체와 섞이고, 그 때문에 빗물이 약간 산성을 띠게 된다.",
+    "tip": "which는 앞 내용 전체(빗물이 기체와 섞이는 것)를 받아서 그 결과를 설명해요.",
+    "choices": [
+     "Rain mixes with a gas in the air, and this makes the rain a little acidic.",
+     "Acidic rain makes a gas in the air, and this makes the air salty.",
+     "The gas in the air stops the rain, so the rain never becomes acidic."
+    ],
+    "answer": 0
+   },
+   {
+    "sid": 18,
+    "text": "The Dead Sea, a lake in the Middle East, has rivers flowing in but none flowing out.",
+    "chunks": [
+     "The Dead Sea,",
+     "a lake in the Middle East,",
+     "has rivers flowing in",
+     "but none flowing out."
+    ],
+    "core": "The Dead Sea has rivers.",
+    "easy": "The Dead Sea is a lake. Rivers flow into it, but no rivers flow out of it.",
+    "ko": "중동에 있는 호수인 사해는 흘러 들어오는 강은 있지만 흘러 나가는 강은 하나도 없다.",
+    "tip": "콤마 사이 'a lake in the Middle East'는 사해가 어떤 곳인지 설명하는 말이에요.",
+    "choices": [
+     "Rivers flow out of the Dead Sea, but no rivers flow into it.",
+     "Rivers flow into the Dead Sea, but no rivers flow out of it.",
+     "The Middle East has a lake, and it has no rivers at all."
+    ],
+    "answer": 1
+   }
+  ]
  },
  {
   "id": "L2-02",
@@ -1291,7 +1333,50 @@
   "season": 1,
   "short": "Emperor Penguins",
   "pool": "practice",
-  "summary": "Emperor penguins have their chicks during the cold, windy winter in Antarctica. The mother lays one egg and goes back to the sea to eat. The father keeps the egg warm on his feet for months with no food, staying close to other fathers in a huddle. When the chick hatches, the mother comes back with food."
+  "summary": "Emperor penguins have their chicks during the cold, windy winter in Antarctica. The mother lays one egg and goes back to the sea to eat. The father keeps the egg warm on his feet for months with no food, staying close to other fathers in a huddle. When the chick hatches, the mother comes back with food.",
+  "sentenceLab": [
+   {
+    "sid": 11,
+    "text": "To survive the dangerous storms, crowds of fathers squeeze together in a tight group called a huddle.",
+    "chunks": [
+     "To survive the dangerous storms,",
+     "crowds of fathers",
+     "squeeze together",
+     "in a tight group",
+     "called a huddle."
+    ],
+    "core": "Fathers squeeze together.",
+    "easy": "Many penguin dads stand very close together in a group called a huddle. This helps them live through the storms.",
+    "ko": "위험한 폭풍 속에서 살아남기 위해 수많은 아빠 펭귄들이 허들이라고 불리는 빽빽한 무리로 꼭 붙어 모인다.",
+    "tip": "To survive는 '살아남기 위해서'라는 뜻으로, 아빠 펭귄들이 모이는 이유를 앞에서 먼저 알려줘요.",
+    "choices": [
+     "The fathers squeeze together so that the storms will stop coming.",
+     "A huddle is a big storm that pushes all the fathers together.",
+     "The fathers stand close together in a huddle to live through storms."
+    ],
+    "answer": 2
+   },
+   {
+    "sid": 13,
+    "text": "By the time the egg hatches, the father has gone about four months without a meal.",
+    "chunks": [
+     "By the time the egg hatches,",
+     "the father",
+     "has gone about four months",
+     "without a meal."
+    ],
+    "core": "The father has gone without meals.",
+    "easy": "When the egg hatches, the dad has not eaten for about four months.",
+    "ko": "알이 부화할 때쯤이면 아빠 펭귄은 약 넉 달 동안 아무것도 먹지 못한 상태가 된다.",
+    "tip": "By the time ~는 '~할 때쯤에는'이라는 뜻으로, 아빠가 굶은 기간이 언제까지인지 알려줘요.",
+    "choices": [
+     "The dad has not eaten for about four months when the egg hatches.",
+     "The dad eats one big meal every four months until the egg hatches.",
+     "The egg hatches after four months, and then the dad stops eating."
+    ],
+    "answer": 0
+   }
+  ]
  },
  {
   "id": "L2-03",
@@ -1510,7 +1595,49 @@
   "season": 1,
   "short": "Marie Curie",
   "pool": "practice",
-  "summary": "Marie Curie was a girl from Poland who loved science. She moved to Paris to study, and there she married Pierre Curie. Together they found two new elements, polonium and radium. Marie became the first woman to win a Nobel Prize, and later she won a second one."
+  "summary": "Marie Curie was a girl from Poland who loved science. She moved to Paris to study, and there she married Pierre Curie. Together they found two new elements, polonium and radium. Marie became the first woman to win a Nobel Prize, and later she won a second one.",
+  "sentenceLab": [
+   {
+    "sid": 6,
+    "text": "Marie became curious about invisible rays that came out of certain rocks.",
+    "chunks": [
+     "Marie became curious",
+     "about invisible rays",
+     "that came out of certain rocks."
+    ],
+    "core": "Marie became curious.",
+    "easy": "Some rocks gave off rays that you cannot see. Marie wanted to learn about them.",
+    "ko": "마리는 특정 암석에서 나오는 보이지 않는 광선에 호기심을 갖게 되었다.",
+    "tip": "that 이하는 어떤 광선인지, 즉 특정 암석에서 나오는 광선이라고 설명해 줘요.",
+    "choices": [
+     "Marie made invisible rays come out of some special rocks.",
+     "Marie wanted to learn about unseen rays that came from some rocks.",
+     "Marie found some special rocks that nobody could see."
+    ],
+    "answer": 1
+   },
+   {
+    "sid": 13,
+    "text": "In 1903, Marie and Pierre shared the Nobel Prize in Physics with another scientist, Henri Becquerel.",
+    "chunks": [
+     "In 1903,",
+     "Marie and Pierre",
+     "shared the Nobel Prize in Physics",
+     "with another scientist,",
+     "Henri Becquerel."
+    ],
+    "core": "Marie and Pierre shared the prize.",
+    "easy": "In 1903, Marie, Pierre, and a scientist named Henri Becquerel won the Nobel Prize in Physics together.",
+    "ko": "1903년, 마리와 피에르는 또 다른 과학자 앙리 베크렐과 함께 노벨 물리학상을 공동 수상했다.",
+    "tip": "'Henri Becquerel'은 바로 앞의 another scientist가 누구인지 이름을 알려주는 말이에요.",
+    "choices": [
+     "In 1903, Henri Becquerel gave Marie and Pierre a Nobel Prize.",
+     "In 1903, Marie won the Nobel Prize, but Pierre and Henri did not.",
+     "In 1903, Marie, Pierre, and Henri Becquerel won the prize together."
+    ],
+    "answer": 2
+   }
+  ]
  },
  {
   "id": "L2-04",
@@ -1719,7 +1846,49 @@
   "season": 1,
   "short": "Look, Think, Move",
   "pool": "practice",
-  "summary": "Jiho loved to play chess fast. At his first tournament, he moved without thinking, and Clara beat him quickly. Coach Han gave him a card with four words on it: Look, Think, Move, Check. In the next game, Jiho slowed down, stopped a big mistake just in time, and played to a draw."
+  "summary": "Jiho loved to play chess fast. At his first tournament, he moved without thinking, and Clara beat him quickly. Coach Han gave him a card with four words on it: Look, Think, Move, Check. In the next game, Jiho slowed down, stopped a big mistake just in time, and played to a draw.",
+  "sentenceLab": [
+   {
+    "sid": 13,
+    "text": "Coach Han explained that he should first look at what his opponent had just done.",
+    "chunks": [
+     "Coach Han explained",
+     "that he should first look at",
+     "what his opponent had just done."
+    ],
+    "core": "Coach Han explained.",
+    "easy": "Coach Han said Jiho should first look at the move the other player just made.",
+    "ko": "한 코치는 그가 먼저 상대가 방금 무엇을 했는지부터 살펴봐야 한다고 설명했다.",
+    "tip": "that 뒤는 코치가 설명한 내용이고, what ~ done은 '상대가 방금 한 것'이라는 뜻이에요.",
+    "choices": [
+     "Coach Han said Jiho should first look at the other player's last move.",
+     "Coach Han said Jiho should first make his own move very fast.",
+     "Coach Han first looked at the move that Clara had just made."
+    ],
+    "answer": 0
+   },
+   {
+    "sid": 15,
+    "text": "Only then should he move, and afterward, he should check the board again for danger.",
+    "chunks": [
+     "Only then",
+     "should he move,",
+     "and afterward,",
+     "he should check the board again",
+     "for danger."
+    ],
+    "core": "He should move. He should check.",
+    "easy": "After looking and thinking, Jiho can move. After the move, he should look at the board again for danger.",
+    "ko": "그렇게 한 다음에야 말을 움직여야 하고, 그 뒤에는 위험이 없는지 판을 다시 확인해야 한다.",
+    "tip": "Only then이 문장 앞에 오면 should he처럼 주어와 동사의 순서가 바뀌어요.",
+    "choices": [
+     "Jiho should move first, and then look and think about danger.",
+     "Jiho should move only after looking and thinking, then check again.",
+     "Jiho should move right away and never check the board again."
+    ],
+    "answer": 1
+   }
+  ]
  },
  {
   "id": "L3-01",
@@ -1945,7 +2114,50 @@
   "season": 1,
   "short": "South Pole Race",
   "pool": "practice",
-  "summary": "In 1911, Roald Amundsen and Robert Falcon Scott raced to be the first to reach the South Pole. Amundsen planned carefully and used dogs and skis, but Scott's ponies and machines failed. Amundsen got there first, about five weeks before Scott. Amundsen's team got home safely, but Scott and his men died on the way back."
+  "summary": "In 1911, Roald Amundsen and Robert Falcon Scott raced to be the first to reach the South Pole. Amundsen planned carefully and used dogs and skis, but Scott's ponies and machines failed. Amundsen got there first, about five weeks before Scott. Amundsen's team got home safely, but Scott and his men died on the way back.",
+  "sentenceLab": [
+   {
+    "sid": 3,
+    "text": "The other was led by Robert Falcon Scott, a British navy officer who had explored Antarctica before.",
+    "chunks": [
+     "The other",
+     "was led by Robert Falcon Scott,",
+     "a British navy officer",
+     "who had explored Antarctica before."
+    ],
+    "core": "Scott led the other team.",
+    "easy": "Robert Falcon Scott led the other team. He was in the British navy, and he had been to Antarctica before.",
+    "ko": "다른 팀은 이전에 남극을 탐험한 적이 있는 영국 해군 장교 로버트 팰컨 스콧이 이끌었다.",
+    "tip": "was led by는 '~에 의해 이끌렸다'는 수동태라서, 팀을 이끈 사람이 Scott이에요.",
+    "choices": [
+     "A British navy officer led Scott to Antarctica for the first time.",
+     "Scott was going to Antarctica for the first time with the other team.",
+     "Scott, who had been to Antarctica before, led the other team."
+    ],
+    "answer": 2
+   },
+   {
+    "sid": 7,
+    "text": "Months earlier, his team had stored food in depots along the route, so they would not run short on the way back.",
+    "chunks": [
+     "Months earlier,",
+     "his team had stored food",
+     "in depots along the route,",
+     "so they would not run short",
+     "on the way back."
+    ],
+    "core": "His team had stored food.",
+    "easy": "Months before, Amundsen's team left food at stops along the path. Then they would have enough food when they came back.",
+    "ko": "몇 달 전에 그의 팀은 돌아오는 길에 식량이 모자라지 않도록 경로를 따라 저장소에 식량을 보관해 두었다.",
+    "tip": "so 뒤는 식량을 미리 저장해 둔 목적, 즉 돌아오는 길에 모자라지 않게 하려는 이유예요.",
+    "choices": [
+     "Months before, the team left food along the path to eat on the way back.",
+     "Months before, the team ran out of food on the way back home.",
+     "The team ate all of their food months before the trip started."
+    ],
+    "answer": 0
+   }
+  ]
  },
  {
   "id": "L3-02",
@@ -2171,7 +2383,48 @@
   "season": 1,
   "short": "Element Cards",
   "pool": "practice",
-  "summary": "Long ago, scientists knew about many elements but could not see how they fit together. Dmitri Mendeleev put them in order by weight and found a pattern that kept repeating. He left empty spaces for elements nobody had found yet. Later, scientists found new elements like gallium and germanium that matched his guesses."
+  "summary": "Long ago, scientists knew about many elements but could not see how they fit together. Dmitri Mendeleev put them in order by weight and found a pattern that kept repeating. He left empty spaces for elements nobody had found yet. Later, scientists found new elements like gallium and germanium that matched his guesses.",
+  "sentenceLab": [
+   {
+    "sid": 10,
+    "text": "The boldest part was not what he put into it, but what he left out.",
+    "chunks": [
+     "The boldest part",
+     "was not what he put into it,",
+     "but what he left out."
+    ],
+    "core": "The boldest part was what he left out.",
+    "easy": "The bravest idea in his table was the spaces he left empty, not the elements he put in.",
+    "ko": "가장 대담한 부분은 그가 표에 넣은 것이 아니라 빼 둔 것이었다.",
+    "tip": "not A but B는 'A가 아니라 B'라는 뜻이라서, 중요한 것은 뒤의 B예요.",
+    "choices": [
+     "The bravest part of his table was the elements he put into it.",
+     "The bravest part of his table was the empty spaces he left.",
+     "He left the table out of his book because it was too bold."
+    ],
+    "answer": 1
+   },
+   {
+    "sid": 11,
+    "text": "Wherever the pattern skipped a step, he left an empty space and insisted that a missing element belonged there.",
+    "chunks": [
+     "Wherever the pattern skipped a step,",
+     "he left an empty space",
+     "and insisted",
+     "that a missing element belonged there."
+    ],
+    "core": "He left a space and insisted.",
+    "easy": "When the pattern jumped over a spot, he left a blank box. He said an element nobody had found yet belonged there.",
+    "ko": "패턴이 한 칸 건너뛰는 곳마다 그는 빈칸을 남기고, 그 자리에 아직 발견되지 않은 원소가 들어가야 한다고 주장했다.",
+    "tip": "Wherever ~는 '~하는 곳마다'라는 뜻으로, 빈칸을 남긴 위치를 알려줘요.",
+    "choices": [
+     "When the pattern skipped, he filled the space with a known element.",
+     "When an element went missing, he changed the pattern to skip it.",
+     "When the pattern skipped, he left a blank and said an element was missing."
+    ],
+    "answer": 2
+   }
+  ]
  },
  {
   "id": "L3-03",
@@ -2394,7 +2647,49 @@
   "season": 1,
   "short": "Venice",
   "pool": "practice",
-  "summary": "Venice is a city in Italy built on many small islands, with canals instead of roads. It stands on millions of wooden poles pushed deep into the mud. People get around by boat, like water buses and gondolas. Sometimes high tides flood the city, so Italy built giant gates that rise up to hold back the sea."
+  "summary": "Venice is a city in Italy built on many small islands, with canals instead of roads. It stands on millions of wooden poles pushed deep into the mud. People get around by boat, like water buses and gondolas. Sometimes high tides flood the city, so Italy built giant gates that rise up to hold back the sea.",
+  "sentenceLab": [
+   {
+    "sid": 9,
+    "text": "Since there is almost no oxygen in the mud, the tiny living things that usually rot wood cannot survive there.",
+    "chunks": [
+     "Since there is almost no oxygen in the mud,",
+     "the tiny living things",
+     "that usually rot wood",
+     "cannot survive there."
+    ],
+    "core": "Tiny living things cannot survive.",
+    "easy": "The mud has almost no oxygen. So the tiny living things that make wood rot cannot live there.",
+    "ko": "진흙 속에는 산소가 거의 없기 때문에, 보통 나무를 썩게 하는 작은 생물들이 그곳에서 살아남을 수 없다.",
+    "tip": "Since는 '~이기 때문에'라는 뜻이고, that usually rot wood는 어떤 작은 생물인지 설명해요.",
+    "choices": [
+     "The mud has little oxygen, so tiny things that rot wood cannot live there.",
+     "Tiny living things eat the oxygen in the mud, so the wood rots fast.",
+     "The wood has no oxygen, so tiny living things in the mud make it rot."
+    ],
+    "answer": 0
+   },
+   {
+    "sid": 19,
+    "text": "When a dangerous tide is coming, air is pumped into the gates so that they rise up and hold back the sea.",
+    "chunks": [
+     "When a dangerous tide is coming,",
+     "air is pumped into the gates",
+     "so that they rise up",
+     "and hold back the sea."
+    ],
+    "core": "Air is pumped into the gates.",
+    "easy": "When a big tide is coming, people pump air into the gates. Then the gates go up and stop the sea.",
+    "ko": "위험한 조수가 밀려올 때면 수문에 공기가 주입되어, 수문이 떠올라 바닷물을 막아낸다.",
+    "tip": "air is pumped는 '공기가 주입된다'는 수동태이고, so that 뒤는 그렇게 하는 목적이에요.",
+    "choices": [
+     "When a big tide comes, the gates pump air out to make the sea go down.",
+     "When a big tide comes, air goes into the gates so they rise and block the sea.",
+     "When a big tide comes, the sea pushes air into the gates and they sink."
+    ],
+    "answer": 1
+   }
+  ]
  },
  {
   "id": "L3-04",
@@ -2622,7 +2917,51 @@
   "season": 1,
   "short": "Fox Notes",
   "pool": "practice",
-  "summary": "Theo kept finding secret notes in his backpack, each signed with a tiny fox. He acted like a detective and wrote down every clue. One note asked about Biscuit, a sick cat he had only told Jonah and Mia about. But Jonah was home that week, so Theo thanked the one friend who fit every clue."
+  "summary": "Theo kept finding secret notes in his backpack, each signed with a tiny fox. He acted like a detective and wrote down every clue. One note asked about Biscuit, a sick cat he had only told Jonah and Mia about. But Jonah was home that week, so Theo thanked the one friend who fit every clue.",
+  "sentenceLab": [
+   {
+    "sid": 11,
+    "text": "Theo had mentioned the sick cat only once, in a whisper, to the two kids at his art table, Jonah and Mia.",
+    "chunks": [
+     "Theo had mentioned the sick cat",
+     "only once,",
+     "in a whisper,",
+     "to the two kids at his art table,",
+     "Jonah and Mia."
+    ],
+    "core": "Theo had mentioned the cat.",
+    "easy": "Theo talked about the sick cat just one time. He whispered it to Jonah and Mia, who sat at his art table.",
+    "ko": "테오는 아픈 고양이 이야기를 딱 한 번, 미술 시간에 같은 테이블에 앉은 두 아이 조나와 미아에게만 속삭이듯 말했었다.",
+    "tip": "콤마로 나뉜 부분들은 몇 번, 어떻게, 누구에게 말했는지 하나씩 덧붙여 주는 정보예요.",
+    "choices": [
+     "Theo told the whole art class about the sick cat many times.",
+     "Jonah and Mia whispered to Theo about their own sick cat.",
+     "Theo quietly told only Jonah and Mia about the sick cat, just once."
+    ],
+    "answer": 2
+   },
+   {
+    "sid": 17,
+    "text": "The next Tuesday, after art, he tucked a note of his own into the backpack of the one person who fit every clue.",
+    "chunks": [
+     "The next Tuesday,",
+     "after art,",
+     "he tucked a note of his own",
+     "into the backpack of the one person",
+     "who fit every clue."
+    ],
+    "core": "He tucked a note into a backpack.",
+    "easy": "Next Tuesday after art class, Theo put his own note in the backpack of the only kid who matched all the clues.",
+    "ko": "다음 화요일 미술 시간이 끝난 뒤, 테오는 모든 단서에 들어맞는 단 한 사람의 가방에 자기가 쓴 쪽지를 살짝 넣었다.",
+    "tip": "who fit every clue는 '모든 단서에 들어맞는 단 한 사람'이 누구인지 설명해 줘요.",
+    "choices": [
+     "After art on Tuesday, Theo put his note in the bag of the kid who fit all the clues.",
+     "After art on Tuesday, Theo found a new fox note in his own backpack.",
+     "After art on Tuesday, Theo put a note in the bag of every kid in his class."
+    ],
+    "answer": 0
+   }
+  ]
  },
  {
   "id": "p001",
@@ -5325,7 +5664,51 @@
    "Apollo 15, David Scott dropped hammer and falcon feather, landed together, no air on Moon -> https://nssdc.gsfc.nasa.gov/planetary/lunar/apollo_15_feather_drop.html",
    "Apollo 15 drop date Aug 2, 1971 -> https://britannica.com/video/148908/David-Scott-Apollo-15-falcon-feather-hammer-Aug-2-1971"
   ],
-  "summary": "Long ago, Isaac Newton saw an apple fall from a tree and wondered why things always fall down. He decided that an unseen pull, called gravity, draws everything toward Earth. He thought the same pull also keeps the Moon going around Earth. Much later, astronaut David Scott dropped a hammer and a feather on the Moon, and they landed together."
+  "summary": "Long ago, Isaac Newton saw an apple fall from a tree and wondered why things always fall down. He decided that an unseen pull, called gravity, draws everything toward Earth. He thought the same pull also keeps the Moon going around Earth. Much later, astronaut David Scott dropped a hammer and a feather on the Moon, and they landed together.",
+  "sentenceLab": [
+   {
+    "sid": 11,
+    "text": "Newton decided that an invisible pull, which we now call gravity, draws everything toward Earth's center.",
+    "chunks": [
+     "Newton decided",
+     "that an invisible pull,",
+     "which we now call gravity,",
+     "draws everything",
+     "toward Earth's center."
+    ],
+    "core": "Newton decided. A pull draws everything.",
+    "easy": "Newton thought an unseen pull brings everything toward the middle of Earth. Today we call this pull gravity.",
+    "ko": "뉴턴은 오늘날 우리가 중력이라고 부르는 보이지 않는 끌어당기는 힘이 모든 것을 지구 중심 쪽으로 끌어당긴다고 결론 내렸다.",
+    "tip": "콤마 사이 which절은 보이지 않는 힘을 오늘날 뭐라고 부르는지 알려주는 말이에요.",
+    "choices": [
+     "Newton decided that everything pulls on Earth's center to move it.",
+     "Newton decided that an unseen pull, gravity, draws things toward Earth's center.",
+     "Newton decided to give the center of Earth the name gravity."
+    ],
+    "answer": 1
+   },
+   {
+    "sid": 13,
+    "text": "Perhaps the same force that tugs on an apple also reaches all the way out to the Moon.",
+    "chunks": [
+     "Perhaps",
+     "the same force",
+     "that tugs on an apple",
+     "also reaches all the way out",
+     "to the Moon."
+    ],
+    "core": "The same force reaches the Moon.",
+    "easy": "Maybe the force that pulls an apple down also pulls on the Moon, far away.",
+    "ko": "어쩌면 사과를 끌어당기는 바로 그 힘이 저 멀리 달까지 닿아 있을지도 모른다.",
+    "tip": "that tugs on an apple은 the same force를 꾸며 주고, 진짜 동사는 그 뒤의 reaches예요.",
+    "choices": [
+     "The Moon pulls on apples and makes them fall from trees.",
+     "Apples and the Moon are pulled by forces that are not the same.",
+     "Maybe the force that pulls an apple also reaches out to the Moon."
+    ],
+    "answer": 2
+   }
+  ]
  },
  {
   "id": "G2-02",
@@ -5529,7 +5912,50 @@
    "Pair of sisters rescued 125 birds in a single season -> https://www.smithsonianmag.com/science-nature/icelandic-town-goes-all-out-save-baby-puffins-180981518/",
    "Heimaey is the only inhabited island of the Westman Islands (town Vestmannaeyjabaer) -> https://www.smithsonianmag.com/science-nature/icelandic-town-goes-all-out-save-baby-puffins-180981518/"
   ],
-  "summary": "Puffins are seabirds with bright beaks, and many of them raise their babies in Iceland. The babies, called pufflings, fly to the sea at night, and they may follow the moon. Town lights can confuse them, so some land on streets instead. Kids on the Puffling Patrol find the lost birds and help them reach the ocean."
+  "summary": "Puffins are seabirds with bright beaks, and many of them raise their babies in Iceland. The babies, called pufflings, fly to the sea at night, and they may follow the moon. Town lights can confuse them, so some land on streets instead. Kids on the Puffling Patrol find the lost birds and help them reach the ocean.",
+  "sentenceLab": [
+   {
+    "sid": 12,
+    "text": "On Heimaey, the only island where people live, the bright lights of the town confuse them.",
+    "chunks": [
+     "On Heimaey,",
+     "the only island where people live,",
+     "the bright lights of the town",
+     "confuse them."
+    ],
+    "core": "The bright lights confuse them.",
+    "easy": "People live only on one island, Heimaey. The bright town lights there mix up the young puffins.",
+    "ko": "사람이 사는 유일한 섬인 헤이마에이에서는 마을의 밝은 불빛이 퍼플링들을 헷갈리게 한다.",
+    "tip": "콤마 사이 부분은 Heimaey가 사람이 사는 유일한 섬이라고 설명하는 말이에요.",
+    "choices": [
+     "On Heimaey, where people live, the town lights mix up the pufflings.",
+     "On Heimaey, the pufflings follow bright lights to find the people.",
+     "Heimaey is the only island where lights do not confuse the pufflings."
+    ],
+    "answer": 0
+   },
+   {
+    "sid": 14,
+    "text": "Their new wings are too weak to lift them off flat ground, so cars and hungry animals become a danger.",
+    "chunks": [
+     "Their new wings",
+     "are too weak",
+     "to lift them off flat ground,",
+     "so cars and hungry animals",
+     "become a danger."
+    ],
+    "core": "Their wings are too weak.",
+    "easy": "The young birds' wings are not strong enough to fly up from flat ground. So cars and hungry animals can hurt them.",
+    "ko": "새로 난 날개가 너무 약해서 평평한 땅에서는 날아오를 수 없기 때문에, 자동차와 배고픈 동물들이 위험이 된다.",
+    "tip": "too ~ to ...는 '너무 ~해서 ...할 수 없다'는 뜻이고, so 뒤는 그 결과예요.",
+    "choices": [
+     "Cars and hungry animals hurt their wings, so they cannot fly off the ground.",
+     "Their wings cannot lift them off flat ground, so cars and animals can hurt them.",
+     "Their wings are strong enough to fly away from cars and hungry animals."
+    ],
+    "answer": 1
+   }
+  ]
  },
  {
   "id": "G2-03",
@@ -5733,7 +6159,50 @@
    "Incas had no alphabetic script; quipu knotted strings of cotton/wool varying in color; base-10 knot values; recorded census, taxes, livestock; trained quipucamayoc read them; chasquis carried quipu with oral messages -> https://www.worldhistory.org/Quipu/",
    "Inca Empire ~500 years ago (height c. 1438-1533) in the Andes -> https://en.wikipedia.org/wiki/Inca_road_system"
   ],
-  "summary": "Long ago, the Inca Empire in South America built very long roads through the mountains. They made stone steps, grass bridges, and rest stops for travelers. Fast runners passed messages from one runner to the next. The Incas had no alphabet, so they kept track of numbers with knots tied on colorful strings."
+  "summary": "Long ago, the Inca Empire in South America built very long roads through the mountains. They made stone steps, grass bridges, and rest stops for travelers. Fast runners passed messages from one runner to the next. The Incas had no alphabet, so they kept track of numbers with knots tied on colorful strings.",
+  "sentenceLab": [
+   {
+    "sid": 11,
+    "text": "Rest stops called tambos, usually placed about a day's walk apart, gave travelers food and shelter.",
+    "chunks": [
+     "Rest stops called tambos,",
+     "usually placed about a day's walk apart,",
+     "gave travelers",
+     "food and shelter."
+    ],
+    "core": "Rest stops gave travelers food.",
+    "easy": "The Incas had rest stops called tambos, about one day's walk from each other. Travelers got food and a place to stay there.",
+    "ko": "보통 하루 걸으면 닿는 거리마다 세워진 탐보라는 휴게소는 여행자들에게 음식과 쉴 곳을 제공했다.",
+    "tip": "콤마 사이 부분은 탐보가 어디에 있었는지 덧붙이는 말이고, 진짜 동사는 gave예요.",
+    "choices": [
+     "Travelers walked for a whole day to build rest stops called tambos.",
+     "Tambos were travelers who gave food to people walking on the roads.",
+     "Tambos were rest stops a day's walk apart that gave travelers food."
+    ],
+    "answer": 2
+   },
+   {
+    "sid": 18,
+    "text": "Instead, they kept records on a quipu, a bundle of colorful strings tied with knots.",
+    "chunks": [
+     "Instead,",
+     "they kept records",
+     "on a quipu,",
+     "a bundle of colorful strings",
+     "tied with knots."
+    ],
+    "core": "They kept records.",
+    "easy": "Instead of writing letters, the Incas kept records on a quipu. A quipu is a group of colorful strings with knots.",
+    "ko": "대신 그들은 매듭을 묶은 색색의 끈 묶음인 키푸에 기록을 남겼다.",
+    "tip": "콤마 뒤 부분은 quipu가 무엇인지 설명해 주는 말이에요.",
+    "choices": [
+     "Instead of writing, the Incas kept records on knotted, colorful strings.",
+     "Instead of strings, the Incas tied knots in their alphabet letters.",
+     "The Incas used colorful strings to tie bundles of food together."
+    ],
+    "answer": 0
+   }
+  ]
  },
  {
   "id": "G2-04",
@@ -5928,7 +6397,49 @@
   "factNotes": [
    "Fiction; basketball rules used (foul, free throws after being fouled, overtime after a tie) are standard."
   ],
-  "summary": "Mina got a foul in a big game and felt very angry. Her coach, Coach Rivera, taught her to breathe in, count to four, and breathe out. Later, Mina missed a free throw, but she used the trick to stay calm. She made the next shot, and the Hawks went on to win the game."
+  "summary": "Mina got a foul in a big game and felt very angry. Her coach, Coach Rivera, taught her to breathe in, count to four, and breathe out. Later, Mina missed a free throw, but she used the trick to stay calm. She made the next shot, and the Hawks went on to win the game.",
+  "sentenceLab": [
+   {
+    "sid": 5,
+    "text": "Before she could argue, Coach Rivera called a timeout and waved her over to the bench.",
+    "chunks": [
+     "Before she could argue,",
+     "Coach Rivera called a timeout",
+     "and waved her over",
+     "to the bench."
+    ],
+    "core": "Coach Rivera called a timeout.",
+    "easy": "Mina wanted to argue. But first, the coach stopped the game and called Mina to the bench.",
+    "ko": "미나가 따지기도 전에, 리베라 코치가 타임아웃을 부르고 손짓으로 그녀를 벤치로 불렀다.",
+    "tip": "Before she could argue는 '미나가 따지기 전에'라는 뜻이라서, 코치가 먼저 움직였다는 말이에요.",
+    "choices": [
+     "The coach called Mina to the bench before she could argue.",
+     "Mina argued with the coach, and then she sat on the bench.",
+     "The referee called a timeout and sent Mina to the bench."
+    ],
+    "answer": 0
+   },
+   {
+    "sid": 19,
+    "text": "Her second shot swished through the net, tying the game and sending it to overtime.",
+    "chunks": [
+     "Her second shot",
+     "swished through the net,",
+     "tying the game",
+     "and sending it to overtime."
+    ],
+    "core": "Her second shot swished.",
+    "easy": "Her second shot went in. Now the score was tied, so the game went on longer.",
+    "ko": "그녀의 두 번째 슛이 그물을 가르며 들어가 동점을 만들었고, 경기는 연장전으로 넘어갔다.",
+    "tip": "tying과 sending은 슛이 들어가서 생긴 결과를 알려 주는 말이에요.",
+    "choices": [
+     "Her second shot missed, so the Hawks lost the game.",
+     "Her second shot went in, so the game was tied and went on.",
+     "Her second shot went in, so the Hawks won right away."
+    ],
+    "answer": 1
+   }
+  ]
  },
  {
   "id": "G3-01",
@@ -6132,7 +6643,50 @@
    "1971: Carolyn Davidson, Portland State design student, created the swoosh and invoiced $35; Knight taught accounting at PSU -> https://about.nike.com/en/stories/nike-swoosh-logo-history",
    "Nike named after the Greek winged goddess of victory -> https://oregonsportshall.org/timeline/philip-h-knight-special-contribution-to-sports"
   ],
-  "summary": "Phil Knight and his coach, Bill Bowerman, started a small shoe business, and Knight sold shoes from his car. Bowerman wanted faster shoes, so he used a waffle iron to make a bumpy sole. A student named Carolyn Davidson drew the swoosh logo. Their brand, Nike, grew into one of the biggest sports companies in the world."
+  "summary": "Phil Knight and his coach, Bill Bowerman, started a small shoe business, and Knight sold shoes from his car. Bowerman wanted faster shoes, so he used a waffle iron to make a bumpy sole. A student named Carolyn Davidson drew the swoosh logo. Their brand, Nike, grew into one of the biggest sports companies in the world.",
+  "sentenceLab": [
+   {
+    "sid": 9,
+    "text": "The experiment ruined the waffle iron, which had been a wedding gift to his wife, Barbara.",
+    "chunks": [
+     "The experiment",
+     "ruined the waffle iron,",
+     "which had been a wedding gift",
+     "to his wife, Barbara."
+    ],
+    "core": "The experiment ruined the waffle iron.",
+    "easy": "The test broke the waffle iron. Barbara got that waffle iron as a wedding gift.",
+    "ko": "그 실험 때문에 와플 기계가 망가졌는데, 그것은 그의 아내 바버라가 받은 결혼 선물이었다.",
+    "tip": "which 뒤의 말은 망가진 와플 기계가 어떤 물건이었는지 설명해 줘요.",
+    "choices": [
+     "Barbara broke the waffle iron, a gift from Bowerman.",
+     "The waffle iron was a gift, so Bowerman did not use it.",
+     "The test broke a waffle iron that was Barbara's wedding gift."
+    ],
+    "answer": 2
+   },
+   {
+    "sid": 12,
+    "text": "Knight, who was teaching accounting at Portland State University, asked a design student named Carolyn Davidson for help.",
+    "chunks": [
+     "Knight,",
+     "who was teaching accounting at Portland State University,",
+     "asked a design student",
+     "named Carolyn Davidson",
+     "for help."
+    ],
+    "core": "Knight asked a student for help.",
+    "easy": "Knight was a teacher at a university. He asked a design student, Carolyn Davidson, to help.",
+    "ko": "포틀랜드 주립대학교에서 회계학을 가르치던 나이트는 캐롤린 데이비슨이라는 디자인 전공 학생에게 도움을 청했다.",
+    "tip": "콤마 사이 부분은 나이트가 그때 어떤 일을 하고 있었는지 설명하는 말이에요.",
+    "choices": [
+     "Knight, a teacher, asked a student named Carolyn for help.",
+     "Carolyn, a teacher, asked a student named Knight for help.",
+     "Knight asked Carolyn to come and teach at his school."
+    ],
+    "answer": 0
+   }
+  ]
  },
  {
   "id": "G3-02",
@@ -6335,7 +6889,50 @@
    "Four flights that day, brothers taking turns -> https://www.nps.gov/parkhistory/online_books/hh/34/hh34i.htm (standard NPS history; not fetched)",
    "Jumbo jet (Boeing 747) wingspan about 196-224 ft, longer than 120 ft -> general knowledge (Boeing 747 specs)"
   ],
-  "summary": "Wilbur and Orville Wright fixed bikes before they tried to build a plane. Their first gliders did not fly as well as they hoped. So they built a wind tunnel and tested more than 200 wing shapes. In 1903, their plane flew for about 12 seconds, because they kept testing and fixing their mistakes."
+  "summary": "Wilbur and Orville Wright fixed bikes before they tried to build a plane. Their first gliders did not fly as well as they hoped. So they built a wind tunnel and tested more than 200 wing shapes. In 1903, their plane flew for about 12 seconds, because they kept testing and fixing their mistakes.",
+  "sentenceLab": [
+   {
+    "sid": 7,
+    "text": "Instead of giving up, the Wrights figured out that the numbers they had borrowed from another inventor did not fit their wings.",
+    "chunks": [
+     "Instead of giving up,",
+     "the Wrights figured out",
+     "that the numbers",
+     "they had borrowed from another inventor",
+     "did not fit their wings."
+    ],
+    "core": "The Wrights figured out something.",
+    "easy": "The brothers did not quit. They found out that another inventor's numbers did not work for their wings.",
+    "ko": "라이트 형제는 포기하는 대신, 다른 발명가에게서 빌려 온 숫자들이 자기들의 날개에 맞지 않는다는 것을 알아냈다.",
+    "tip": "they had borrowed from another inventor는 어떤 숫자인지 꾸며 주는 말이고, 진짜 동사는 did not fit이에요.",
+    "choices": [
+     "The brothers gave up because another inventor took their numbers.",
+     "The brothers kept going and found the borrowed numbers did not fit.",
+     "Another inventor found that the brothers' numbers did not fit."
+    ],
+    "answer": 1
+   },
+   {
+    "sid": 8,
+    "text": "Back home, they built a wind tunnel, a wooden box with a fan that blew air over tiny model wings.",
+    "chunks": [
+     "Back home,",
+     "they built a wind tunnel,",
+     "a wooden box with a fan",
+     "that blew air over tiny model wings."
+    ],
+    "core": "They built a wind tunnel.",
+    "easy": "At home, the brothers made a wind tunnel. It was a wooden box with a fan that blew air on small wings.",
+    "ko": "집으로 돌아온 그들은 풍동을 만들었는데, 그것은 작은 모형 날개 위로 바람을 보내는 선풍기가 달린 나무 상자였다.",
+    "tip": "콤마 뒤 부분은 wind tunnel이 무엇인지 풀어서 설명해 주는 말이에요.",
+    "choices": [
+     "At home, they built a wooden box with a fan to blow on small wings.",
+     "At home, they built a big airplane with a fan on each wing.",
+     "At Kitty Hawk, the strong wind broke their wooden box into pieces."
+    ],
+    "answer": 0
+   }
+  ]
  },
  {
   "id": "G3-03",
@@ -6537,7 +7134,50 @@
    "Georges Claude displayed two 38-foot neon tubes at the Paris Expo in December 1910 -> https://www.chemeurope.com/en/encyclopedia/Neon_sign.html",
    "Hydrogen is flammable, helium used in balloons -> general chemistry knowledge"
   ],
-  "summary": "Neon is a gas that makes some signs glow red and orange. It belongs to a group called the noble gases, which almost never mix with other things. To make a sign, workers bend glass tubes, fill them with gas, and send electricity through them. Other gases and coatings make signs glow in different colors."
+  "summary": "Neon is a gas that makes some signs glow red and orange. It belongs to a group called the noble gases, which almost never mix with other things. To make a sign, workers bend glass tubes, fill them with gas, and send electricity through them. Other gases and coatings make signs glow in different colors.",
+  "sentenceLab": [
+   {
+    "sid": 8,
+    "text": "The noble gases, however, already have a full outer shell of electrons, so they rarely react with other elements.",
+    "chunks": [
+     "The noble gases,",
+     "however,",
+     "already have a full outer shell of electrons,",
+     "so they rarely react",
+     "with other elements."
+    ],
+    "core": "The noble gases have a full shell.",
+    "easy": "Noble gases already have all the outer electrons they need. So they almost never mix with other elements.",
+    "ko": "그러나 비활성 기체는 이미 바깥 껍질이 전자로 꽉 차 있어서 다른 원소와 거의 반응하지 않는다.",
+    "tip": "so 앞은 이유, so 뒤는 결과라서 '전자가 꽉 차 있어서 반응을 잘 안 한다'는 뜻이에요.",
+    "choices": [
+     "Noble gases react a lot because they need more electrons.",
+     "Other elements rarely react because noble gases take electrons.",
+     "Noble gases have full electrons, so they almost never react."
+    ],
+    "answer": 2
+   },
+   {
+    "sid": 9,
+    "text": "That is one reason helium fills party balloons instead of hydrogen, a gas that can catch fire.",
+    "chunks": [
+     "That is one reason",
+     "helium fills party balloons",
+     "instead of hydrogen,",
+     "a gas that can catch fire."
+    ],
+    "core": "Helium fills balloons.",
+    "easy": "Party balloons use helium, not hydrogen. Hydrogen can catch fire.",
+    "ko": "그것이 파티 풍선을 불이 붙을 수 있는 기체인 수소 대신 헬륨으로 채우는 한 가지 이유이다.",
+    "tip": "콤마 뒤 부분은 헬륨이 아니라 수소가 어떤 기체인지 설명하는 말이에요.",
+    "choices": [
+     "Balloons use hydrogen, because helium can catch fire.",
+     "Balloons use helium, because hydrogen can catch fire.",
+     "Balloons use helium, and helium can easily catch fire."
+    ],
+    "answer": 1
+   }
+  ]
  },
  {
   "id": "G3-04",
@@ -6732,6 +7372,48 @@
   "factNotes": [
    "Original fiction; no real-world factual claims."
   ],
-  "summary": "When the class basketball went missing, Leo quickly blamed the fourth graders. His friend Mina wanted to look for clues first. She found small footprints, a gym timetable, and a note that showed the kindergarten class had the ball. Leo learned that reading clues carefully is better than guessing fast."
+  "summary": "When the class basketball went missing, Leo quickly blamed the fourth graders. His friend Mina wanted to look for clues first. She found small footprints, a gym timetable, and a note that showed the kindergarten class had the ball. Leo learned that reading clues carefully is better than guessing fast.",
+  "sentenceLab": [
+   {
+    "sid": 3,
+    "text": "Leo instantly decided that the fourth graders had taken it, since they had borrowed it once before.",
+    "chunks": [
+     "Leo instantly decided",
+     "that the fourth graders had taken it,",
+     "since they had borrowed it once before."
+    ],
+    "core": "Leo decided.",
+    "easy": "Leo quickly thought the fourth graders took the ball. They had borrowed it one time before.",
+    "ko": "레오는 4학년들이 전에 한 번 공을 빌려 간 적이 있었으니, 그들이 가져갔다고 바로 단정했다.",
+    "tip": "since는 '~이니까'라는 뜻으로, 레오가 그렇게 생각한 이유를 알려 줘요.",
+    "choices": [
+     "Leo guessed the fourth graders took the ball, since they borrowed it before.",
+     "The fourth graders said Leo took the ball, since he borrowed it before.",
+     "Leo saw the fourth graders take the ball, so he knew it right away."
+    ],
+    "answer": 0
+   },
+   {
+    "sid": 13,
+    "text": "The note said that the ball had rolled into the muddy garden and that Room 3 was cleaning it before recess on Monday.",
+    "chunks": [
+     "The note said",
+     "that the ball had rolled",
+     "into the muddy garden",
+     "and that Room 3 was cleaning it",
+     "before recess on Monday."
+    ],
+    "core": "The note said something.",
+    "easy": "The ball rolled into the mud. Room 3 was washing it before recess on Monday.",
+    "ko": "쪽지에는 공이 진흙투성이 정원으로 굴러 들어갔고, 3반이 월요일 쉬는 시간 전까지 공을 닦고 있다고 적혀 있었다.",
+    "tip": "두 개의 that이 쪽지에 적힌 내용 두 가지를 하나씩 알려 줘요.",
+    "choices": [
+     "The note said Room 3 threw the ball into the garden on purpose.",
+     "The note said the ball fell in the mud and Room 3 was cleaning it.",
+     "The note said the ball was lost and nobody could ever find it."
+    ],
+    "answer": 1
+   }
+  ]
  }
 ]
