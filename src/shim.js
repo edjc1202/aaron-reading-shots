@@ -24,7 +24,7 @@ function lsSet(k, v){ try { localStorage.setItem(k, v); } catch(e){} }
 
 // family code: from #f=... in the link (then remembered), else from storage
 function familyCode(){
-  const m = (location.hash || '').match(/f=([A-Za-z0-9_-]{24,})/);
+  const m = ((location.hash || '') + '&' + (location.search || '')).match(/f=([A-Za-z0-9_-]{24,})/);
   if (m){ lsSet(LS_FAM, m[1]); try { history.replaceState(null, '', location.pathname); } catch(e){} return m[1]; }
   return lsGet(LS_FAM);
 }
