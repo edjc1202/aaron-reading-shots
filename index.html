@@ -826,7 +826,7 @@ function markPracticeDone(pid){
   savePracticed(pid, {count: 1, best: null, last: todayKST(), manual: true, manualBy: 'parent', manualAt: new Date().toISOString(), runs: []}).then(ok => toast(ok ? '✔ 완료로 표시했어요 (부모 확인)' : '✔ 완료로 표시했어요. 서버 연결되면 자동 저장돼요', 3000));
 }
 /* parent-entered Game results (played on StanbyMe 11/22 but never uploaded). Estimated timing = Aaron's average pace. */
-const PARENT_GAMES = [{passageId: 'S2-G1-07', date: '2026-11-22', startedAt: '2026-11-22T03:45:00.000Z', note: 'Ed: perfect score, not uploaded from StanbyMe'}];
+const PARENT_GAMES = [{passageId: 'S2-G1-07', date: '2026-11-22', startedAt: '2026-11-22T03:45:00.000Z', note: 'Ed: perfect score, not uploaded from StanbyMe'}, {passageId: 'S2-G2-02', date: '2026-11-27', startedAt: '2026-11-27T10:30:00.000Z', note: 'Ed 11/28: perfect score, not uploaded'}];
 let seededGames = false;
 async function seedParentGames(){
   if (seededGames || !db || !ready.a) return; seededGames = true;
